@@ -1,7 +1,10 @@
 ﻿using FirstSteps;
 
-Console.WriteLine("Hello, World!");
-
 var fizzBuzzGame = new FizzBuzz();
 
-fizzBuzzGame.Run();
+var words = fizzBuzzGame.GetWords(50);
+
+foreach (var word in words)
+{
+    Console.WriteLine(word);
+}
