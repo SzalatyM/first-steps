@@ -20,6 +20,18 @@ public class FizzBuzzTests
     }
 
     [Fact]
+    public void Numbers_Not_Affected_By_Rules_Should_Be_Numbers()
+    {
+        var words = _fizzBuzzGame.GetWords(10);
+
+        Assert.Equal("1", words[0]);
+        Assert.Equal("2", words[1]);
+        Assert.Equal("4", words[3]);
+        Assert.Equal("7", words[6]);
+        Assert.Equal("8", words[7]);
+    }
+
+    [Fact]
     public void Numbers_Divisible_By_Three_Should_Be_Equal_Fizz()
     {
         const string result = "Fizz";
