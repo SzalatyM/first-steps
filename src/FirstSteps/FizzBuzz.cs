@@ -1,9 +1,10 @@
-namespace FirstSteps;
-
-public class FizzBuzz
+namespace FirstSteps
 {
-    public string[] GetWords(int numberOfWords)
+    public class FizzBuzz
     {
-        return null;
+        public string[] GetWords(int numberOfWords)
+        {
+            return null;
+        }
     }
 }
