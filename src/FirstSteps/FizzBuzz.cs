@@ -6,9 +6,11 @@ namespace FirstSteps
     {
         public string[] GetWords(int numberOfWords)
         {
-            //crete an array of strings of the given size
+            //crete an array of strings of the given size 
+            //https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/arrays/
 
-            //use "for" loop to iterate through the array
+            //use "for" loop to iterate through the array 
+            //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-for-statement
             
                 //if the number is divisible by 3 and 5, set the word to "FizzBuzz"
 
