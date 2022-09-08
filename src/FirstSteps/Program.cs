@@ -6,8 +6,17 @@ namespace FirstSteps
     {
         static void Main(string[] args)
         {
-            var number = new Number(); //TODO: pass initial value as an argument in the constructor
-            Console.WriteLine(); //TODO: display current value 
+            
+            var number = new Number(10);
+
+            number.Add(20);
+            number.Subtract(60);
+            number.Divide(2);
+            number.Double();
+            number.Triple();
+
+
+            Console.WriteLine(number.GetValue()); 
         }
     }
 }
