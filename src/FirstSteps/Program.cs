@@ -9,8 +9,14 @@ namespace FirstSteps
             var skoda = new Car("Skoda Octavia");
             var honda = new Car("Honda Civic");
 
-            Console.WriteLine(skoda.GetModel());
-            Console.WriteLine(honda.GetModel());
+            Console.WriteLine($"{skoda.GetModel()} engine status: {skoda.EngineStatus()}");
+            Console.WriteLine($"{honda.GetModel()} engine status: {honda.EngineStatus()}");
+            
+            honda.RunEngine();
+            honda.SetModel("Honda X");
+
+            Console.WriteLine($"{skoda.GetModel()} engine status: {skoda.EngineStatus()}");
+            Console.WriteLine($"{honda.GetModel()} engine status: {honda.EngineStatus()}");
         }
     }
 }
