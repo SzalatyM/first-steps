@@ -6,17 +6,11 @@ namespace FirstSteps
     {
         static void Main(string[] args)
         {
-            
-            var number = new Number(10);
+            var skoda = new Car("Skoda Octavia");
+            var honda = new Car("Honda Civic");
 
-            number.Add(20);
-            number.Subtract(60);
-            number.Divide(2);
-            number.Double();
-            number.Triple();
-
-
-            Console.WriteLine(number.GetValue()); 
+            Console.WriteLine(skoda.GetModel());
+            Console.WriteLine(honda.GetModel());
         }
     }
 }
