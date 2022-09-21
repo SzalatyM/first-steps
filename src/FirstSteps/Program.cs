@@ -1,4 +1,5 @@
 ﻿using System;
+using FirstSteps.RPG;
 
 namespace FirstSteps
 {
@@ -6,17 +7,24 @@ namespace FirstSteps
     {
         static void Main(string[] args)
         {
-            var skoda = new Car("Skoda Octavia");
-            var honda = new Car("Honda Civic");
+            Console.WriteLine("Welcome to the RPG game");
 
-            Console.WriteLine($"{skoda.GetModel()} engine status: {skoda.EngineStatus()}");
-            Console.WriteLine($"{honda.GetModel()} engine status: {honda.EngineStatus()}");
-            
-            honda.RunEngine();
-            honda.SetModel("Honda X");
+            Game.CreateHero();
 
-            Console.WriteLine($"{skoda.GetModel()} engine status: {skoda.EngineStatus()}");
-            Console.WriteLine($"{honda.GetModel()} engine status: {honda.EngineStatus()}");
+            Console.WriteLine("Let's play the game");
+
+            Game.DisplayCommands();
+
+            Console.WriteLine("Type 'end' if you want to quit.");
+
+            var command = string.Empty;
+            do
+            {
+                command = Console.ReadLine();
+                Game.HandleCommand(command);
+                Console.WriteLine();
+            }
+            while(command.ToLower() != "end");
         }
     }
 }
