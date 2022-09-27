@@ -34,9 +34,36 @@ namespace FirstSteps.RPG
                 case "stats":
                     DisplayHeroStats();
                     break;
+                case "fight":
+                    Figth();
+                    break;
                 default:
                     Console.WriteLine($"Command {command} not recognized");
                     break;
+            }
+        }
+
+        private static void Figth()
+        {
+            Console.WriteLine("Fight begins!");
+
+            var random = new Random();
+            var dmg = random.Next(0, 20); // random dmg value
+
+            _hero.hp -= dmg; // reduce hero's HP by random damage
+
+            Console.WriteLine($"Hero lose {dmg} HP");
+
+            if(_hero.hp > 0) // if hero is still alive
+            {
+                _hero.strength++; // increase hero's strength by one
+                _hero.agility += 2; // increase hero's agility by two
+
+                Console.WriteLine("Hero win the fight!");
+            }
+            else
+            {
+                Console.WriteLine("You are dead!");
             }
         }
 

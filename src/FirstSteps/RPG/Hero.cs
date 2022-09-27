@@ -5,10 +5,12 @@ namespace FirstSteps.RPG
     public class Hero
     {
         private string _name;
-        public Races _race;
-        public int _strength;
-        public int _intelligence;
-        public int _agility;
+        private Races _race;
+
+        public int strength = 1;
+        public int intelligence = 1;
+        public int agility = 1;
+        public int hp = 100;
 
         public Hero(string name, Races race)
         {
@@ -20,7 +22,8 @@ namespace FirstSteps.RPG
         {
             Console.WriteLine($"Name: {_name}");
             Console.WriteLine($"Race: {_race}");
-            Console.WriteLine($"Strength: {_strength}, intelligence {_intelligence}, agility {_agility}");
+            Console.WriteLine($"HP: {hp}");
+            Console.WriteLine($"Strength: {strength}, intelligence {intelligence}, agility {agility}");
         }
     }
 }
