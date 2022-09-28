@@ -4,10 +4,7 @@ namespace FirstSteps.RPG
 {
     public static class Game
     {
-
-
         private static Hero _hero;
-        
 
         public static void CreateHero()
         {
@@ -45,6 +42,9 @@ namespace FirstSteps.RPG
                 case "adventure":
                     BossFight();
                     break;
+                case "fight":
+                    Figth();
+                    break;
                 case "BossStats":
                     BossStats();
                     break;
@@ -52,7 +52,7 @@ namespace FirstSteps.RPG
                     LevelUp();
                     break;
                 default:
-                    Console.WriteLine(command);
+                    Console.WriteLine($"Command {command} not recognized");
                     break;
 
             }
@@ -63,9 +63,33 @@ namespace FirstSteps.RPG
         {
             Boss _boss = new Boss("Diablo", 220, 28);
 
-            Console.WriteLine(_boss.ToString()); 
+            Console.WriteLine(_boss.ToString());
         }
-        
+
+
+        private static void Figth()
+        {
+            Console.WriteLine("Fight begins!");
+
+            var random = new Random();
+            var dmg = random.Next(0, 20); // random dmg value
+
+            _hero._health -= dmg; // reduce hero's HP by random damage
+
+            Console.WriteLine($"Hero lose {dmg} HP");
+
+            if (_hero._health > 0) // if hero is still alive
+            {
+                _hero._strength++; // increase hero's strength by one
+                _hero._agility += 2; // increase hero's agility by two
+
+                Console.WriteLine("Hero win the fight!");
+            }
+            else
+            {
+                Console.WriteLine("You are dead!");
+            }
+        }
 
         public static void DisplayHeroStats()
         {
@@ -80,25 +104,25 @@ namespace FirstSteps.RPG
                 Console.WriteLine($"{i + 1}. {races[i]}");
             }
         }
-        
+
         public static void BossFight()
         {
-            
+
             Console.WriteLine("Lets fight with the Diablo Boss! ");
 
             Random random = new Random();
             _boss = new Boss("Diablo", 220, 28);
-            
+
             bool playAgain = true;
             string player;
             string computer;
-            
+
 
             while (playAgain)
             {
                 player = "";
                 computer = "";
-               
+
 
                 while (player != "s" && player != "p" && player != "r")
                 {
@@ -124,7 +148,7 @@ namespace FirstSteps.RPG
 
                 Console.WriteLine("player: " + player);
                 Console.WriteLine("computer: " + computer);
-               
+
 
                 switch (player)
                 {
@@ -143,9 +167,9 @@ namespace FirstSteps.RPG
                         else
                         {
                             _hero._health -= _boss.dmg;
-                            Console.WriteLine($"Hero lose {_boss.dmg} HP" );
+                            Console.WriteLine($"Hero lose {_boss.dmg} HP");
                             Console.WriteLine($"Actually Hero hp = {_hero._health}");
-                            
+
                         }
                         break;
                     case "r":
@@ -182,31 +206,31 @@ namespace FirstSteps.RPG
                         }
                         else
                         {
-                            _hero._health -= _boss.dmg;                           
+                            _hero._health -= _boss.dmg;
                             Console.WriteLine($"Hero lose {_boss.dmg} HP");
                             Console.WriteLine($"Actually Hero hp = {_hero._health}");
                         }
-                        break;                       
+                        break;
                 }
-                if(_boss.hp <= 0)
+                if (_boss.hp <= 0)
                 {
                     Console.WriteLine("Boss died! Congratulations, u Won!");
                     break;
-                }                             
-                else if(_hero._health <= 0)
+                }
+                else if (_hero._health <= 0)
                 {
                     Console.WriteLine($"Game over! You Died");
                     break;
                 }
-                
+
             }
         }
+
         public static void LevelUp()
         {
-
             RollDice();
-
         }
+
         public static void RollDice()
         {
 
@@ -234,44 +258,6 @@ namespace FirstSteps.RPG
                 }
 
             }
-
-
-
-        }
-
         }
     }
-
-
-        
-
-
-
-        
-        
-    
-
-
-
-
-
-
-            
-
-
-
-
-            
-
-        
-        
-        
-
-       
-    
-   
-    
-
-    
-    
-    
+}
