@@ -4,6 +4,9 @@ namespace FirstSteps.RPG
     {
         Human = 1,
         Dwarf = 2,
-        Elf = 3
+        Elf = 3,
+        Undead = 4
+
+
     }
 }

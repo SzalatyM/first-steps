@@ -17,12 +17,14 @@ namespace FirstSteps
 
             Console.WriteLine("Type 'end' if you want to quit.");
 
-            var command = string.Empty;
+            string command;
+            
             do
             {
-                command = Console.ReadLine();
+               command = Console.ReadLine();
                 Game.HandleCommand(command);
                 Console.WriteLine();
+                
             }
             while(command.ToLower() != "end");
         }
