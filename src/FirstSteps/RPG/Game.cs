@@ -29,6 +29,7 @@ namespace FirstSteps.RPG
             Console.WriteLine("Type 'BossStats' to display boss statistics");
             Console.WriteLine("Type 'adventure' to move on to the boss fight");
             Console.WriteLine("Type 'lvl' to add stat points");
+            Console.WriteLine("Type 'treasure' to get a chance to draw an item");
 
         }
 
@@ -42,11 +43,11 @@ namespace FirstSteps.RPG
                 case "adventure":
                     BossFight();
                     break;
-                case "fight":
-                    Figth();
-                    break;
                 case "BossStats":
                     BossStats();
+                    break;
+                case "treasure":
+                    Treasure();
                     break;
                 case "lvl":
                     LevelUp();
@@ -54,41 +55,16 @@ namespace FirstSteps.RPG
                 default:
                     Console.WriteLine($"Command {command} not recognized");
                     break;
-
             }
         }
         public static Boss _boss;
+        public static Item _item;
 
         public static void BossStats()
         {
             Boss _boss = new Boss("Diablo", 220, 28);
 
             Console.WriteLine(_boss.ToString());
-        }
-
-
-        private static void Figth()
-        {
-            Console.WriteLine("Fight begins!");
-
-            var random = new Random();
-            var dmg = random.Next(0, 20); // random dmg value
-
-            _hero._health -= dmg; // reduce hero's HP by random damage
-
-            Console.WriteLine($"Hero lose {dmg} HP");
-
-            if (_hero._health > 0) // if hero is still alive
-            {
-                _hero._strength++; // increase hero's strength by one
-                _hero._agility += 2; // increase hero's agility by two
-
-                Console.WriteLine("Hero win the fight!");
-            }
-            else
-            {
-                Console.WriteLine("You are dead!");
-            }
         }
 
         public static void DisplayHeroStats()
@@ -160,16 +136,11 @@ namespace FirstSteps.RPG
                         }
                         else if (computer == "p")
                         {
-                            _boss.hp -= _hero._Damage;
-                            Console.WriteLine($"Boss lose {_hero._Damage} HP");
-                            Console.WriteLine($"Actually Boss hp = {_boss.hp}");
+                            HitBoss();
                         }
                         else
                         {
-                            _hero._health -= _boss.dmg;
-                            Console.WriteLine($"Hero lose {_boss.dmg} HP");
-                            Console.WriteLine($"Actually Hero hp = {_hero._health}");
-
+                            HitHero();
                         }
                         break;
                     case "r":
@@ -180,25 +151,20 @@ namespace FirstSteps.RPG
                         }
                         else if (computer == "p")
                         {
-                            _hero._health -= _boss.dmg;
-                            Console.WriteLine($"Hero lose {_boss.dmg} HP");
-                            Console.WriteLine($"Actually Hero hp = {_hero._health}");
+                            HitHero();
 
                         }
                         else
                         {
-                            _boss.hp -= _hero._Damage;
-                            Console.WriteLine($"Boss lose {_hero._Damage} HP");
-                            Console.WriteLine($"Actually Boss hp = {_boss.hp}");
+                            HitBoss();
                         }
                         break;
 
                     case "p":
                         if (computer == "r")
                         {
-                            _boss.hp -= _hero._Damage;
-                            Console.WriteLine($"Boss lose {_hero._Damage} HP");
-                            Console.WriteLine($"Actually Boss hp = {_boss.hp}");
+                            HitBoss();
+
                         }
                         else if (computer == "p")
                         {
@@ -206,9 +172,7 @@ namespace FirstSteps.RPG
                         }
                         else
                         {
-                            _hero._health -= _boss.dmg;
-                            Console.WriteLine($"Hero lose {_boss.dmg} HP");
-                            Console.WriteLine($"Actually Hero hp = {_hero._health}");
+                            HitHero();
                         }
                         break;
                 }
@@ -256,8 +220,56 @@ namespace FirstSteps.RPG
                 {
                     Console.WriteLine("This time it didn't work out");
                 }
-
             }
         }
+
+        public static void HitBoss()
+        {
+
+            _boss.hp -= _hero._Damage;
+            Console.WriteLine($"Boss lose {_hero._Damage} HP");
+            Console.WriteLine($"Actually Boss hp = {_boss.hp}");
+
+        }
+
+        public static void HitHero()
+        {
+            _hero._health -= _boss.dmg;
+            Console.WriteLine($"Hero lose {_boss.dmg} HP");
+            Console.WriteLine($"Actually Hero hp = {_hero._health}");
+
+        }
+        
+        public static void Treasure()
+
+        {
+
+            var sword = new Item("Sword", 20, 18);
+            var crystal = new Item("crystal", 30, 5);
+            var bow = new Item("bow", 40, 12);
+
+            Item[] items = { sword, crystal, bow, null, null, null };
+
+
+            Random random = new Random();
+            Console.WriteLine("Press any key to draw an item!");
+            Console.ReadLine();
+
+            
+            int index = random.Next(items.Length);
+
+
+            if (items[index] != null)
+            {
+                Console.WriteLine($" Item placed in backpack " + items[index]);
+                _hero.AddItemToBackpack(items[index]);
+            }                                             
+            else
+            {
+                Console.WriteLine("failed this time");
+            }
+           
+        }
+        
     }
 }
