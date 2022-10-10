@@ -248,9 +248,9 @@ namespace FirstSteps.RPG
 
         {
 
-            var sword = new Item("Sword", 20);
-            var crystal = new Item("crystal", 30);
-            var bow = new Item("bow", 40);
+            var sword = new Item("Sword", 20, 18);
+            var crystal = new Item("crystal", 30, 5);
+            var bow = new Item("bow", 40, 12);
 
             Item[] items = { sword, crystal, bow, null, null, null };
 
@@ -261,21 +261,18 @@ namespace FirstSteps.RPG
 
             
             int index = random.Next(items.Length);
-            
 
-            if (items[index] == null)
+
+            if (items[index] != null)
             {
-                Console.WriteLine("Nic nie wylosowales ");
-            }
+                Console.WriteLine($" Item placed in backpack " + items[index]);
+                _hero.AddItemToBackpack(items[index]);
+            }                                             
             else
             {
-                Console.WriteLine(items[index]);
-
-                _hero.AddItemToBackpack(items[index]);
-                
+                Console.WriteLine("failed this time");
             }
-            
-            
+           
         }
         
     }

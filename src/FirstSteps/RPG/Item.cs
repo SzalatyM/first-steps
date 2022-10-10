@@ -10,15 +10,18 @@ namespace FirstSteps.RPG
 
         public int Price { get;}
 
-        public Item(string name, int price)
+        public int Weight { get; }
+
+        public Item(string name, int price, int weight)
         {
             Name = name;
             Price = price;
+            Weight = weight;
 
         }
         public override string ToString()
         {
-            return "Item: " + Name + "price: " + Price;
+            return "Item: " + Name + "price: " + Price + "weight" + Weight;
         }
     }
 }
