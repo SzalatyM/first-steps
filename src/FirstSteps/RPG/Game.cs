@@ -4,11 +4,7 @@ namespace FirstSteps.RPG
 {
     public static class Game
     {
-
-
         private static Hero _hero;
-
-
 
         public static void CreateHero()
         {
@@ -57,9 +53,8 @@ namespace FirstSteps.RPG
                     LevelUp();
                     break;
                 default:
-                    Console.WriteLine(command);
+                    Console.WriteLine($"Command {command} not recognized");
                     break;
-
             }
         }
         public static Boss _boss;
@@ -71,7 +66,6 @@ namespace FirstSteps.RPG
 
             Console.WriteLine(_boss.ToString());
         }
-
 
         public static void DisplayHeroStats()
         {
@@ -147,7 +141,6 @@ namespace FirstSteps.RPG
                         else
                         {
                             HitHero();
-
                         }
                         break;
                     case "r":
@@ -196,12 +189,12 @@ namespace FirstSteps.RPG
 
             }
         }
+
         public static void LevelUp()
         {
-
             RollDice();
-
         }
+
         public static void RollDice()
         {
 
@@ -229,6 +222,7 @@ namespace FirstSteps.RPG
                 }
             }
         }
+
         public static void HitBoss()
         {
 
@@ -237,6 +231,7 @@ namespace FirstSteps.RPG
             Console.WriteLine($"Actually Boss hp = {_boss.hp}");
 
         }
+
         public static void HitHero()
         {
             _hero._health -= _boss.dmg;
@@ -244,6 +239,7 @@ namespace FirstSteps.RPG
             Console.WriteLine($"Actually Hero hp = {_hero._health}");
 
         }
+        
         public static void Treasure()
 
         {
@@ -277,33 +273,3 @@ namespace FirstSteps.RPG
         
     }
 }
-   
-
-
-    
-
-
-
-            
-        
-        
-       
-       
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
