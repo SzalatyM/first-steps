@@ -7,6 +7,9 @@ namespace FirstSteps
     {
         static void Main(string[] args)
         {
+            
+
+
             Console.WriteLine("Welcome to the RPG game");
 
             Game.CreateHero();
