@@ -17,7 +17,6 @@ namespace FirstSteps.RPG
             Name = name;
             Price = price;
             Weight = weight;
-
         }
         public override string ToString()
         {

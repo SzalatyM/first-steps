@@ -8,7 +8,6 @@ namespace FirstSteps.RPG
     {
         public Elf(string name) : base(name, Races.Elf)
         {
-
             _strength = 3;
             _intelligence = 2;
             _agility = 5;

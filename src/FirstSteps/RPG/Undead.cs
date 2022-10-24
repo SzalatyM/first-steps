@@ -13,7 +13,6 @@ namespace FirstSteps.RPG
             _agility = 4;
             _health = 130;
             _damage = 21;
-
         }
     }
 }

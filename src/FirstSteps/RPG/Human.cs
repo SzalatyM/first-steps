@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FirstSteps.RPG
 {
-         class Human : Hero
+    class Human : Hero
     {
         public Human(string name) : base(name, Races.Human)
         {
@@ -13,9 +13,9 @@ namespace FirstSteps.RPG
             _agility = 5;
             _health = 120;
             _damage = 20;
-        }                       
         }
-        }
-    
+    }
+}
+
 
 

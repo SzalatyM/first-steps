@@ -6,7 +6,7 @@ namespace FirstSteps.RPG
 {
     class Dwarf : Hero
     {
-        public Dwarf(string name) :base(name, Races.Dwarf) 
+        public Dwarf(string name) : base(name, Races.Dwarf)
         {
             _strength = 4;
             _intelligence = 2;
@@ -14,6 +14,6 @@ namespace FirstSteps.RPG
             _health = 140;
             _damage = 28;
         }
-        }
     }
+}
 

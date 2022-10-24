@@ -28,9 +28,7 @@ namespace FirstSteps.RPG
             {
                 Console.WriteLine("Choose a corrent hero");
                 return null;
-
             }
         }
-    }
-    
+    }  
 }

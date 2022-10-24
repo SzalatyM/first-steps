@@ -226,11 +226,9 @@ namespace FirstSteps.RPG
 
         public static void HitBoss()
         {
-
            // _boss.hp -= _hero._damage;
           //  Console.WriteLine($"Boss lose {_hero._damage} HP");
             Console.WriteLine($"Actually Boss hp = {_boss.hp}");
-
         }
 
         public static void HitHero()
@@ -242,7 +240,6 @@ namespace FirstSteps.RPG
         }
         
         public static void Treasure()
-
         {
 
             var sword = new Item("Sword", 20, 18);
