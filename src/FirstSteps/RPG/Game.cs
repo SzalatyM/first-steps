@@ -238,7 +238,7 @@ namespace FirstSteps.RPG
            // _hero._health -= _boss.dmg;
             Console.WriteLine($"Hero lose {_boss.dmg} HP");
          //   Console.WriteLine($"Actually Hero hp = {_hero._health}");
-
+         // ok 
         }
         
         public static void Treasure()
