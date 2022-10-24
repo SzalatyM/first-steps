@@ -5,78 +5,40 @@ using System.Linq;
 namespace FirstSteps.RPG
 {
 
-    public class Hero
+        public class Hero 
     {
+       
         private List<Item> backPack = new List<Item>();
 
+        private string _name { get; set; }
+        private Races _race { get; set; }
 
-        private string _name;
-        public Races _race;
-        public int _strength;
-        public int _intelligence;
-        public int _agility;
-        public int _health;
-        public int _Damage;
+        protected int _strength;
+        protected int _intelligence;
+        protected int _agility;
+        protected int _health;
+        protected int _damage;
         public int maxBackpack = 5;
         public int _maxWeight = 40;
         public bool addedItem = true;
         public bool exceededLimit = false;
 
-
         public Hero(string name, Races race)
         {
             _name = name;
             _race = race;
-
-            if (_race == Races.Human)
-            {
-                _strength = 5;
-                _intelligence = 3;
-                _agility = 2;
-                _health = 120;
-                _Damage = 22;
-            }
-            else if (_race == Races.Dwarf)
-            {
-                _strength = 7;
-                _intelligence = 2;
-                _agility = 1;
-                _health = 200;
-                _Damage = 30;
-            }
-            else if (_race == Races.Elf)
-            {
-                _strength = 2;
-                _intelligence = 3;
-                _agility = 5;
-                _health = 130;
-                _Damage = 20;
-            }
-            else if (_race == Races.Undead)
-            {
-                _strength = 3;
-                _intelligence = 5;
-                _agility = 2;
-                _health = 150;
-                _Damage = 18;
-            }
-            else
-            {
-                Console.WriteLine("Select a correct hero!");
-            }
-
-        }
+        }        
 
         public void DisplayStats()
         {
             Console.WriteLine($"Name: {_name}");
             Console.WriteLine($"Race: {_race}");
-            Console.WriteLine($"Strength: {_strength} \nIntelligence: {_intelligence} \nAgility: {_agility} \nHealth: {_health} \nDamage: {_Damage}\n");
+            Console.WriteLine($"Strength: {_strength} \nIntelligence: {_intelligence} \nAgility: {_agility} \nHealth: {_health} \nDamage: {_damage}\n");
             Console.WriteLine($"Equipment: total price: {DisplayTotalPrice()}\ntotal items: {DisplayTotalItems()}\ntotal weight; {DisplayTotalWeight()} ");
         }
         public bool AddItemToBackpack(Item item)
         {
-            if (backPack.Count < maxBackpack)
+            if (backPack.Count <= maxBackpack && CountWeight() <= _maxWeight && item.Weight + CountWeight() <= _maxWeight)
             {
                 backPack.Add(item);
                 Console.WriteLine(addedItem);
@@ -118,14 +80,14 @@ namespace FirstSteps.RPG
             return totalWeight.ToString();
         }
 
-        private string CountWeight()
+        private int CountWeight()
         {
             int totalWeight = 0;
             foreach(Item item in backPack)
             {
               totalWeight +=  item.Weight;
             }
-            return totalWeight.ToString();
+            return totalWeight;
         }
     }
 }
