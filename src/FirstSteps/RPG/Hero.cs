@@ -12,23 +12,18 @@ namespace FirstSteps.RPG
 
         private string _name { get; set; }
         private Races _race { get; set; }
-
         protected int _strength;
         protected int _intelligence;
-        protected int _agility;
-        protected int _health;
-        protected int _damage;
-        public int maxBackpack = 5;
-        public int _maxWeight = 40;
-        public bool addedItem = true;
-        public bool exceededLimit = false;
-
+        protected internal int _agility;
+        protected internal int _health;
+        protected internal int _damage;
+        private int maxBackpack = 5;
+        private int _maxWeight = 40;
         public Hero(string name, Races race)
         {
             _name = name;
             _race = race;
         }        
-
         public void DisplayStats()
         {
             Console.WriteLine($"Name: {_name}");
@@ -40,8 +35,7 @@ namespace FirstSteps.RPG
         {
             if (backPack.Count <= maxBackpack && CountWeight() <= _maxWeight && item.Weight + CountWeight() <= _maxWeight)
             {
-                backPack.Add(item);
-                Console.WriteLine(addedItem);
+                backPack.Add(item);               
                 return true;
             }
             else
