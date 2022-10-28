@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace FirstSteps.RPG
+namespace FirstSteps.RPG.Heroes
 {
-    class HeroesCreator
+    public class HeroesCreator
     {       
         public static Hero Create(string name, Races race)
         {        

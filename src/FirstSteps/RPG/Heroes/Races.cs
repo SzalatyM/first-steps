@@ -1,4 +1,4 @@
-namespace FirstSteps.RPG
+namespace FirstSteps.RPG.Heroes
 {
     public enum Races
     {

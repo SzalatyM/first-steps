@@ -21,10 +21,9 @@ namespace FirstSteps
             
             do
             {
-               command = Console.ReadLine();
+                command = Console.ReadLine();
                 Game.HandleCommand(command);
                 Console.WriteLine();
-                
             }
             while(command.ToLower() != "end");
         }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FirstSteps.RPG.Items;
 
-namespace FirstSteps.RPG
+namespace FirstSteps.RPG.Heroes
 {
-    class Dwarf : Hero
+    public class Dwarf : Hero
     {
         public Dwarf(string name) : base(name, Races.Dwarf)
         {
@@ -14,6 +12,7 @@ namespace FirstSteps.RPG
             _health = 140;
             _damage = 28;
         }
+        
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicAxe;

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FirstSteps.RPG.Items;
 
-namespace FirstSteps.RPG
+namespace FirstSteps.RPG.Heroes
 {
-    class Undead : Hero
+    public class Undead : Hero
     {
         public Undead(string name) : base(name, Races.Undead)
         {
@@ -14,6 +12,7 @@ namespace FirstSteps.RPG
             _health = 130;
             _damage = 21;
         }
+
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicSkull;

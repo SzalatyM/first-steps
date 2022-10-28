@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FirstSteps.RPG.Items;
 
-namespace FirstSteps.RPG
+namespace FirstSteps.RPG.Heroes
 {
-    class Human : Hero
+    public class Elf : Hero
     {
-        public Human(string name) : base(name, Races.Human)
+        public Elf(string name) : base(name, Races.Elf)
         {
             _strength = 3;
             _intelligence = 2;
@@ -14,9 +12,10 @@ namespace FirstSteps.RPG
             _health = 120;
             _damage = 20;
         }
+        
         protected override bool CanHandleSpecialItem(Item item)
         {
-            return item is MagicSword;
+            return item is MagicBow;
         }
     }
 }
