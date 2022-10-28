@@ -14,6 +14,9 @@ namespace FirstSteps.RPG
             _health = 140;
             _damage = 28;
         }
+        protected override bool CanHandleSpecialItem(Item item)
+        {
+            return item is MagicAxe;
+        }
     }
 }
-

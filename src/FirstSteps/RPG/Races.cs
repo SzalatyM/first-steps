@@ -6,7 +6,5 @@ namespace FirstSteps.RPG
         Dwarf = 2,
         Elf = 3,
         Undead = 4
-
-
     }
 }

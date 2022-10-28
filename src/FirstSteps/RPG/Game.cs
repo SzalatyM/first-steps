@@ -5,7 +5,7 @@ namespace FirstSteps.RPG
     public static class Game
     {
         private static Hero _hero;
-        
+
         public static void CreateHero()
         {
             Console.WriteLine("Create your hero");
@@ -19,7 +19,7 @@ namespace FirstSteps.RPG
 
             var race = int.Parse(Console.ReadLine());
 
-            _hero = new Hero(name, (Races)race);
+           _hero =HeroesCreator.Create(name, (Races)race);
         }
 
         public static void DisplayCommands()
@@ -58,9 +58,6 @@ namespace FirstSteps.RPG
             }
         }
         public static Boss _boss;
-        public static Item _item;
-
-
         public static void BossStats()
         {
             Boss _boss = new Boss("Diablo", 220, 28);
@@ -182,27 +179,22 @@ namespace FirstSteps.RPG
                     Console.WriteLine("Boss died! Congratulations, u Won!");
                     break;
                 }
-               // else if (_hero._health <= 0)
+             //   else if (_hero._health <= 0)
                 {
                     Console.WriteLine($"Game over! You Died");
                     break;
                 }
-
             }
         }
-
         public static void LevelUp()
         {
             RollDice();
         }
-
         public static void RollDice()
         {
-
             int playerRoll;
             int computerRoll;
             Random rollDice = new Random();
-
             for (int i = 0; i < 1; i++)
             {
                 Console.WriteLine("Press any key to roll the dice!\nYou have a only one chance! ");
@@ -215,7 +207,7 @@ namespace FirstSteps.RPG
 
                 if (playerRoll > computerRoll)
                 {
-                   // Console.WriteLine($"Congratulation!\n You gain +1 agility! U have now {_hero._agility = _hero._agility + 1} agility points!");
+                //    Console.WriteLine($"Congratulation!\n You gain +1 agility! U have now {_hero._agility = _hero._agility + 1} agility points!");
                 }
                 else
                 {
@@ -223,22 +215,20 @@ namespace FirstSteps.RPG
                 }
             }
         }
-
-        public static void HitBoss()
+       public static void HitBoss()
         {
-           // _boss.hp -= _hero._damage;
-          //  Console.WriteLine($"Boss lose {_hero._damage} HP");
+         //   _boss.hp -= _hero._damage;
+         //   Console.WriteLine($"Boss lose {_hero._damage} HP");
             Console.WriteLine($"Actually Boss hp = {_boss.hp}");
         }
 
         public static void HitHero()
         {
-           // _hero._health -= _boss.dmg;
+        //    _hero._health -= _boss.dmg;
             Console.WriteLine($"Hero lose {_boss.dmg} HP");
-         //   Console.WriteLine($"Actually Hero hp = {_hero._health}");
-         // ok 
-        }
+        //    Console.WriteLine($"Actually Hero hp = {_hero._health}");
         
+        }
         public static void Treasure()
         {
 
