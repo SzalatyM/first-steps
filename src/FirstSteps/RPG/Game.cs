@@ -1,6 +1,5 @@
 using System;
 using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG.Items;
 
 namespace FirstSteps.RPG
 {
@@ -28,8 +27,8 @@ namespace FirstSteps.RPG
         {
             Console.WriteLine("Commands:");
             Console.WriteLine("Type 'stats' to display hero statistics.");
-            Console.WriteLine("Type 'treasure' to get a chance to draw an item");
-
+            Console.WriteLine("Type 'treasure' to get a chance to find coins");
+            Console.WriteLine("Type 'inventory' to go to the inventory with items");
         }
 
         public static void HandleCommand(string command)
@@ -41,6 +40,9 @@ namespace FirstSteps.RPG
                     break;
                 case "treasure":
                     Treasure();
+                    break;
+                case "inventory":
+                    Inventory();
                     break;
                 default:
                     Console.WriteLine($"Command {command} not recognized");
@@ -62,33 +64,23 @@ namespace FirstSteps.RPG
             }
         }
 
-        public static void Treasure()
+        private static void Treasure()
         {
 
-            var sword = new Item("Sword", 20, 18);
-            var crystal = new Item("crystal", 30, 5);
-            var bow = new Item("bow", 40, 12);
+        }
 
-            Item[] items = { sword, crystal, bow, null, null, null };
+        private static void Inventory()
+        {
+            //Display all items in inventory with name and price
 
+            //Read the item name that user want to buy from console
 
-            Random random = new Random();
-            Console.WriteLine("Press any key to draw an item!");
-            Console.ReadLine();
+            //Check if the item of the given name exists in the inventory
 
-            
-            int index = random.Next(items.Length);
+            //Write chosen item to the local variable itemToBuy
 
-
-            if (items[index] != null)
-            {
-                Console.WriteLine($" Item placed in backpack " + items[index]);
-                _hero.AddItemToBackpack(items[index]);
-            }                                             
-            else
-            {
-                Console.WriteLine("failed this time");
-            }
+            //Use TryTakeCoins method to check if the hero can afford this item price
+            //If it is true add the item to the hero's backpack and remove it from the inventory
         }
     }
 }
