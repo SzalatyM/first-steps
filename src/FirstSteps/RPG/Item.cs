@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FirstSteps.RPG
 {
-      class Item
+    public class Item
     {
         public string Name;
         public int Price;

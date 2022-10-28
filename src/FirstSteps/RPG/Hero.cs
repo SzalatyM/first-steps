@@ -57,20 +57,15 @@ namespace FirstSteps.RPG
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
-
-         //   if (backPack.Count <= maxBackpack && CountWeight() <= _maxWeight    item.Weight + CountWeight() <= _maxWeight)
+            else if(backPack.Count <= maxBackpack && CountWeight() <= _maxWeight && item.Weight + CountWeight() <= _maxWeight)
             {
                 backPack.Add(item);
                 return true;
             }
-        //    else
+            else
             {
                 return false;
-            }            
+            }
         }
         private string DisplayTotalPrice()
         {
@@ -101,7 +96,6 @@ namespace FirstSteps.RPG
             }
             return totalWeight.ToString();
         }
-
         private int CountWeight()
         {
             int totalWeight = 0;
@@ -114,7 +108,3 @@ namespace FirstSteps.RPG
         protected abstract bool CanHandleSpecialItem(Item item);
     }
 }
-    
-
-    
-

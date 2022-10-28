@@ -184,22 +184,17 @@ namespace FirstSteps.RPG
                     Console.WriteLine($"Game over! You Died");
                     break;
                 }
-
             }
         }
-
         public static void LevelUp()
         {
             RollDice();
         }
-
         public static void RollDice()
         {
-
             int playerRoll;
             int computerRoll;
             Random rollDice = new Random();
-
             for (int i = 0; i < 1; i++)
             {
                 Console.WriteLine("Press any key to roll the dice!\nYou have a only one chance! ");
@@ -220,8 +215,7 @@ namespace FirstSteps.RPG
                 }
             }
         }
-
-        public static void HitBoss()
+       public static void HitBoss()
         {
          //   _boss.hp -= _hero._damage;
          //   Console.WriteLine($"Boss lose {_hero._damage} HP");
@@ -235,7 +229,6 @@ namespace FirstSteps.RPG
         //    Console.WriteLine($"Actually Hero hp = {_hero._health}");
         
         }
-        
         public static void Treasure()
         {
 

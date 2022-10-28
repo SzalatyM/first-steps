@@ -6,11 +6,9 @@ namespace FirstSteps.RPG
 {
     class MagicSkull : Item
     {
-        public MagicSkull() : base("MagicAxe", 20, 16)
+        public MagicSkull() : base("MagicSkull", 20, 16)
         {
           
         }       
     }
 }
-
-

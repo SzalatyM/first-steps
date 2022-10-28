@@ -16,15 +16,7 @@ namespace FirstSteps.RPG
         }
         protected override bool CanHandleSpecialItem(Item item)
         {
-            if (item is MagicAxe)
-            {
-                return true;
-            }
-            else
-            {
-                Console.WriteLine("U can't carry this item");
-                return false;
+            return item is MagicBow;
             }
         }
     }
-}
