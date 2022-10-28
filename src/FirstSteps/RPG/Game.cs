@@ -19,7 +19,7 @@ namespace FirstSteps.RPG
 
             var race = int.Parse(Console.ReadLine());
 
-            HeroesCreator.Create(name, (Races)race);
+           _hero =HeroesCreator.Create(name, (Races)race);
         }
 
         public static void DisplayCommands()
@@ -58,9 +58,6 @@ namespace FirstSteps.RPG
             }
         }
         public static Boss _boss;
-        public static Item _item;
-
-
         public static void BossStats()
         {
             Boss _boss = new Boss("Diablo", 220, 28);
@@ -182,7 +179,7 @@ namespace FirstSteps.RPG
                     Console.WriteLine("Boss died! Congratulations, u Won!");
                     break;
                 }
-                else if (_hero._health <= 0)
+             //   else if (_hero._health <= 0)
                 {
                     Console.WriteLine($"Game over! You Died");
                     break;
@@ -215,7 +212,7 @@ namespace FirstSteps.RPG
 
                 if (playerRoll > computerRoll)
                 {
-                    Console.WriteLine($"Congratulation!\n You gain +1 agility! U have now {_hero._agility = _hero._agility + 1} agility points!");
+                //    Console.WriteLine($"Congratulation!\n You gain +1 agility! U have now {_hero._agility = _hero._agility + 1} agility points!");
                 }
                 else
                 {
@@ -226,16 +223,16 @@ namespace FirstSteps.RPG
 
         public static void HitBoss()
         {
-            _boss.hp -= _hero._damage;
-            Console.WriteLine($"Boss lose {_hero._damage} HP");
+         //   _boss.hp -= _hero._damage;
+         //   Console.WriteLine($"Boss lose {_hero._damage} HP");
             Console.WriteLine($"Actually Boss hp = {_boss.hp}");
         }
 
         public static void HitHero()
         {
-            _hero._health -= _boss.dmg;
+        //    _hero._health -= _boss.dmg;
             Console.WriteLine($"Hero lose {_boss.dmg} HP");
-            Console.WriteLine($"Actually Hero hp = {_hero._health}");
+        //    Console.WriteLine($"Actually Hero hp = {_hero._health}");
         
         }
         

@@ -4,14 +4,11 @@ using System.Text;
 
 namespace FirstSteps.RPG
 {
-    public class Item
+      class Item
     {
-        public string Name { get; }   
-
-        public int Price { get;}
-
-        public int Weight { get; }
-
+        public string Name;
+        public int Price;
+        public int Weight;
         public Item(string name, int price, int weight)
         {
             Name = name;

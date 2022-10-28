@@ -14,6 +14,21 @@ namespace FirstSteps.RPG
             _health = 140;
             _damage = 28;
         }
+        protected override bool CanHandleSpecialItem(Item item)
+        {
+            if (item is MagicAxe)
+            {
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("U can't carry this item");
+                return false;
+            }
+            }
+        }
     }
-}
+
+
+
 
