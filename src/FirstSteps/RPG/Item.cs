@@ -6,9 +6,9 @@ namespace FirstSteps.RPG
 {
     public class Item
     {
-        public string Name;
-        public int Price;
-        public int Weight;
+        public string Name { get; }
+        public int Price { get; }
+        public int Weight { get; }
         public Item(string name, int price, int weight)
         {
             Name = name;

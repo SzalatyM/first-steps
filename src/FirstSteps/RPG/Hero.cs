@@ -18,7 +18,7 @@ namespace FirstSteps.RPG
             get { return _strength; }
         }
         protected int _intelligence;
-            public int Intelligence
+        public int Intelligence
         {
             get { return _intelligence; }
         }
@@ -53,11 +53,11 @@ namespace FirstSteps.RPG
         }
         public bool AddItemToBackpack(Item item)
         {
-            if (CanHandleSpecialItem(item))
+            if (!CanHandleSpecialItem(item))
             {
-                return true;
+                return false;
             }
-            else if(backPack.Count <= maxBackpack && CountWeight() <= _maxWeight && item.Weight + CountWeight() <= _maxWeight)
+            else if (backPack.Count <= maxBackpack && CountWeight() <= _maxWeight && item.Weight + CountWeight() <= _maxWeight)
             {
                 backPack.Add(item);
                 return true;
@@ -73,7 +73,7 @@ namespace FirstSteps.RPG
 
             foreach (Item item in backPack)
             {
-           //     totalPrice += item.Price;
+                //     totalPrice += item.Price;
             }
             return totalPrice.ToString();
         }
@@ -83,7 +83,7 @@ namespace FirstSteps.RPG
 
             foreach (Item item in backPack)
             {
-          //      totalItems += item.Name + " ";
+                //      totalItems += item.Name + " ";
             }
             return totalItems;
         }
@@ -92,7 +92,7 @@ namespace FirstSteps.RPG
             int totalWeight = 0;
             foreach (Item item in backPack)
             {
-            //    totalWeight += item.Weight;
+                //    totalWeight += item.Weight;
             }
             return totalWeight.ToString();
         }
@@ -101,7 +101,7 @@ namespace FirstSteps.RPG
             int totalWeight = 0;
             foreach (Item item in backPack)
             {
-           //     totalWeight += item.Weight;
+                //     totalWeight += item.Weight;
             }
             return totalWeight;
         }

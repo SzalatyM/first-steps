@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FirstSteps.RPG
 {
-        class Elf : Hero
+    class Elf : Hero
     {
         public Elf(string name) : base(name, Races.Elf)
         {
@@ -17,6 +17,6 @@ namespace FirstSteps.RPG
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicBow;
-            }
         }
     }
+}

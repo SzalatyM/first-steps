@@ -17,6 +17,6 @@ namespace FirstSteps.RPG
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicSword;
-            }
         }
     }
+}
