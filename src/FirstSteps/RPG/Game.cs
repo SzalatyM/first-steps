@@ -1,12 +1,15 @@
 using System;
 using FirstSteps.RPG.Heroes;
+using System.Collections.Generic;
+using FirstSteps.RPG.Items;
 
 namespace FirstSteps.RPG
 {
     public static class Game
     {
+        static List<Item> inventory = new List<Item>();       
         private static Hero _hero;
-
+        
         public static void CreateHero()
         {
             Console.WriteLine("Create your hero");
@@ -22,7 +25,7 @@ namespace FirstSteps.RPG
 
            _hero = HeroesCreator.Create(name, (Races)race);
         }
-
+      
         public static void DisplayCommands()
         {
             Console.WriteLine("Commands:");
@@ -66,11 +69,47 @@ namespace FirstSteps.RPG
 
         private static void Treasure()
         {
-
+            _hero.AddCoins();
         }
 
         private static void Inventory()
         {
+            
+            inventory.Add(new MagicSword());
+            inventory.Add(new MagicSkull());
+            inventory.Add(new MagicBow());
+            inventory.Add(new MagicAxe());
+            foreach(var _inventory in inventory)
+            {              
+                Console.WriteLine();
+                Console.WriteLine($"Name: {_inventory.Name}\nPrice: {_inventory.Price} coins" );
+                Console.WriteLine();                          
+            }
+            Console.WriteLine("Which item u want to buy?\nEnter a name to select");
+            string userInput = Console.ReadLine();
+            string itemToBuy;
+
+            switch (userInput)
+            {
+                case "MagicAxe":
+                    itemToBuy = userInput;
+                    break;
+                case "MagicSword":
+                    itemToBuy = userInput;
+                    break;
+                case "MagicSkull":
+                    itemToBuy = userInput;
+                    break;
+                case "MagicBow":
+                    itemToBuy = userInput;
+                    break;
+                default:
+                    Console.WriteLine("There is no such item in your inventory");
+                    break;
+                    
+            }
+            
+            
             //Display all items in inventory with name and price
 
             //Read the item name that user want to buy from console
