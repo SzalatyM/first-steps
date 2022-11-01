@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using FirstSteps.RPG.Items;
 
 namespace FirstSteps.RPG.Heroes
@@ -7,7 +8,7 @@ namespace FirstSteps.RPG.Heroes
     public abstract class Hero
     {
         private List<Item> backPack = new List<Item>();
-        private List<int> CoinsBag = new List<int>();
+        protected int _coinsBag;
         private string _name;
         private Races _race;
         protected int _strength;
@@ -22,7 +23,7 @@ namespace FirstSteps.RPG.Heroes
         {
             _name = name;
             _race = race;
-        }       
+        }
         public void DisplayStats()
         {
             Console.WriteLine($"Name: {_name}");
@@ -46,7 +47,7 @@ namespace FirstSteps.RPG.Heroes
             {
                 return false;
             }
-        }      
+        }
         protected abstract bool CanHandleSpecialItem(Item item);
         private string DisplayTotalPrice()
         {
@@ -88,18 +89,20 @@ namespace FirstSteps.RPG.Heroes
             }
             return totalWeight;
         }
-        public void AddCoins()
+        public void AddCoins(int coins)
         {
-            Random random = new Random();
-
-            int DrawCoins = random.Next(1, 25);           
-            CoinsBag.Add(DrawCoins);
-            Console.WriteLine($"You opened the treasure chest! You get {DrawCoins} coins");
-            
+            _coinsBag = _coinsBag + coins;
         }
-        public bool TryCpendCoins()
+        public bool TrySpendCoins(Item item)
         {
-            return false; //xD 
+            if (item.Price <= _coinsBag)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
