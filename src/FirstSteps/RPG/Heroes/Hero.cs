@@ -8,7 +8,7 @@ namespace FirstSteps.RPG.Heroes
     public abstract class Hero
     {
         private List<Item> backPack = new List<Item>();
-        protected int _coinsBag;
+        private int _coinsBag;
         private string _name;
         private Races _race;
         protected int _strength;
@@ -95,8 +95,9 @@ namespace FirstSteps.RPG.Heroes
         }
         public bool TrySpendCoins(Item item)
         {
-            if (item.Price <= _coinsBag)
+            if (_coinsBag >= item.Price)
             {
+                _coinsBag = _coinsBag - item.Price;
                 return true;
             }
             else
