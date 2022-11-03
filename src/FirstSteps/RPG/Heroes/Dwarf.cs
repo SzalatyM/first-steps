@@ -11,8 +11,7 @@ namespace FirstSteps.RPG.Heroes
             _agility = 4;
             _health = 140;
             _damage = 28;
-        }
-        
+        }       
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicAxe;

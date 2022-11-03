@@ -1,12 +1,22 @@
 using System;
 using FirstSteps.RPG.Heroes;
+using System.Collections.Generic;
+using FirstSteps.RPG.Items;
+using System.Linq;
 
 namespace FirstSteps.RPG
 {
     public static class Game
     {
-        private static Hero _hero;
+        private static List<Item> _inventory = new List<Item>()
+        {
+            new MagicAxe(),
+            new MagicBow(),
+            new MagicSkull(),
+            new MagicSword()
+        };
 
+        private static Hero _hero;
         public static void CreateHero()
         {
             Console.WriteLine("Create your hero");
@@ -20,7 +30,7 @@ namespace FirstSteps.RPG
 
             var race = int.Parse(Console.ReadLine());
 
-           _hero = HeroesCreator.Create(name, (Races)race);
+            _hero = HeroesCreator.Create(name, (Races)race);
         }
 
         public static void DisplayCommands()
@@ -49,7 +59,6 @@ namespace FirstSteps.RPG
                     break;
             }
         }
-
         public static void DisplayHeroStats()
         {
             _hero.DisplayStats();
@@ -66,21 +75,36 @@ namespace FirstSteps.RPG
 
         private static void Treasure()
         {
-
+            Random random = new Random();
+            int drawCoins = random.Next(1, 25);
+            _hero.AddCoins(drawCoins);
+            Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
         }
-
         private static void Inventory()
         {
-            //Display all items in inventory with name and price
-
-            //Read the item name that user want to buy from console
-
-            //Check if the item of the given name exists in the inventory
-
-            //Write chosen item to the local variable itemToBuy
-
-            //Use TryTakeCoins method to check if the hero can afford this item price
-            //If it is true add the item to the hero's backpack and remove it from the inventory
+            foreach (var inventory in _inventory)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"Name: {inventory.Name}\nPrice: {inventory.Price} coins");
+                Console.WriteLine();
+            }
+            Console.WriteLine("Which item u want to buy?\nEnter a name to select");
+            string userInput = Console.ReadLine();
+            var item = _inventory.FirstOrDefault(item => item.Name == userInput);
+            if (item == null)
+            {
+                Console.WriteLine("There is no such item to buy!");
+            }
+            else if (_hero.TrySpendCoins(item))
+            {
+                _hero.AddItemToBackpack(item);
+                _inventory.Remove(item);
+                Console.WriteLine($"You bought a {userInput} ");
+            }
+            else
+            {
+                Console.WriteLine($"You dont have a coins to buy a {userInput} ");
+            }
         }
     }
 }

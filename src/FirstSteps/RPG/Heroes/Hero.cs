@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using FirstSteps.RPG.Items;
 
 namespace FirstSteps.RPG.Heroes
@@ -7,6 +8,7 @@ namespace FirstSteps.RPG.Heroes
     public abstract class Hero
     {
         private List<Item> backPack = new List<Item>();
+        private int _coinsBag;
         private string _name;
         private Races _race;
         protected int _strength;
@@ -14,7 +16,6 @@ namespace FirstSteps.RPG.Heroes
         protected int _agility;
         protected int _health;
         protected int _damage;
-
         private int maxBackpack = 5;
         private int _maxWeight = 40;
 
@@ -23,13 +24,12 @@ namespace FirstSteps.RPG.Heroes
             _name = name;
             _race = race;
         }
-
         public void DisplayStats()
         {
             Console.WriteLine($"Name: {_name}");
             Console.WriteLine($"Race: {_race}");
             Console.WriteLine($"Strength: {_strength} \nIntelligence: {_intelligence} \nAgility: {_agility} \nHealth: {_health} \nDamage: {_damage}\n");
-            Console.WriteLine($"Equipment: total price: {DisplayTotalPrice()}\ntotal items: {DisplayTotalItems()}\ntotal weight; {DisplayTotalWeight()} ");
+            Console.WriteLine($"Equipment:\ntotal price: {DisplayTotalPrice()}\ntotal items: {DisplayTotalItems()}\ntotal weight; {DisplayTotalWeight()} ");
         }
 
         public bool AddItemToBackpack(Item item)
@@ -48,9 +48,7 @@ namespace FirstSteps.RPG.Heroes
                 return false;
             }
         }
-        
         protected abstract bool CanHandleSpecialItem(Item item);
-
         private string DisplayTotalPrice()
         {
             int totalPrice = 0;
@@ -61,7 +59,6 @@ namespace FirstSteps.RPG.Heroes
             }
             return totalPrice.ToString();
         }
-
         private string DisplayTotalItems()
         {
             string totalItems = " ";
@@ -91,6 +88,22 @@ namespace FirstSteps.RPG.Heroes
                 totalWeight += item.Weight;
             }
             return totalWeight;
+        }
+        public void AddCoins(int coins)
+        {
+            _coinsBag = _coinsBag + coins;
+        }
+        public bool TrySpendCoins(Item item)
+        {
+            if (_coinsBag >= item.Price)
+            {
+                _coinsBag = _coinsBag - item.Price;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
