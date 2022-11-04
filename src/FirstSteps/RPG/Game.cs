@@ -31,6 +31,8 @@ namespace FirstSteps.RPG
             var race = int.Parse(Console.ReadLine());
 
             _hero = HeroesCreator.Create(name, (Races)race);
+
+            DisplayGreetings();
         }
 
         public static void DisplayCommands()
@@ -105,6 +107,31 @@ namespace FirstSteps.RPG
             {
                 Console.WriteLine($"You dont have a coins to buy a {userInput} ");
             }
+        }
+        public static void DisplayGreetings()
+        {
+           IGreeting greeting = _hero as IGreeting;             
+           Console.WriteLine(greeting != null ? greeting.Greed() : "Hello");
+            
+            //IGreeting greeting = _hero as IGreeting;
+            //if(greeting != null)
+            //{
+            //    Console.WriteLine(greeting.Greed());
+            //}
+            //else
+            //{
+            //    Console.WriteLine("hello");
+
+            //}
+            //if(_hero is IGreeting)
+            //{
+            //    IGreeting greeting = (IGreeting)_hero;
+            //    Console.WriteLine(greeting.Greed());
+            //}
+            //else
+            //{
+            //    Console.WriteLine("hello");
+            //}
         }
     }
 }
