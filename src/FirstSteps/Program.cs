@@ -7,6 +7,7 @@ namespace FirstSteps
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine("Welcome to the RPG game");
 
             Game.CreateHero();
@@ -18,18 +19,14 @@ namespace FirstSteps
             Console.WriteLine("Type 'end' if you want to quit.");
 
             string command;
-            
+
             do
             {
                 command = Console.ReadLine();
                 Game.HandleCommand(command);
                 Console.WriteLine();
             }
-            while(command.ToLower() != "end");
+            while (command.ToLower() != "end");
         }
-    }
-    interface IGreeting
-    {
-        void Greed(string greetings);
     }
 }
