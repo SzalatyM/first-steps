@@ -1,8 +1,9 @@
 ﻿using FirstSteps.RPG.Items;
+using System;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public class Dwarf : Hero
+    public class Dwarf : Hero, IGreeting
     {
         public Dwarf(string name) : base(name, Races.Dwarf)
         {
@@ -15,6 +16,11 @@ namespace FirstSteps.RPG.Heroes
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicAxe;
+        }
+
+        void IGreeting.Greed(string greetings)
+        {
+            Console.WriteLine("Hello Dwarf");
         }
     }
 }

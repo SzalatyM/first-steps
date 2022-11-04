@@ -28,4 +28,8 @@ namespace FirstSteps
             while(command.ToLower() != "end");
         }
     }
+    interface IGreeting
+    {
+        void Greed(string greetings);
+    }
 }

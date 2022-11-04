@@ -31,6 +31,8 @@ namespace FirstSteps.RPG
             var race = int.Parse(Console.ReadLine());
 
             _hero = HeroesCreator.Create(name, (Races)race);
+
+            DisplayGreetings();
         }
 
         public static void DisplayCommands()
@@ -106,5 +108,19 @@ namespace FirstSteps.RPG
                 Console.WriteLine($"You dont have a coins to buy a {userInput} ");
             }
         }
+        public static void DisplayGreetings()
+        {
+            IGreeting greed = (IGreeting)_hero;
+            greed.Greed("Hello?????");         //? I can only assign string like "hello" i declared earlier method void(string greeding)
+            
+                                         //as i saw on youtube they had a simple examples with 2 methods but they had to declare a new object but 
+                                                         // i think we have already created classes like Elf or Dwarf and there is no reason to declare it again? 
+                                                       // as i watched youtube and reading  about abstract/ interface. they are so similar. 
+                                                      // i already dont know how to invoke method "Greed" 
+                                                      // i checked this "DisplayGreetings" and when i put breakpoint at this, result is greed = null,
+                                                      // so i thought i can do similar like yesterday with greed equals null. but not this time xD
+        }
     }
 }
+
+                                         
