@@ -15,7 +15,7 @@ namespace FirstSteps.RPG
             new MagicSkull(),
             new MagicSword()
         };
-
+    
         private static Hero _hero;
         public static void CreateHero()
         {
@@ -41,6 +41,7 @@ namespace FirstSteps.RPG
             Console.WriteLine("Type 'stats' to display hero statistics.");
             Console.WriteLine("Type 'treasure' to get a chance to find coins");
             Console.WriteLine("Type 'inventory' to go to the inventory with items");
+            Console.WriteLine("Type 'forest' to enter to forest");
         }
 
         public static void HandleCommand(string command)
@@ -55,6 +56,17 @@ namespace FirstSteps.RPG
                     break;
                 case "inventory":
                     Inventory();
+                    break;
+                case "forest":
+                    if(_hero is Elf)
+                    {
+                        Enter();
+                    }
+                    else
+                    {
+                        Console.WriteLine("You can't enter! Only Elf have acces to the Forest");
+                    }
+                    //
                     break;
                 default:
                     Console.WriteLine($"Command {command} not recognized");
