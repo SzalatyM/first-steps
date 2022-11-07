@@ -3,6 +3,7 @@ using FirstSteps.RPG.Heroes;
 using System.Collections.Generic;
 using FirstSteps.RPG.Items;
 using System.Linq;
+using FirstSteps.RPG.Adventures;
 
 namespace FirstSteps.RPG
 {
@@ -15,8 +16,9 @@ namespace FirstSteps.RPG
             new MagicSkull(),
             new MagicSword()
         };
-    
         private static Hero _hero;
+        private static Forest _forest;
+
         public static void CreateHero()
         {
             Console.WriteLine("Create your hero");
@@ -33,6 +35,8 @@ namespace FirstSteps.RPG
             _hero = HeroesCreator.Create(name, (Races)race);
 
             DisplayGreetings();
+
+
         }
 
         public static void DisplayCommands()
@@ -60,13 +64,12 @@ namespace FirstSteps.RPG
                 case "forest":
                     if(_hero is Elf)
                     {
-                        Enter();
+                        _forest.Enter((Elf)_hero); // rly i dont understand this :( 
                     }
                     else
                     {
                         Console.WriteLine("You can't enter! Only Elf have acces to the Forest");
                     }
-                    //
                     break;
                 default:
                     Console.WriteLine($"Command {command} not recognized");
@@ -145,5 +148,6 @@ namespace FirstSteps.RPG
             //    Console.WriteLine("hello");
             //}
         }
+        
     }
 }
