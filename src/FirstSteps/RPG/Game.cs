@@ -9,6 +9,7 @@ namespace FirstSteps.RPG
 {
     public static class Game
     {
+        private static Forest forest = new Forest();
         private static List<Item> _inventory = new List<Item>()
         {
             new MagicAxe(),
@@ -17,7 +18,6 @@ namespace FirstSteps.RPG
             new MagicSword()
         };
         private static Hero _hero;
-        private static Forest _forest;
 
         public static void CreateHero()
         {
@@ -64,7 +64,7 @@ namespace FirstSteps.RPG
                 case "forest":
                     if(_hero is Elf)
                     {
-                        _forest.Enter((Elf)_hero); // rly i dont understand this :( 
+                        forest.Enter((Elf)_hero);
                     }
                     else
                     {

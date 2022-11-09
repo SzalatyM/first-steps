@@ -11,7 +11,7 @@ namespace FirstSteps.RPG.Heroes
     public class Elf : Hero, IGreeting
     {
         private List<Arrow> _arrowsBag = new List<Arrow>();
-
+        private Arrow _arrowsList;
 
         public Elf(string name) : base(name, Races.Elf)
         {
@@ -34,11 +34,17 @@ namespace FirstSteps.RPG.Heroes
         public void Heal()
         {
             _health += _health + 10;
-            Console.WriteLine("U gain 10hp!"); // i think this also ?
+            Console.WriteLine("U gain 10hp!"); 
         }
-        public void CollectArrows(Arrow arrowlist)
+        public void  CollectArrows(int arrowsList)
         {
-            _arrowsBag.Add(arrowlist);  //this should be ok. 
+            
+            int _arrowsList = _arrowsBag.Add(arrowsList); // i dont know how to do it :( im losing so much time and still not working.
+                                                          // if here  is ok then in class forest drops an error and inverse..
+                                                          // You show me  examples but still i dont know how to fix it.
+                                                          // the best idea will be to show me how to do it and explains me in simple.
+
+
         }
     }
 }
