@@ -1,17 +1,13 @@
 ﻿using FirstSteps.RPG.Items;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-
 
 namespace FirstSteps.RPG.Heroes
 {
-
     public class Elf : Hero, IGreeting
     {
-        private Arrow _arrows;
-
+        //declare arrows bag and initialize it as an empty list at the start
+        private List<Arrow> _arrowsBag = new List<Arrow>();
 
         public Elf(string name) : base(name, Races.Elf)
         {
@@ -31,21 +27,17 @@ namespace FirstSteps.RPG.Heroes
         {
             return "Im Elf";
         }
+
         public void Heal()
         {
             _health += _health + 10;
             Console.WriteLine("U gain 10hp!"); 
         }
-        public void  CollectArrows(List<Arrow> _arrowsList)
+
+        public void CollectArrows(List<Arrow> arrows)
         {
-            _arrowsList.Add(_arrows);
-            
-            // i dont know how to do it :( im losing so much time and still not working.
-                                                          // if here  is ok then in class forest drops an error and inverse..
-                                                          // You show me  examples but still i dont know how to fix it.
-                                                          // the best idea will be to show me how to do it and explains me in simple.
-
-
+            //add collected arrows to arrows bag
+            _arrowsBag.AddRange(arrows);
         }
     }
 }

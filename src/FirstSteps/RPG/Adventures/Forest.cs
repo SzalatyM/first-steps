@@ -2,20 +2,12 @@
 using FirstSteps.RPG.Items;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 
 namespace FirstSteps.RPG.Adventures
 {
     public class Forest
     {
-        private List<Arrow> _arrowsList;
-
-        public Forest()
-        {
-
-
-        }
+        public Forest() { }
 
         public void Enter(Elf elf)
         {
@@ -24,24 +16,26 @@ namespace FirstSteps.RPG.Adventures
             Console.WriteLine("Type 'collect ' to collect a random number of arrows");
             var userInput = Console.ReadLine();
 
-
             switch (userInput)
             {
                 case "heal":
                     elf.Heal();
                     break;
                 case "collect":
-                    Random random = new Random();
-                    for(int i = 0; i < _arrowsList.Count; i++)
+                    //draw random number
+                    int arrowsNumber = new Random().Next(1, 10);
+
+                    //create empty list of arrows
+                    List<Arrow> collectedArrows = new List<Arrow>();
+
+                    //fill empty list by arrows
+                    for(int i = 0; i < arrowsNumber; i++)
                     {
-                        var draw = random.Next(1, 25);
-                        if(draw >= _arrowsList.Count)
-                        {
-                            elf.CollectArrows(_arrowsList);
-                            Console.WriteLine($"U gain {_arrowsList}");
-                        }
+                        collectedArrows.Add(new Arrow());
                     }
 
+                    //add arrows to the elf's bag
+                    elf.CollectArrows(collectedArrows);
 
                     break;
                 default:
@@ -51,6 +45,3 @@ namespace FirstSteps.RPG.Adventures
         }
     }
 }
-
-
-
