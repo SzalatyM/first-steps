@@ -7,16 +7,17 @@ using System.Linq;
 
 namespace FirstSteps.RPG.Adventures
 {
-   public class Forest 
+    public class Forest
     {
+        private List<Arrow> _arrowsList;
 
         public Forest()
         {
- 
-            
+
+
         }
 
-        public void Enter(Elf elf)  
+        public void Enter(Elf elf)
         {
             Console.WriteLine("You enetered the old forest. What do u want to do?");
             Console.WriteLine("Type 'heal' to increase your healt.");
@@ -31,10 +32,16 @@ namespace FirstSteps.RPG.Adventures
                     break;
                 case "collect":
                     Random random = new Random();
-                    int arrowsList = random.Next(1, 25);
-                    elf.CollectArrows(arrowsList);
-                    Console.WriteLine($"U get {arrowsList} arrows"); // is this working good?  
-                                                                    // loop " for" im trying to do in a separate project 
+                    for(int i = 0; i < _arrowsList.Count; i++)
+                    {
+                        var draw = random.Next(1, 25);
+                        if(draw >= _arrowsList.Count)
+                        {
+                            elf.CollectArrows(_arrowsList);
+                            Console.WriteLine($"U gain {_arrowsList}");
+                        }
+                    }
+
 
                     break;
                 default:
@@ -45,5 +52,5 @@ namespace FirstSteps.RPG.Adventures
     }
 }
 
-   
+
 
