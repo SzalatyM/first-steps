@@ -3,11 +3,13 @@ using FirstSteps.RPG.Heroes;
 using System.Collections.Generic;
 using FirstSteps.RPG.Items;
 using System.Linq;
+using FirstSteps.RPG.Adventures;
 
 namespace FirstSteps.RPG
 {
     public static class Game
     {
+        private static Forest forest = new Forest();
         private static List<Item> _inventory = new List<Item>()
         {
             new MagicAxe(),
@@ -15,8 +17,8 @@ namespace FirstSteps.RPG
             new MagicSkull(),
             new MagicSword()
         };
-
         private static Hero _hero;
+
         public static void CreateHero()
         {
             Console.WriteLine("Create your hero");
@@ -33,6 +35,8 @@ namespace FirstSteps.RPG
             _hero = HeroesCreator.Create(name, (Races)race);
 
             DisplayGreetings();
+
+
         }
 
         public static void DisplayCommands()
@@ -41,6 +45,7 @@ namespace FirstSteps.RPG
             Console.WriteLine("Type 'stats' to display hero statistics.");
             Console.WriteLine("Type 'treasure' to get a chance to find coins");
             Console.WriteLine("Type 'inventory' to go to the inventory with items");
+            Console.WriteLine("Type 'forest' to enter to forest");
         }
 
         public static void HandleCommand(string command)
@@ -55,6 +60,16 @@ namespace FirstSteps.RPG
                     break;
                 case "inventory":
                     Inventory();
+                    break;
+                case "forest":
+                    if(_hero is Elf)
+                    {
+                        forest.Enter((Elf)_hero);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You can't enter! Only Elf have acces to the Forest");
+                    }
                     break;
                 default:
                     Console.WriteLine($"Command {command} not recognized");
@@ -133,5 +148,6 @@ namespace FirstSteps.RPG
             //    Console.WriteLine("hello");
             //}
         }
+        
     }
 }
