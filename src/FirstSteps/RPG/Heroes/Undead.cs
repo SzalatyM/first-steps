@@ -1,9 +1,12 @@
 ﻿using FirstSteps.RPG.Items;
-
+using System.Linq;
+using System.Collections.Generic;
 namespace FirstSteps.RPG.Heroes
 {
     public class Undead : Hero
     {
+        private List<int> _manaPoints = new List<int>();
+
         public Undead(string name) : base(name, Races.Undead)
         {
             _strength = 3;
@@ -16,6 +19,10 @@ namespace FirstSteps.RPG.Heroes
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicSkull;
+        }
+        public void ManaIncreases(List<int> mana)
+        {
+            _manaPoints.AddRange(mana);
         }
     }
 }

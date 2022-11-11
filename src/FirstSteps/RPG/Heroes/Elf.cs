@@ -6,7 +6,6 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Elf : Hero, IGreeting
     {
-        //declare arrows bag and initialize it as an empty list at the start
         private List<Arrow> _arrowsBag = new List<Arrow>();
 
         public Elf(string name) : base(name, Races.Elf)
@@ -36,7 +35,7 @@ namespace FirstSteps.RPG.Heroes
 
         public void CollectArrows(List<Arrow> arrows)
         {
-            //add collected arrows to arrows bag
+            
             _arrowsBag.AddRange(arrows);
         }
     }

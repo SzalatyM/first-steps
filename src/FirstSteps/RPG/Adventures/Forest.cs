@@ -22,19 +22,12 @@ namespace FirstSteps.RPG.Adventures
                     elf.Heal();
                     break;
                 case "collect":
-                    //draw random number
                     int arrowsNumber = new Random().Next(1, 10);
-
-                    //create empty list of arrows
                     List<Arrow> collectedArrows = new List<Arrow>();
-
-                    //fill empty list by arrows
                     for(int i = 0; i < arrowsNumber; i++)
                     {
                         collectedArrows.Add(new Arrow());
                     }
-
-                    //add arrows to the elf's bag
                     elf.CollectArrows(collectedArrows);
 
                     break;
