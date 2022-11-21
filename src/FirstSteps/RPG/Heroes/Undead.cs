@@ -5,7 +5,7 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Undead : Hero
     {
-        private List<int> _manaPoints = new List<int>();
+        private int _manaPoints;
 
         public Undead(string name) : base(name, Races.Undead)
         {
@@ -20,9 +20,9 @@ namespace FirstSteps.RPG.Heroes
         {
             return item is MagicSkull;
         }
-        public void ManaIncreases(List<int> mana)
+        public void ManaIncreases(int mana)
         {
-            _manaPoints.AddRange(mana);
+            _manaPoints = +_manaPoints + mana;
         }
     }
 }

@@ -12,16 +12,14 @@ namespace FirstSteps.RPG.Adventures
 
         public void Enter(Undead undead)
         {
-            for(int i = 0; i <= _manaPoints; i++)
+            for(int i = 1; i <= _manaPoints; i++)
             {
-                _manaPoints = +_manaPoints * 2;
                 Console.WriteLine($"You gain: { _manaPoints} mana points");
-                undead.ManaIncreases(new List<int>());
+                undead.ManaIncreases(_manaPoints);
+                _manaPoints = +_manaPoints * 2;
                 break;
             }
-
-
-        
+            Console.WriteLine("____________________________________");
             }
         }
     }
