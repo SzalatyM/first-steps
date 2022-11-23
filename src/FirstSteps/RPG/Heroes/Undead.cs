@@ -22,7 +22,7 @@ namespace FirstSteps.RPG.Heroes
         }
         public void ManaIncreases(int mana)
         {
-            _manaPoints = +_manaPoints + mana;
+            _manaPoints = _manaPoints + mana;
         }
     }
 }
