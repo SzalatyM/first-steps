@@ -10,6 +10,7 @@ namespace FirstSteps.RPG
     public static class Game
     {
         private static Forest forest = new Forest();
+        private static Dungeons dungeons = new Dungeons();
         private static List<Item> _inventory = new List<Item>()
         {
             new MagicAxe(),
@@ -46,6 +47,7 @@ namespace FirstSteps.RPG
             Console.WriteLine("Type 'treasure' to get a chance to find coins");
             Console.WriteLine("Type 'inventory' to go to the inventory with items");
             Console.WriteLine("Type 'forest' to enter to forest");
+            Console.WriteLine("Type 'dungeons' to enter to the dungeons");
         }
 
         public static void HandleCommand(string command)
@@ -69,6 +71,16 @@ namespace FirstSteps.RPG
                     else
                     {
                         Console.WriteLine("You can't enter! Only Elf have acces to the Forest");
+                    }
+                    break;
+                case "dungeons":
+                    if(_hero is Undead)
+                    {
+                        dungeons.Enter((Undead)_hero);
+                    }
+                    else
+                    {
+                        Console.WriteLine("You can't enter! Only Undead have acces to the dungeons");
                     }
                     break;
                 default:
