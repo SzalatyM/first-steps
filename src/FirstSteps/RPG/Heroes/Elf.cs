@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 
+
 namespace FirstSteps.RPG.Heroes
 {
     public class Elf : Hero, IGreeting
