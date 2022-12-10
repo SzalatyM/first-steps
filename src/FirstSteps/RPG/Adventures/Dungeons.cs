@@ -8,11 +8,12 @@ namespace FirstSteps.RPG.Adventures
 {
     class Dungeons
     {
-        private  Undead undead;
+
         private int _manaPoints = 1;
 
         public void Enter(Hero hero)
         {
+            Undead undead = (Undead)hero;
             if (hero is Undead)
             {
                 Console.WriteLine("You enter the Dungeon!");

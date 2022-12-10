@@ -1,8 +1,6 @@
 ﻿using FirstSteps.RPG.Items;
 using System;
 using System.Collections.Generic;
-
-
 namespace FirstSteps.RPG.Heroes
 {
     public class Elf : Hero, IGreeting
@@ -35,8 +33,7 @@ namespace FirstSteps.RPG.Heroes
         }
 
         public void CollectArrows(List<Arrow> arrows)
-        {
-            
+        {            
             _arrowsBag.AddRange(arrows);
         }
     }
