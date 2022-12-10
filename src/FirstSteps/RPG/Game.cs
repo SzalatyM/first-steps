@@ -9,6 +9,7 @@ namespace FirstSteps.RPG
 {
     public static class Game
     {
+        private static Mine mine = new Mine();
         private static Forest forest = new Forest();
         private static Dungeons dungeons = new Dungeons();
         private static List<Item> _inventory = new List<Item>()
@@ -48,6 +49,7 @@ namespace FirstSteps.RPG
             Console.WriteLine("Type 'inventory' to go to the inventory with items");
             Console.WriteLine("Type 'forest' to enter to forest");
             Console.WriteLine("Type 'dungeons' to enter to the dungeons");
+            Console.WriteLine("Type 'mine' to enter to the Mine");
         }
 
         public static void HandleCommand(string command)
@@ -69,6 +71,9 @@ namespace FirstSteps.RPG
                 case "dungeons":
                     dungeons.Enter(_hero);
                     break;
+                case "mine":
+                    mine.Enter(_hero);
+                      break;
                 default:
                     Console.WriteLine($"Command {command} not recognized");
                     break;
