@@ -8,16 +8,26 @@ namespace FirstSteps.RPG.Adventures
 {
     class Dungeons
     {
+
         private int _manaPoints = 1;
 
-        public void Enter(Undead undead)
+        public void Enter(Hero hero)
         {
-
+            Undead undead = (Undead)hero;
+            if (hero is Undead)
+            {
+                Console.WriteLine("You enter the Dungeon!");
+            }
+            else
+            {
+                Console.WriteLine("You can't enter! Only Undead have acces to the dungeons");
+                return;
+            }
             Console.WriteLine($"You gain: { _manaPoints} mana points");
             undead.ManaIncreases(_manaPoints);
             _manaPoints = _manaPoints * 2;
             Console.WriteLine("____________________________________");
-        }
+        }       
     }
 }
 

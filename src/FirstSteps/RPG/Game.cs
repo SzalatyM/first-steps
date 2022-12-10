@@ -64,24 +64,10 @@ namespace FirstSteps.RPG
                     Inventory();
                     break;
                 case "forest":
-                    if(_hero is Elf)
-                    {
-                        forest.Enter((Elf)_hero);
-                    }
-                    else
-                    {
-                        Console.WriteLine("You can't enter! Only Elf have acces to the Forest");
-                    }
+                    forest.Enter(_hero);
                     break;
                 case "dungeons":
-                    if(_hero is Undead)
-                    {
-                        dungeons.Enter((Undead)_hero);
-                    }
-                    else
-                    {
-                        Console.WriteLine("You can't enter! Only Undead have acces to the dungeons");
-                    }
+                    dungeons.Enter(_hero);
                     break;
                 default:
                     Console.WriteLine($"Command {command} not recognized");
