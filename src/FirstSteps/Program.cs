@@ -1,5 +1,6 @@
 ﻿using System;
 using FirstSteps.RPG;
+using Spectre.Console;
 
 namespace FirstSteps
 {
@@ -7,8 +8,8 @@ namespace FirstSteps
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine("Welcome to the RPG game");
+            //displaying colored text with emoji, see docs: https://spectreconsole.net/prompts/text and https://spectreconsole.net/appendix/
+            AnsiConsole.MarkupLine($"{Emoji.Known.BowAndArrow} [darkgreen]Welcome to the RPG game [/] {Emoji.Known.CrossedSwords}");
 
             Game.CreateHero();
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using FirstSteps.RPG.Items;
 using System.Linq;
 using FirstSteps.RPG.Adventures;
+using Spectre.Console;
 
 namespace FirstSteps.RPG
 {
@@ -24,16 +25,19 @@ namespace FirstSteps.RPG
         {
             Console.WriteLine("Create your hero");
 
-            Console.Write("Type hero name: ");
-            var name = Console.ReadLine();
+            //asking about something, see docs: https://spectreconsole.net/prompts/text
+            var name = AnsiConsole.Ask<string>("Type hero name:");
 
-            Console.WriteLine("Choose hero race: ");
+            //selection of the single item from list, see docs: https://spectreconsole.net/prompts/selection
+            var selectedRace = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("Choose hero race:")
+                    .AddChoices(Enum.GetNames(typeof(Races))));
 
-            DisplayAllRaces();
+            //parsing selected string into Races enum
+            Enum.TryParse<Races>(selectedRace, out var race);
 
-            var race = int.Parse(Console.ReadLine());
-
-            _hero = HeroesCreator.Create(name, (Races)race);
+            _hero = HeroesCreator.Create(name, race);
 
             DisplayGreetings();
 
