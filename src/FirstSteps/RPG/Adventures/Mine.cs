@@ -9,33 +9,29 @@ namespace FirstSteps.RPG.Adventures
     public class Mine
     {
         private int Coins = 1;
-
+        private int enter = 0;
         public void Enter(Hero hero)
         {
             Dwarf dwarf = (Dwarf)hero;
 
             if (hero is Dwarf)
             {
-          
-                Console.WriteLine($"You enetered the Mine." );
-            }
-            else
-            {
-                Console.WriteLine("You can't enter to the Mine! Only Dwarf can enter!");
-                return;
-            }
-            Console.WriteLine($" U gain {Coins} coins");
-            if(Coins % 2 == 0)
-            {
-                dwarf.Coins(Coins);
-                Coins = Coins + 1;
-            }
-            else
-            {
-                dwarf.Coins(Coins);
-                Coins = Coins + 3;
-            }
+                Console.WriteLine($"You enetered the Mine.");
+                enter += 1;
 
+                if (enter % 2 == 0)
+                {
+                    Coins = 3;
+                    dwarf.AddCoins(Coins);
+                    Console.WriteLine($" You gain {Coins} coins ");                    
+                }
+                else
+                {
+                    Coins = 1;
+                    dwarf.AddCoins(Coins);
+                    Console.WriteLine($" You gain {Coins} coins ");
+                }               
+            }
         }
     }
 }

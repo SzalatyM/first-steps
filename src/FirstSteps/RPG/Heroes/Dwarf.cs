@@ -23,9 +23,5 @@ namespace FirstSteps.RPG.Heroes
         {
             return "Im Dwarf";
         }
-        public int Coins(int coins)
-        {
-            return coins;
-        }
     }
 }
