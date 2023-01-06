@@ -1,5 +1,6 @@
 ﻿using System;
 using FirstSteps.RPG;
+using Spectre.Console;
 
 namespace FirstSteps
 {
@@ -8,17 +9,20 @@ namespace FirstSteps
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Welcome to the RPG game");
+            AnsiConsole.MarkupLine($"{Emoji.Known.BowAndArrow} [darkgreen]Welcome to the RPG game [/] {Emoji.Known.CrossedSwords}");
 
             Game.CreateHero();
 
-            Console.WriteLine("Let's play the game");
+            AnsiConsole.MarkupLine($"{Emoji.Known.Dagger} [red]Let's play the game [/] {Emoji.Known.Dagger}");
 
             Game.DisplayCommands();
 
             Console.WriteLine("Type 'end' if you want to quit.");
 
-            string command;
+            string command = AnsiConsole.Prompt(
+            new SelectionPrompt<string>().Title("Display Commands:").AddChoices("stats", "treasure", "inventory", "forest", "dungeons", "mine"));
+
+            Game.HandleCommand(command);
 
             do
             {

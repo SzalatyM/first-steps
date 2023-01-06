@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using FirstSteps.RPG.Items;
 using System.Linq;
 using FirstSteps.RPG.Adventures;
+using Spectre.Console;
 
 namespace FirstSteps.RPG
 {
@@ -25,31 +26,23 @@ namespace FirstSteps.RPG
         {
             Console.WriteLine("Create your hero");
 
-            Console.Write("Type hero name: ");
-            var name = Console.ReadLine();
+            var name = AnsiConsole.Ask<string>("Type hero name:");
 
-            Console.WriteLine("Choose hero race: ");
+            var selectedRace = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("Choose hero race:")
+                    .AddChoices(Enum.GetNames(typeof(Races))));
 
-            DisplayAllRaces();
+            Enum.TryParse<Races>(selectedRace, out var race);
 
-            var race = int.Parse(Console.ReadLine());
-
-            _hero = HeroesCreator.Create(name, (Races)race);
-
+            _hero = HeroesCreator.Create(name, race);
             DisplayGreetings();
-
 
         }
 
         public static void DisplayCommands()
         {
-            Console.WriteLine("Commands:");
-            Console.WriteLine("Type 'stats' to display hero statistics.");
-            Console.WriteLine("Type 'treasure' to get a chance to find coins");
-            Console.WriteLine("Type 'inventory' to go to the inventory with items");
-            Console.WriteLine("Type 'forest' to enter to forest");
-            Console.WriteLine("Type 'dungeons' to enter to the dungeons");
-            Console.WriteLine("Type 'mine' to enter to the Mine");
+      
         }
 
         public static void HandleCommand(string command)
@@ -73,7 +66,7 @@ namespace FirstSteps.RPG
                     break;
                 case "mine":
                     mine.Enter(_hero);
-                      break;
+                    break;
                 default:
                     Console.WriteLine($"Command {command} not recognized");
                     break;
@@ -128,9 +121,9 @@ namespace FirstSteps.RPG
         }
         public static void DisplayGreetings()
         {
-           IGreeting greeting = _hero as IGreeting;             
-           Console.WriteLine(greeting != null ? greeting.Greed() : "Hello");
-            
+            IGreeting greeting = _hero as IGreeting;
+            Console.WriteLine(greeting != null ? greeting.Greed() : "Hello");
+
             //IGreeting greeting = _hero as IGreeting;
             //if(greeting != null)
             //{
@@ -151,6 +144,6 @@ namespace FirstSteps.RPG
             //    Console.WriteLine("hello");
             //}
         }
-        
+
     }
 }

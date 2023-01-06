@@ -1,5 +1,6 @@
 ﻿using FirstSteps.RPG.Heroes;
 using FirstSteps.RPG.Items;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 
@@ -14,17 +15,17 @@ namespace FirstSteps.RPG.Adventures
         }
         public void Enter(Hero hero)
         {
-            Elf elf = (Elf)hero;
             if (hero is Elf)
             {
                 Console.WriteLine("You enetered the old forest. What do u want to do?");
             }
             else
             {
-                Console.WriteLine("You can't enter to the forest! Only Elf can enter!");
+                AnsiConsole.MarkupLine($"{Emoji.Known.CrossMarkButton} [red]You can't enter! Only Elf can enter to the forest! [/] {Emoji.Known.CrossMarkButton}");
                 return;
-            }      
-            Console.WriteLine("Type 'heal' to increase your healt.");
+            }
+            Elf elf = (Elf)hero;
+            Console.WriteLine("Type 'heal' to increase your health.");
             Console.WriteLine("Type 'collect ' to collect a random number of arrows");
             var userInput = Console.ReadLine();
             switch (userInput)               
