@@ -21,7 +21,7 @@ namespace FirstSteps.RPG.Heroes
 
         public string Greed()
         {
-            return "Im Dwarf";
+            return "\nYou are playing as a Dwarf\n";
         }
     }
 }

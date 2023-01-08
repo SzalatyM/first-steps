@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using FirstSteps.RPG.Items;
 using System.Linq;
 using FirstSteps.RPG.Adventures;
+using Spectre.Console;
 
 namespace FirstSteps.RPG
 {
     public static class Game
     {
+        private static Mine mine = new Mine();
         private static Forest forest = new Forest();
         private static Dungeons dungeons = new Dungeons();
         private static List<Item> _inventory = new List<Item>()
@@ -24,30 +26,18 @@ namespace FirstSteps.RPG
         {
             Console.WriteLine("Create your hero");
 
-            Console.Write("Type hero name: ");
-            var name = Console.ReadLine();
+            var name = AnsiConsole.Ask<string>("Type hero name:");
 
-            Console.WriteLine("Choose hero race: ");
+            var selectedRace = AnsiConsole.Prompt(
+                new SelectionPrompt<string>()
+                    .Title("Choose hero race:")
+                    .AddChoices(Enum.GetNames(typeof(Races))));
 
-            DisplayAllRaces();
+            Enum.TryParse<Races>(selectedRace, out var race);
 
-            var race = int.Parse(Console.ReadLine());
-
-            _hero = HeroesCreator.Create(name, (Races)race);
+            _hero = HeroesCreator.Create(name, race);
 
             DisplayGreetings();
-
-
-        }
-
-        public static void DisplayCommands()
-        {
-            Console.WriteLine("Commands:");
-            Console.WriteLine("Type 'stats' to display hero statistics.");
-            Console.WriteLine("Type 'treasure' to get a chance to find coins");
-            Console.WriteLine("Type 'inventory' to go to the inventory with items");
-            Console.WriteLine("Type 'forest' to enter to forest");
-            Console.WriteLine("Type 'dungeons' to enter to the dungeons");
         }
 
         public static void HandleCommand(string command)
@@ -69,12 +59,18 @@ namespace FirstSteps.RPG
                 case "dungeons":
                     dungeons.Enter(_hero);
                     break;
+                case "mine":
+                    mine.Enter(_hero);
+                    break;
+                //case "x":
+                //    Console.WriteLine(command);
+                    
                 default:
                     Console.WriteLine($"Command {command} not recognized");
                     break;
             }
         }
-        public static void DisplayHeroStats()
+            public static void DisplayHeroStats()
         {
             _hero.DisplayStats();
         }
@@ -123,29 +119,8 @@ namespace FirstSteps.RPG
         }
         public static void DisplayGreetings()
         {
-           IGreeting greeting = _hero as IGreeting;             
-           Console.WriteLine(greeting != null ? greeting.Greed() : "Hello");
-            
-            //IGreeting greeting = _hero as IGreeting;
-            //if(greeting != null)
-            //{
-            //    Console.WriteLine(greeting.Greed());
-            //}
-            //else
-            //{
-            //    Console.WriteLine("hello");
-
-            //}
-            //if(_hero is IGreeting)
-            //{
-            //    IGreeting greeting = (IGreeting)_hero;
-            //    Console.WriteLine(greeting.Greed());
-            //}
-            //else
-            //{
-            //    Console.WriteLine("hello");
-            //}
+            IGreeting greeting = _hero as IGreeting;
+            Console.WriteLine(greeting != null ? greeting.Greed() : "\nBest choice. You play the strongest class in the game\n ");
         }
-        
     }
 }
