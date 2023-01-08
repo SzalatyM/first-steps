@@ -1,6 +1,7 @@
 ﻿using FirstSteps.RPG.Heroes;
 using System;
 using Spectre.Console;
+using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG.Adventures
 {
@@ -14,11 +15,11 @@ namespace FirstSteps.RPG.Adventures
             
             if (hero is Undead)
             {
-                Console.WriteLine("You enter the Dungeon!");
+                Display.DefaultText("You enter to the Dungeon!");
             }
             else
             {
-                AnsiConsole.MarkupLine($"{Emoji.Known.CrossMarkButton} [red]You can't enter! Only Undead can enter to the Dungeons! [/] {Emoji.Known.CrossMarkButton}");
+                Display.ErrorText("You can't enter! Only Undead can enter to the Dungeons!");
                 return;
             }
             Undead undead = (Undead)hero;
