@@ -1,9 +1,7 @@
 ﻿using FirstSteps.RPG.Items;
-using System.Linq;
-using System.Collections.Generic;
 namespace FirstSteps.RPG.Heroes
 {
-    public class Undead : Hero
+    public class Undead : Hero, IGreeting
     {
         private int _manaPoints;
 
@@ -23,6 +21,10 @@ namespace FirstSteps.RPG.Heroes
         public void ManaIncreases(int mana)
         {
             _manaPoints = _manaPoints + mana;
+        }
+        public string Greed()
+        {
+            return "\nYou are playing as a Undeed\n";
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using FirstSteps.RPG.Heroes;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 using Spectre.Console;
 
 namespace FirstSteps.RPG.Adventures

@@ -23,7 +23,7 @@ namespace FirstSteps.RPG.Heroes
 
         public string Greed()
         {
-            return "Im Elf";
+            return "\nYou are playing as a Elf\n";
         }
 
         public void Heal()
