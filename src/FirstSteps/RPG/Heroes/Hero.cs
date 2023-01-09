@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using FirstSteps.RPG.Items;
 using Spectre.Console;
@@ -30,7 +30,7 @@ namespace FirstSteps.RPG.Heroes
             Console.WriteLine($"Race: {_race}");
             AnsiConsole.Write(new BarChart()
     .Width(60)
-    .Label("[blue bold underline]STATS[/]") 
+    .Label($"[blue bold underline] {_race}: {_name} [/]") 
     .CenterLabel()
     .AddItem("Strength", _strength, Color.Orange1)
     .AddItem("Intelligence", _intelligence, Color.Blue)
