@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FirstSteps.RPG.Items;
+using Spectre.Console;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -27,7 +28,15 @@ namespace FirstSteps.RPG.Heroes
         {
             Console.WriteLine($"Name: {_name}");
             Console.WriteLine($"Race: {_race}");
-            Console.WriteLine($"Strength: {_strength} \nIntelligence: {_intelligence} \nAgility: {_agility} \nHealth: {_health} \nDamage: {_damage}\n");
+            AnsiConsole.Write(new BarChart()
+    .Width(60)
+    .Label("[blue bold underline]STATS[/]") 
+    .CenterLabel()
+    .AddItem("Strength", _strength, Color.Orange1)
+    .AddItem("Intelligence", _intelligence, Color.Blue)
+    .AddItem("Agility", _agility, Color.Yellow)
+    .AddItem("Health", _health, Color.Red)
+    .AddItem("Damage", _damage, Color.Green));
             Console.WriteLine($"Equipment:\ntotal price: {DisplayTotalPrice()}\ntotal items: {DisplayTotalItems()}\ntotal weight; {DisplayTotalWeight()} ");
         }
 
