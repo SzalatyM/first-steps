@@ -27,7 +27,7 @@ namespace FirstSteps
             {
                
                 var userCommand = Console.ReadLine();
-                if (userCommand == "x")
+                if (userCommand == "x") // I try to do this yet but i think I need some prompt about it 
                 {
                     Game.HandleCommand(command);
                 }
