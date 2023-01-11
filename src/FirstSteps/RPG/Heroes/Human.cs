@@ -1,9 +1,17 @@
 ﻿using FirstSteps.RPG.Items;
+using System;
+using System.Collections.Generic;
 
 namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
     {
+        List<Item> itemList = new List<Item>()
+        {
+            new Item("Ring", 4, 4),
+            new Item("earning", 5, 3),
+            new Item("necklace", 4,6)
+        };
         public Human(string name) : base(name, Races.Human)
         {
             _strength = 3;
@@ -17,5 +25,10 @@ namespace FirstSteps.RPG.Heroes
         {
             return item is MagicSword;
         }
+        public void RolledItemToAdd(List<Item> items)
+        {
+            itemList.AddRange(items);
+        }
     }
 }
+

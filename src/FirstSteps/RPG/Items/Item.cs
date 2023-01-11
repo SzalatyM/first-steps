@@ -13,6 +13,10 @@
             Weight = weight;
         }
 
+        public Item()
+        {
+        }
+
         public override string ToString()
         {
             return "Item: " + Name + "price: " + Price + "weight" + Weight;

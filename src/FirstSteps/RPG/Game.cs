@@ -13,6 +13,7 @@ namespace FirstSteps.RPG
         private static Mine mine = new Mine();
         private static Forest forest = new Forest();
         private static Dungeons dungeons = new Dungeons();
+        private static Village village = new Village();
         private static List<Item> _inventory = new List<Item>()
         {
             new MagicAxe(),
@@ -61,6 +62,9 @@ namespace FirstSteps.RPG
                     break;
                 case "mine":
                     mine.Enter(_hero);
+                    break;
+                case "village":
+                    village.Enter(_hero);
                     break;
                 //case "x":
                 //    Console.WriteLine(command);
@@ -123,4 +127,5 @@ namespace FirstSteps.RPG
             Console.WriteLine(greeting != null ? greeting.Greed() : "\nBest choice. You play the strongest class in the game\n ");
         }
     }
+    
 }
