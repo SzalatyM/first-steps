@@ -8,33 +8,27 @@ namespace FirstSteps
     {
         static void Main(string[] args)
         {
-
             AnsiConsole.MarkupLine($"{Emoji.Known.BowAndArrow} [darkgreen]Welcome to the RPG game [/] {Emoji.Known.CrossedSwords}");
 
             Game.CreateHero();
 
             AnsiConsole.MarkupLine($"{Emoji.Known.Dagger} [red]Let's play the game [/] {Emoji.Known.Dagger}");
 
-            Console.WriteLine("Type 'end' if you want to quit.");
-            Console.WriteLine("\nIf You want go back to the previous menu press 'x'\n");
+            Console.WriteLine("\nType 'end' if you want to quit.");
+            Console.WriteLine("\nIf You want go back to the previous menu press button\n");
             Console.WriteLine("________________________________");
-            string command = AnsiConsole.Prompt(
-            new SelectionPrompt<string>().Title("\nSelect what you want to do: ").AddChoices("stats", "treasure", "inventory", "forest", "dungeons", "mine"));
-
-            Console.WriteLine($"\nYou choose: { command}");
-            Game.HandleCommand(command);         
+            string userInput;
             do
             {
-               
-                var userCommand = Console.ReadLine();
-                if (userCommand == "x")
-                {
-                    Game.HandleCommand(command);
-                }
-                Game.HandleCommand(userCommand);
-                Console.WriteLine();               
+                string command = AnsiConsole.Prompt(
+                    new SelectionPrompt<string>()
+                        .Title("\nSelect what you want to do: ")
+                        .AddChoices("stats", "treasure", "inventory", "forest", "dungeons", "mine"));
+                Game.HandleCommand(command);
+                Console.WriteLine();
+                userInput = Console.ReadLine();
             }
-            while (command.ToLower() != "end");
+            while (userInput != "end");
         }
     }
 }

@@ -40,7 +40,6 @@ namespace FirstSteps.RPG
 
             DisplayGreetings();
         }
-
         public static void HandleCommand(string command)
         {
             switch (command)
