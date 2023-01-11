@@ -29,14 +29,14 @@ namespace FirstSteps.RPG.Heroes
             Console.WriteLine($"Name: {_name}");
             Console.WriteLine($"Race: {_race}");
             AnsiConsole.Write(new BarChart()
-    .Width(60)
-    .Label($"[blue bold underline] {_race}: {_name} [/]") 
-    .CenterLabel()
-    .AddItem("Strength", _strength, Color.Orange1)
-    .AddItem("Intelligence", _intelligence, Color.Blue)
-    .AddItem("Agility", _agility, Color.Yellow)
-    .AddItem("Health", _health, Color.Red)
-    .AddItem("Damage", _damage, Color.Green));
+            .Width(60)
+            .Label($"[blue bold underline] {_race}: {_name} [/]")
+            .CenterLabel()
+            .AddItem("Strength", _strength, Color.Orange1)
+            .AddItem("Intelligence", _intelligence, Color.Blue)
+            .AddItem("Agility", _agility, Color.Yellow)
+            .AddItem("Health", _health, Color.Red)
+            .AddItem("Damage", _damage, Color.Green));
             Console.WriteLine($"Equipment:\ntotal price: {DisplayTotalPrice()}\ntotal items: {DisplayTotalItems()}\ntotal weight; {DisplayTotalWeight()} ");
         }
 
