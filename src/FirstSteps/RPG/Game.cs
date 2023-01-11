@@ -39,12 +39,6 @@ namespace FirstSteps.RPG
 
             DisplayGreetings();
         }
-
-        internal static string HandleCommand(object command)
-        {
-            throw new NotImplementedException();
-        }
-
         public static void HandleCommand(string command)
         {
             switch (command)

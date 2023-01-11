@@ -21,7 +21,9 @@ namespace FirstSteps
             do
             {
                 string command = AnsiConsole.Prompt(
-            new SelectionPrompt<string>().Title("\nSelect what you want to do: ").AddChoices("stats", "treasure", "inventory", "forest", "dungeons", "mine"));
+                    new SelectionPrompt<string>()
+                        .Title("\nSelect what you want to do: ")
+                        .AddChoices("stats", "treasure", "inventory", "forest", "dungeons", "mine"));
                 Game.HandleCommand(command);
                 Console.WriteLine();
                 userInput = Console.ReadLine();
