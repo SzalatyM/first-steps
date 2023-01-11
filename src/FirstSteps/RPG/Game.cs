@@ -5,6 +5,7 @@ using FirstSteps.RPG.Items;
 using System.Linq;
 using FirstSteps.RPG.Adventures;
 using Spectre.Console;
+using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG
 {
@@ -66,7 +67,7 @@ namespace FirstSteps.RPG
                 //    Console.WriteLine(command);
                     
                 default:
-                    Console.WriteLine($"Command {command} not recognized");
+                    Display.WarningText($"Command {command} not recognized");
                     break;
             }
         }
