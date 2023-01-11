@@ -1,24 +1,19 @@
 ﻿using Spectre.Console;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace FirstSteps.RPG.Tools
 {
     static class Display
     {
-        public static void DefaultText(string _default)
+        public static void DefaultText(string defaultText)
         {
-            AnsiConsole.MarkupLine($"[green] {_default} [/] ");
+            AnsiConsole.MarkupLine($"[green]{defaultText}[/]");
         }
-        public static void WarningText(string _warning)
+        public static void WarningText(string warningText)
         {
-            AnsiConsole.MarkupLine($"[yellow] {_warning} [/] ");
+            AnsiConsole.MarkupLine($"[yellow]{warningText}[/]");
         }
-        public static void ErrorText(string _error)
+        public static void ErrorText(string errorText)
         {
-            AnsiConsole.MarkupLine($"[red] {_error} [/] ");
-        }
-        // i make this only for folder "Adventure" and im waiting for tips like you write on messenger. WarningText added to the "command"
+            AnsiConsole.MarkupLine($"[red]{errorText}[/]");
+        }       
     }
 }
