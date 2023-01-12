@@ -22,12 +22,12 @@ namespace FirstSteps.RPG.Items
             }
             else if(random == 0)
             {
-                Console.WriteLine($" You get a : {itemsForHuman[0].Name}");
+                Console.WriteLine($"You get a: {itemsForHuman[0].Name}");
                 return itemsForHuman[0];               
             }
             else
             {
-                Console.WriteLine($" You get a : {itemsForHuman[1].Name}");
+                Console.WriteLine($"You get a: {itemsForHuman[1].Name}");
                 return itemsForHuman[1];
             }
         }
