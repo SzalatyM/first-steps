@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using FirstSteps.RPG.Items;
-using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG;
 using System.Linq;
 
 namespace FirstSteps.RPG.Items
@@ -17,17 +14,21 @@ namespace FirstSteps.RPG.Items
         };
         public static Item Open()
         {
-            var random = new Random().Next(1,5);
-            if(random > itemsForHuman.Count)
+            var random = new Random().Next(0,5);
+            if(random > itemsForHuman.Count())
             {
-                Console.WriteLine("Not this time!");
+                Console.WriteLine("\nUnfortunately, Empty slot!");
                 return null;              
+            }
+            else if(random == 0)
+            {
+                Console.WriteLine($" You get a : {itemsForHuman[0].Name}");
+                return itemsForHuman[0];               
             }
             else
             {
-                Console.WriteLine($" You rolled: {itemsForHuman[0].Name}");
-                return itemsForHuman[0];
-                
+                Console.WriteLine($" You get a : {itemsForHuman[1].Name}");
+                return itemsForHuman[1];
             }
         }
     }
