@@ -11,8 +11,8 @@ namespace FirstSteps.RPG.Heroes
             _strength = 3;
             _intelligence = 2;
             _agility = 5;
-            _health = 120;
-            _damage = 20;
+            _health = 20;
+            _damage = 6;
         }
 
         protected override bool CanHandleSpecialItem(Item item)

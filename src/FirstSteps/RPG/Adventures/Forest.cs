@@ -1,5 +1,6 @@
 ﻿using FirstSteps.RPG.Heroes;
 using FirstSteps.RPG.Items;
+using FirstSteps.RPG.Tools;
 using Spectre.Console;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,11 @@ namespace FirstSteps.RPG.Adventures
         {
             if (hero is Elf)
             {
-                Console.WriteLine("You enetered the old forest. What do u want to do?");
+                Display.DefaultText("You enetered the old forest. What do u want to do?");
             }
             else
             {
-                AnsiConsole.MarkupLine($"{Emoji.Known.CrossMarkButton} [red]You can't enter! Only Elf can enter to the forest! [/] {Emoji.Known.CrossMarkButton}");
+                Display.ErrorText("You can't enter! Only Elf can enter to the forest!");
                 return;
             }
             Elf elf = (Elf)hero;

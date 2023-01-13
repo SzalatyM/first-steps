@@ -1,4 +1,5 @@
 ﻿using FirstSteps.RPG.Heroes;
+using FirstSteps.RPG.Tools;
 using Spectre.Console;
 using System;
 namespace FirstSteps.RPG.Adventures
@@ -11,11 +12,11 @@ namespace FirstSteps.RPG.Adventures
         {
             if (hero is Dwarf == false)
             {
-                AnsiConsole.MarkupLine($"{Emoji.Known.CrossMarkButton} [red]You can't enter! Only Dwarf can enter to the Mine! [/] {Emoji.Known.CrossMarkButton}");
+                Display.ErrorText("You can't enter! Only Dwarf can enter to the Mine!");
                 return;
             }
 
-            AnsiConsole.MarkupLine($"{Emoji.Known.CrossedSwords} [darkblue]You entered to the Mine![/] {Emoji.Known.CrossedSwords}");
+            Display.DefaultText("You entered to the Mine! ");
 
             enter += 1;
 
