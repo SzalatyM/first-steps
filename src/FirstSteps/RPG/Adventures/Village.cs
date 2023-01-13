@@ -1,9 +1,6 @@
 ﻿using FirstSteps.RPG.Heroes;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using FirstSteps.RPG.Items;
-using FirstSteps.RPG;
 
 namespace FirstSteps.RPG.Adventures
 {

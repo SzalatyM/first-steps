@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace FirstSteps.RPG.Items
@@ -20,15 +19,10 @@ namespace FirstSteps.RPG.Items
                 Console.WriteLine("\nUnfortunately, Empty slot!");
                 return null;              
             }
-            else if(random == 0)
-            {
-                Console.WriteLine($"You get a: {itemsForHuman[0].Name}");
-                return itemsForHuman[0];               
-            }
             else
             {
-                Console.WriteLine($"You get a: {itemsForHuman[1].Name}");
-                return itemsForHuman[1];
+                Console.WriteLine($"U get a {itemsForHuman[random].Name}");
+               return itemsForHuman[random];
             }
         }
     }
