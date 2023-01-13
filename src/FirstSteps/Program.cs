@@ -21,14 +21,13 @@ namespace FirstSteps
             string userInput;
             do
             {
-               
-                var userCommand = Console.ReadLine();
-                if (userCommand == "x")
-                {
-                    Game.HandleCommand(command);
-                }
-                Game.HandleCommand(userCommand);
-                Console.WriteLine();               
+                string command = AnsiConsole.Prompt(
+                    new SelectionPrompt<string>()
+                        .Title("\nSelect what you want to do: ")
+                        .AddChoices("stats", "treasure", "inventory", "forest", "dungeons", "mine"));
+                Game.HandleCommand(command);
+                Console.WriteLine();
+                userInput = Console.ReadLine();
             }
             while (userInput != "end");
         }
