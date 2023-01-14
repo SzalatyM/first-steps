@@ -23,6 +23,7 @@ namespace FirstSteps.RPG
             new MagicSword()
         };
         private static Hero _hero;
+        private static Item item;
 
         public static void CreateHero()
         {
@@ -64,7 +65,7 @@ namespace FirstSteps.RPG
                     mine.Enter(_hero);
                     break;
                 case "village":
-                    village.Enter(_hero);
+                    village.Enter(_hero, item);
                     break;
                 //case "x":
                 //    Console.WriteLine(command);

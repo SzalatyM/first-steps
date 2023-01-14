@@ -21,8 +21,9 @@ namespace FirstSteps.RPG.Items
             }
             else
             {
-                Console.WriteLine($"U get a {itemsForHuman[random].Name}");
-               return itemsForHuman[random];
+                Console.WriteLine($"U get a {itemsForHuman[random].Name}"); // i dont know why i have error that index is out of range. Can u explain ? i didnt assign any range/length
+                // i thought the error was coused, i have 0 do 5 but when i changed to 1,5 errow was the same.
+                return itemsForHuman[random];
             }
         }
     }
