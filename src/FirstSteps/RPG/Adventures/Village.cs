@@ -1,12 +1,13 @@
 ﻿using FirstSteps.RPG.Heroes;
 using System;
 using FirstSteps.RPG.Items;
+using System.Collections.Generic;
 
 namespace FirstSteps.RPG.Adventures
 {
-    class Village 
+    class Village
     {
-        public void Enter(Hero hero, Item item)
+        public void Enter(Hero hero)
         {
             if (hero is Human)
             {
@@ -20,9 +21,12 @@ namespace FirstSteps.RPG.Adventures
             Console.WriteLine("\nPress any button to try get an item!");
             Console.ReadLine();
             Human human = (Human)hero;
-            human.AddItemToBackpack(item); // I tryed to do this with variable private Item item; and add item to human.AddItemToBackPack(item) - doesn't work 
-            // i will be greatfull that u explain me in details that i could understand in next examples/ future. Because at this moment im trying different options without understanding it :(
-            OldChest.Open();
+            Item item = OldChest.Open(item => item != null);
+            human.AddItemToBackpack(item);
+            Console.WriteLine($"U get a {item.Name}");
+            
         }
+        //Console.WriteLine($"U get a {itemsForHuman[random].Name}");
+        //Console.WriteLine("\nUnfortunately, Empty slot!");
     }
 }
