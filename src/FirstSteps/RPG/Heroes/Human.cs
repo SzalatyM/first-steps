@@ -1,6 +1,4 @@
 ﻿using FirstSteps.RPG.Items;
-using System;
-using System.Collections.Generic;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -17,7 +15,7 @@ namespace FirstSteps.RPG.Heroes
 
         protected override bool CanHandleSpecialItem(Item item)
         {
-            return item is MagicSword;
+            return item is MagicSword || item is Pitchfork || item is Knife;
         }
     }
 }
