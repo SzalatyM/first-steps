@@ -11,12 +11,12 @@ namespace FirstSteps.RPG.Items
             new Pitchfork(),
             new Knife()
         };
+
         public static Item Open()
         {
             var random = new Random().Next(0,5);
-            if (random > itemsForHuman.Count() || random == 2)
+            if (random >= itemsForHuman.Count())
             {
-                Console.WriteLine("Empty slot");
                 return null;
             }
             else
