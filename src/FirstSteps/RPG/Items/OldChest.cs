@@ -21,7 +21,6 @@ namespace FirstSteps.RPG.Items
             }
             else
             {
-                Console.WriteLine(itemsForHuman[random]);
                 return itemsForHuman[random];
             }
         }
