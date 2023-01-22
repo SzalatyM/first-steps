@@ -1,13 +1,11 @@
 ﻿using FirstSteps.RPG.Heroes;
 using System;
-using Spectre.Console;
 using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG.Adventures
 {
-    class Dungeons
+    public class Dungeons
     {
-
         private int _manaPoints = 1;
 
         public void Enter(Hero hero)
@@ -30,4 +28,3 @@ namespace FirstSteps.RPG.Adventures
         }       
     }
 }
-
