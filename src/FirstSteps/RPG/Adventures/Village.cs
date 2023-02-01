@@ -13,13 +13,16 @@ namespace FirstSteps.RPG.Adventures
                 Console.WriteLine("You can't enter to the village! Only human can enter!");
                 return;
             }
+            Console.WriteLine("\nYou enter to the Village!");
             Console.WriteLine("\nPress any button to try get an item!");
             Console.ReadLine();
-            Human human = (Human)hero;
-            Item item = OldChest.Open(item => item != null);
-            human.AddItemToBackpack(item);
-            Console.WriteLine($"U get a {item.Name}");
-            
+            Item item = OldChest.Open();
+            if (item == null)
+            {
+                Console.WriteLine("\nUnfortunately, Empty slot!");
+                return;
+            }
+            hero.AddItemToBackpack(item);
         }
     }
 }
