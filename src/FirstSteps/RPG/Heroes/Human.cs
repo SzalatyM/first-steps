@@ -3,7 +3,7 @@
 namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
-    {
+    {     
         public Human(string name) : base(name, Races.Human)
         {
             _strength = 3;
@@ -15,7 +15,8 @@ namespace FirstSteps.RPG.Heroes
 
         protected override bool CanHandleSpecialItem(Item item)
         {
-            return item is MagicSword;
+            return item is MagicSword || item is Pitchfork || item is Knife;
         }
     }
 }
+

@@ -9,11 +9,6 @@ namespace FirstSteps.RPG.Adventures
 {
     public class Forest
     {
-       
-        public Forest()
-        {
-            
-        }
         public void Enter(Hero hero)
         {
             if (hero is Elf)
