@@ -18,7 +18,7 @@ namespace FirstSteps.RPG.Heroes
         protected int _damage;
         private int maxBackpack = 5;
         private int _maxWeight = 40;
-
+        public int Coins { get { return _coinsBag; } }
         public Hero(string name, Races race)
         {
             _name = name;
