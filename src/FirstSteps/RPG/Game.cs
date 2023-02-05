@@ -15,15 +15,8 @@ namespace FirstSteps.RPG
         private static Forest forest = new Forest();
         private static Dungeons dungeons = new Dungeons();
         private static Village village = new Village();
-        private static List<Item> _inventory = new List<Item>()
-        {
-            new MagicAxe(),
-            new MagicBow(),
-            new MagicSkull(),
-            new MagicSword()
-        };
+        private static Inventory inventory = new Inventory();
         private static Hero _hero;
-
         public static void CreateHero()
         {
             Console.WriteLine("Create your hero");
@@ -52,7 +45,7 @@ namespace FirstSteps.RPG
                     Treasure();
                     break;
                 case "inventory":
-                    Inventory();
+                    inventory.Inventoryy(_hero);
                     break;
                 case "forest":
                     forest.Enter(_hero);
@@ -68,13 +61,13 @@ namespace FirstSteps.RPG
                     break;
                 //case "x":
                 //    Console.WriteLine(command);
-                    
+
                 default:
                     Display.WarningText($"Command {command} not recognized");
                     break;
             }
         }
-            public static void DisplayHeroStats()
+        public static void DisplayHeroStats()
         {
             _hero.DisplayStats();
         }
@@ -95,37 +88,11 @@ namespace FirstSteps.RPG
             _hero.AddCoins(drawCoins);
             Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
         }
-        private static void Inventory()
-        {
-            foreach (var inventory in _inventory)
-            {
-                Console.WriteLine();
-                Console.WriteLine($"Name: {inventory.Name}\nPrice: {inventory.Price} coins");
-                Console.WriteLine();
-            }
-            Console.WriteLine("Which item u want to buy?\nEnter a name to select");
-            string userInput = Console.ReadLine();
-            var item = _inventory.FirstOrDefault(item => item.Name == userInput);
-            if (item == null)
-            {
-                Console.WriteLine("There is no such item to buy!");
-            }
-            else if (_hero.TrySpendCoins(item))
-            {
-                _hero.AddItemToBackpack(item);
-                _inventory.Remove(item);
-                Console.WriteLine($"You bought a {userInput} ");
-            }
-            else
-            {
-                Console.WriteLine($"You dont have a coins to buy a {userInput} ");
-            }
-        }
         public static void DisplayGreetings()
         {
             IGreeting greeting = _hero as IGreeting;
             Console.WriteLine(greeting != null ? greeting.Greed() : "\nBest choice. You play the strongest class in the game\n ");
         }
     }
-    
+
 }
