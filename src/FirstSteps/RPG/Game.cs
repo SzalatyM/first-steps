@@ -45,7 +45,7 @@ namespace FirstSteps.RPG
                     Treasure();
                     break;
                 case "inventory":
-                    inventory.Inventoryy(_hero);
+                    inventory.ShowItems(_hero);
                     break;
                 case "forest":
                     forest.Enter(_hero);

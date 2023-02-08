@@ -15,7 +15,7 @@ namespace FirstSteps.RPG.Adventures
             new MagicSkull(),
             new MagicSword()
         };
-        public void Inventoryy(Hero _hero)
+        public void ShowItems(Hero _hero)
         {
             foreach (var inventory in _inventory)
             {
