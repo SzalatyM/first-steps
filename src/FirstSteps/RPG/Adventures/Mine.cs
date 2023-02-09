@@ -6,7 +6,6 @@ namespace FirstSteps.RPG.Adventures
 {
     public class Mine
     {
-  
         private int enter = 0;
         public void Enter(Hero hero)
         {
