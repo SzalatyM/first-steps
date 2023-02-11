@@ -8,7 +8,6 @@ namespace FirstSteps.Tests.RPG.Adventures
     public class MineTests
     {
         [Fact]
-
         public void Dwarf_Should_Gain_One_Coin_After_the_First_Visit__In_The_Mine()
         {
             var mine = new Mine();
@@ -18,6 +17,7 @@ namespace FirstSteps.Tests.RPG.Adventures
 
             dwarf.Coins.Should().Be(1);
         }
+
         [Theory]
         [InlineData(1, 1)]
         [InlineData(4, 2)]
