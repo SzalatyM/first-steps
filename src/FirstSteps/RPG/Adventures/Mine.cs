@@ -19,9 +19,11 @@ namespace FirstSteps.RPG.Adventures
 
             enter += 1;
 
-            var coins = enter % 2 == 0 ? 3 : 1;
+            var coins = enter % 2 == 0 ? 3 : enter % 5 == 0 ?  +2 : enter == 13 ? 0 : 1;
+          
             Console.WriteLine($"You gain {coins} coins ");
             hero.AddCoins(coins);
+            Console.WriteLine(hero.Coins);       
             //int coins;
             //if (hero is Dwarf)
             //{
