@@ -18,35 +18,29 @@ namespace FirstSteps.RPG.Adventures
 
             enter += 1;
             var coins = 1;
-            if (enter % 2 == 0)
+            if (enter == 13)
+            {
+                return;
+            }
+            else if(enter % 2 == 0)
             {
                 coins = 3;
-                DisplayCoins(coins);
                 hero.AddCoins(coins);
+                Console.WriteLine(coins);
             }
-            else if (enter % 5 == 0)
+            else if(enter % 5 == 0)
             {
-                coins += 2;
-                DisplayCoins(coins);
-                hero.AddCoins(coins);
-            }
-            else if (enter == 13)
-            {
-                coins = 0;
-                DisplayCoins(coins);
+                coins = 3;
+                int result = coins + 2;
+                hero.AddCoins(result);
+                Console.WriteLine(result);
             }
             else
             {
-                coins = 1;
-                DisplayCoins(coins);
                 hero.AddCoins(coins);
-            } 
-        }
-        public void DisplayCoins(int coins)
-        {
-            Console.WriteLine($"You gain {coins} coins ");
-            Console.WriteLine("________________________");
-            Console.WriteLine($"You currently have {coins} coins");
+                Console.WriteLine(coins);
+            }
+
         }
     }
     //int coins;
