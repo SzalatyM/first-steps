@@ -22,7 +22,7 @@ namespace FirstSteps.RPG.Adventures
                 Console.WriteLine("\nUnfortunately, Empty slot!");
                 return;
             }
-            hero.AddItemToBackpack(item);
+            hero.GetEquipment().AddItemToBackpack(item); // I couldn't use a variable to call a method so i find a solution with creating a new method as a variable.
         }
     }
 }

@@ -15,7 +15,7 @@ namespace FirstSteps.RPG.Heroes
             _damage = 8;
         }
 
-        protected override bool CanHandleSpecialItem(Item item)
+        public bool CanHandleSpecialItem(Item item)
         {
             return item is MagicSkull;
         }

@@ -30,9 +30,9 @@ namespace FirstSteps.RPG.Adventures
             {
                 Console.WriteLine("There is no such item to buy!");
             }
-            else if (_hero.TrySpendCoins(item))
+            else if (_hero.GetEquipment().TrySpendCoins(item))
             {
-                _hero.AddItemToBackpack(item);
+                _hero.GetEquipment().AddItemToBackpack(item);
                 _inventory.Remove(item);
                 Console.WriteLine($"You bought a {userInput} ");
             }
