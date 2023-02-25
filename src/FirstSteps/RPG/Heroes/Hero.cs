@@ -7,23 +7,21 @@ namespace FirstSteps.RPG.Heroes
 {
     public abstract class Hero
     {
-        private Equipment _equipment;
+        public Equipment equipment { get { return _equipment; } }
         private string _name;
         private Races _race;
         protected int _strength;
         protected int _intelligence;
         protected int _agility;
         protected int _health;
-        protected int _damage;   
+        protected int _damage;
+        private Equipment _equipment;
+
         public Hero(string name, Races race)
         {
-            _equipment = new Equipment(); // i found a similar example i thnk on stackoverflow. can i do it some other way? with variable. Can u show me other example/ solution? 
+            _equipment = new Equipment();
             _name = name;
             _race = race;
-        }
-        public Equipment GetEquipment()
-        {
-            return _equipment; 
         }
         public void DisplayStats()
         {
@@ -39,6 +37,30 @@ namespace FirstSteps.RPG.Heroes
             .AddItem("Health", _health, Color.Red)
             .AddItem("Damage", _damage, Color.Green));
             Console.WriteLine($"Equipment:\ntotal price: {_equipment.DisplayTotalPrice()}\ntotal items: {_equipment.DisplayTotalItems()}\ntotal weight; {_equipment.DisplayTotalWeight()} ");
-        }      
+        }
+        protected abstract bool CanHandleSpecialItem(Item item);
+
+        public bool AddItemToBackpack(Item item)
+        {
+            return equipment.TryAddItemToBackpack(item);
+        }
+    
+        public bool TrySpendCoins(Item item)
+        {
+            if (equipment._coinsBag >= item.Price)
+            {
+                equipment._coinsBag = equipment._coinsBag - item.Price;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void AddCoins(int coins)
+        {
+            equipment._coinsBag = equipment._coinsBag + coins;
         }
     }
+}
+

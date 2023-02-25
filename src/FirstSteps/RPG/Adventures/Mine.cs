@@ -21,7 +21,7 @@ namespace FirstSteps.RPG.Adventures
 
             var coins = enter % 2 == 0 ? 3 : 1;
             Console.WriteLine($"You gain {coins} coins ");
-            hero.GetEquipment().AddCoins(coins);
+            hero.AddCoins(coins);
             //int coins;
             //if (hero is Dwarf)
             //{

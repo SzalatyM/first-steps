@@ -85,7 +85,7 @@ namespace FirstSteps.RPG
         {
             Random random = new Random();
             int drawCoins = random.Next(1, 25);
-            _hero.GetEquipment().AddCoins(drawCoins);
+            _hero.AddCoins(drawCoins);
             Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
         }
         public static void DisplayGreetings()

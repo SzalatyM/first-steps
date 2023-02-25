@@ -2,21 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using FirstSteps.RPG.Heroes;
 
 namespace FirstSteps.RPG
 {
     public class Equipment
     {
         private List<Item> backPack = new List<Item>();
-        private int maxBackpack = 5;
-        private int _maxWeight = 40;
-        private int _coinsBag;
-        public int Coins { get { return _coinsBag; } }
+        const int maxBackpack = 5;
+        const int _maxWeight = 40;
+        public int _coinsBag;
+        private Hero _hero;
 
-        public bool AddItemToBackpack(Item item)
-        {
-            return TryAddItemToBackpack(item);
-        }
+        
         public bool TryAddItemToBackpack(Item item)
         {
             if (!CanHandleSpecialItem(item))
@@ -33,11 +31,6 @@ namespace FirstSteps.RPG
             {
                 return false;
             }
-        }
-
-        private bool CanHandleSpecialItem(Item item) 
-        {
-            return item is Item;
         }
 
         public string DisplayTotalPrice()
@@ -79,23 +72,7 @@ namespace FirstSteps.RPG
                 totalWeight += item.Weight;
             }
             return totalWeight;
-        }
-
-        public void AddCoins(int coins)
-        {
-            _coinsBag = _coinsBag + coins;
-        }
-        public bool TrySpendCoins(Item item)
-        {
-            if (_coinsBag >= item.Price)
-            {
-                _coinsBag = _coinsBag - item.Price;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        }     
     }
 }
+
