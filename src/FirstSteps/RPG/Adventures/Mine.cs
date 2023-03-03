@@ -17,29 +17,25 @@ namespace FirstSteps.RPG.Adventures
             Display.DefaultText("You entered to the Mine! ");
 
             enter += 1;
-            var coins = 1;
-            if (enter == 13)
+            int coins = 0;           
+            if(enter == 13)
             {
                 return;
             }
             else if(enter % 2 == 0)
             {
-                coins = 3;
-                hero.AddCoins(coins);
-                Console.WriteLine(coins);
-            }
-            else if(enter % 5 == 0)
-            {
-                coins = 3;
-                int result = coins + 2;
-                hero.AddCoins(result);
-                Console.WriteLine(result);
+                coins += 3;
             }
             else
             {
-                hero.AddCoins(coins);
-                Console.WriteLine(coins);
+                coins += 1;
             }
+            if(enter % 5 == 0)
+            {
+                coins += 2;
+            }
+            hero.AddCoins(coins);
+            Console.WriteLine($"You gain: { coins} coins");
 
         }
     }
