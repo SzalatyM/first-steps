@@ -8,22 +8,17 @@ namespace FirstSteps.RPG
 {
     public class Equipment
     {
-        private List<Item> backPack = new List<Item>();
-        const int maxBackpack = 5;
-        const int _maxWeight = 40;
-        public int _coinsBag;
-        private Hero _hero;
+        private List<Item> _backPack = new List<Item>();
+        const int MaxBackpack = 5;
+        const int MaxWeight = 40;
+        private int _coinsBag;
+        public int CoinsBag { get { return _coinsBag; } set { _coinsBag = value; } }
 
-        
         public bool TryAddItemToBackpack(Item item)
         {
-            if (!CanHandleSpecialItem(item))
+            if (_backPack.Count <= MaxBackpack && CountWeight() <= MaxWeight && item.Weight + CountWeight() <= MaxWeight)
             {
-                return false;
-            }
-            else if (backPack.Count <= maxBackpack && CountWeight() <= _maxWeight && item.Weight + CountWeight() <= _maxWeight)
-            {
-                backPack.Add(item);
+                _backPack.Add(item);
                 Console.WriteLine(item);
                 return true;
             }
@@ -37,7 +32,7 @@ namespace FirstSteps.RPG
         {
             int totalPrice = 0;
 
-            foreach (Item item in backPack)
+            foreach (Item item in _backPack)
             {
                 totalPrice += item.Price;
             }
@@ -47,7 +42,7 @@ namespace FirstSteps.RPG
         {
             string totalItems = " ";
 
-            foreach (Item item in backPack)
+            foreach (Item item in _backPack)
             {
                 totalItems += item.Name + " ";
             }
@@ -57,7 +52,7 @@ namespace FirstSteps.RPG
         public string DisplayTotalWeight()
         {
             int totalWeight = 0;
-            foreach (Item item in backPack)
+            foreach (Item item in _backPack)
             {
                 totalWeight += item.Weight;
             }
@@ -67,12 +62,12 @@ namespace FirstSteps.RPG
         private int CountWeight()
         {
             int totalWeight = 0;
-            foreach (Item item in backPack)
+            foreach (Item item in _backPack)
             {
                 totalWeight += item.Weight;
             }
             return totalWeight;
-        }     
+        }
     }
 }
 

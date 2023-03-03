@@ -6,7 +6,7 @@ namespace FirstSteps.RPG.Adventures
 {
     public class Mine
     {
-        private int enter = 0;
+        private int _enter = 0;
         public void Enter(Hero hero)
         {
             if (hero is Dwarf == false)
@@ -17,9 +17,9 @@ namespace FirstSteps.RPG.Adventures
 
             Display.DefaultText("You entered to the Mine! ");
 
-            enter += 1;
+            _enter += 1;
 
-            var coins = enter % 2 == 0 ? 3 : 1;
+            var coins = _enter % 2 == 0 ? 3 : 1;
             Console.WriteLine($"You gain {coins} coins ");
             hero.AddCoins(coins);
             //int coins;

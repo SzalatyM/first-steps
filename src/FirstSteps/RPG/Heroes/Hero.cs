@@ -42,14 +42,23 @@ namespace FirstSteps.RPG.Heroes
 
         public bool AddItemToBackpack(Item item)
         {
-            return equipment.TryAddItemToBackpack(item);
+            if (!CanHandleSpecialItem(item))
+            {
+                Console.WriteLine("You can't hold this item!");
+                return false;
+            }
+            else
+            {
+                equipment.TryAddItemToBackpack(item);
+                return true;
+            }
         }
-    
+
         public bool TrySpendCoins(Item item)
         {
-            if (equipment._coinsBag >= item.Price)
+            if (equipment.CoinsBag >= item.Price)
             {
-                equipment._coinsBag = equipment._coinsBag - item.Price;
+                equipment.CoinsBag = equipment.CoinsBag - item.Price;
                 return true;
             }
             else
@@ -59,7 +68,7 @@ namespace FirstSteps.RPG.Heroes
         }
         public void AddCoins(int coins)
         {
-            equipment._coinsBag = equipment._coinsBag + coins;
+            equipment.CoinsBag = equipment.CoinsBag + coins;
         }
     }
 }
