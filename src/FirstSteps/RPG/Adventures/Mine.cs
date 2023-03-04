@@ -14,40 +14,55 @@ namespace FirstSteps.RPG.Adventures
                 Display.ErrorText("You can't enter! Only Dwarf can enter to the Mine!");
                 return;
             }
-
             Display.DefaultText("You entered to the Mine! ");
 
             enter += 1;
-
-            var coins = enter % 2 == 0 ? 3 : 1;
-            Console.WriteLine($"You gain {coins} coins ");
+            int coins = 0;           
+            if(enter == 13)
+            {
+                return;
+            }
+            else if(enter % 2 == 0)
+            {
+                coins += 3;
+            }
+            else
+            {
+                coins += 1;
+            }
+            if(enter % 5 == 0)
+            {
+                coins += 2;
+            }
             hero.AddCoins(coins);
-            //int coins;
-            //if (hero is Dwarf)
-            //{
+            Console.WriteLine($"You gain: { coins} coins");
 
-            //    AnsiConsole.MarkupLine($"{Emoji.Known.CrossedSwords} [darkblue]You entered to the Mine![/] {Emoji.Known.CrossedSwords}");
-            //    enter += 1;
-            //}
-            //else
-            //{
-            //    AnsiConsole.MarkupLine($"{Emoji.Known.CrossMarkButton} [red]You can't enter! Only Dwarf can enter to the Mine! [/] {Emoji.Known.CrossMarkButton}");
-            //    return;
-            //}
-
-            //Dwarf dwarf = (Dwarf)hero;
-
-            //if (enter % 2 == 0)
-            //{
-            //     coins = 3;
-            //}
-            //else
-            //{
-            //   coins = 1;
-            //}
-            //Console.WriteLine($"You gain {coins} coins ");
-            //dwarf.AddCoins(coins);
         }
     }
+    //int coins;
+    //if (hero is Dwarf)
+    //{
+
+    //    AnsiConsole.MarkupLine($"{Emoji.Known.CrossedSwords} [darkblue]You entered to the Mine![/] {Emoji.Known.CrossedSwords}");
+    //    enter += 1;
+    //}
+    //else
+    //{
+    //    AnsiConsole.MarkupLine($"{Emoji.Known.CrossMarkButton} [red]You can't enter! Only Dwarf can enter to the Mine! [/] {Emoji.Known.CrossMarkButton}");
+    //    return;
+    //}
+
+    //Dwarf dwarf = (Dwarf)hero;
+
+    //if (enter % 2 == 0)
+    //{
+    //     coins = 3;
+    //}
+    //else
+    //{
+    //   coins = 1;
+    //}
+    //Console.WriteLine($"You gain {coins} coins ");
+    //dwarf.AddCoins(coins);
 }
 
