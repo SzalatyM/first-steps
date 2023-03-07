@@ -11,8 +11,6 @@ namespace FirstSteps.RPG
         private List<Item> _backPack = new List<Item>();
         const int MaxBackpack = 5;
         const int MaxWeight = 40;
-        private int _coinsBag;
-        public int CoinsBag { get { return _coinsBag; } set { _coinsBag = value; } }
 
         public bool TryAddItemToBackpack(Item item)
         {
