@@ -7,8 +7,8 @@ namespace FirstSteps.RPG.Heroes
 {
     public abstract class Hero
     {
-        private List<Item> backPack = new List<Item>();
-        private int _coinsBag;
+        public Equipment equipment { get { return _equipment; } }
+        private Equipment _equipment;
         private string _name;
         private Races _race;
         protected int _strength;
@@ -16,11 +16,13 @@ namespace FirstSteps.RPG.Heroes
         protected int _agility;
         protected int _health;
         protected int _damage;
-        private int maxBackpack = 5;
-        private int _maxWeight = 40;
-        public int Coins { get { return _coinsBag; } }
+        private int _coinsBag;
+        public int Coins { get { return _coinsBag; } set { Coins = value; } }
+
+
         public Hero(string name, Races race)
         {
+            _equipment = new Equipment();
             _name = name;
             _race = race;
         }
@@ -37,70 +39,24 @@ namespace FirstSteps.RPG.Heroes
             .AddItem("Agility", _agility, Color.Yellow)
             .AddItem("Health", _health, Color.Red)
             .AddItem("Damage", _damage, Color.Green));
-            Console.WriteLine($"Equipment:\ntotal price: {DisplayTotalPrice()}\ntotal items: {DisplayTotalItems()}\ntotal weight; {DisplayTotalWeight()} ");
+            Console.WriteLine($"Equipment:\ntotal price: {_equipment.DisplayTotalPrice()}\ntotal items: {_equipment.DisplayTotalItems()}\ntotal weight; {_equipment.DisplayTotalWeight()} ");
         }
+        protected abstract bool CanHandleSpecialItem(Item item);
 
         public bool AddItemToBackpack(Item item)
         {
             if (!CanHandleSpecialItem(item))
             {
+                Console.WriteLine("You can't hold this item!");
                 return false;
-            }
-            else if (backPack.Count <= maxBackpack && CountWeight() <= _maxWeight && item.Weight + CountWeight() <= _maxWeight)
-            {
-                backPack.Add(item);
-                return true;
             }
             else
             {
-                return false;
+                equipment.TryAddItemToBackpack(item);
+                return true;
             }
-        }
-        protected abstract bool CanHandleSpecialItem(Item item);
-        private string DisplayTotalPrice()
-        {
-            int totalPrice = 0;
-
-            foreach (Item item in backPack)
-            {
-                totalPrice += item.Price;
-            }
-            return totalPrice.ToString();
-        }
-        private string DisplayTotalItems()
-        {
-            string totalItems = " ";
-
-            foreach (Item item in backPack)
-            {
-                totalItems += item.Name + " ";
-            }
-            return totalItems;
         }
 
-        private string DisplayTotalWeight()
-        {
-            int totalWeight = 0;
-            foreach (Item item in backPack)
-            {
-                totalWeight += item.Weight;
-            }
-            return totalWeight.ToString();
-        }
-
-        private int CountWeight()
-        {
-            int totalWeight = 0;
-            foreach (Item item in backPack)
-            {
-                totalWeight += item.Weight;
-            }
-            return totalWeight;
-        }
-        public void AddCoins(int coins)
-        {
-            _coinsBag = _coinsBag + coins;
-        }
         public bool TrySpendCoins(Item item)
         {
             if (_coinsBag >= item.Price)
@@ -113,5 +69,10 @@ namespace FirstSteps.RPG.Heroes
                 return false;
             }
         }
+        public void AddCoins(int coins)
+        {
+            _coinsBag = _coinsBag + coins;
+        }
     }
 }
+

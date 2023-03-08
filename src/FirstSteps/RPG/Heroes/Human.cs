@@ -3,7 +3,7 @@
 namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
-    {     
+    {
         public Human(string name) : base(name, Races.Human)
         {
             _strength = 3;

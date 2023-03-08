@@ -22,7 +22,7 @@ namespace FirstSteps.RPG.Adventures
                 Console.WriteLine("\nUnfortunately, Empty slot!");
                 return;
             }
-            hero.AddItemToBackpack(item);
+            hero.AddItemToBackpack(item); 
         }
     }
 }
