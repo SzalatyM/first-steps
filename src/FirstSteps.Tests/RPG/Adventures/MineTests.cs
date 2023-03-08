@@ -23,19 +23,24 @@ namespace FirstSteps.Tests.RPG.Adventures
         [InlineData(4, 2)]
         [InlineData(5, 3)]
         [InlineData(8, 4)]
-        [InlineData(9, 5)]
-        [InlineData(12, 6)]
-        public void Dwarf_Should_Gain_Three_Coins_When_Numbers_Are_Odd_Otherwise_Should_Gain_One_Coin(int expectedCoins, int visitCounter)
+        [InlineData(11, 5)]
+        [InlineData(14, 6)]
+        [InlineData(15, 7)]
+        [InlineData(18, 8)]
+        [InlineData(19, 9)]
+        [InlineData(24, 10)]
+        [InlineData(25, 11)]
+        [InlineData(28, 12)]
+        [InlineData(28, 13)]
+        public void Dwarf_Should_Gain_Three_Coins_When_Numbers_Are_Odd_Or_Plus_2_Coins_When_Divide_By_Five_When_Number_Is_13_Gain_0_Coins_Otherwise_Gain_1_Coin(int expectedCoins, int visitCounter)
         {
-
             var mine = new Mine();
-            var dwarf = new Dwarf("Testhero");
+            var dwarf = new Dwarf("TestHeroes");
 
             for (int i = 0; i < visitCounter; i++)
             {
                 mine.Enter(dwarf);
             }
-
             dwarf.Coins.Should().Be(expectedCoins);
         }
     }
