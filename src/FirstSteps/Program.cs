@@ -8,7 +8,6 @@ namespace FirstSteps
     {
         static void Main(string[] args)
         {
-
             AnsiConsole.MarkupLine($"{Emoji.Known.BowAndArrow} [darkgreen]Welcome to the RPG game [/] {Emoji.Known.CrossedSwords}");
 
             Game.CreateHero();

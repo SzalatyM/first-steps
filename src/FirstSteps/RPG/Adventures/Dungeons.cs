@@ -9,8 +9,7 @@ namespace FirstSteps.RPG.Adventures
         private int _manaPoints = 1;
 
         public void Enter(Hero hero)
-        {
-            
+        {           
             if (hero is Undead)
             {
                 Display.DefaultText("You enter to the Dungeon!");
