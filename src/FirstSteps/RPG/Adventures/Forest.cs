@@ -13,7 +13,7 @@ namespace FirstSteps.RPG.Adventures
         {
             if (hero is Elf)
             {
-                Display.DefaultText("You enetered the old forest. What do u want to do?");
+                Display.DefaultText("You enetered the old forest.");
             }
             else
             {
@@ -21,9 +21,10 @@ namespace FirstSteps.RPG.Adventures
                 return;
             }
             Elf elf = (Elf)hero;
-            Console.WriteLine("Type 'heal' to increase your health.");
-            Console.WriteLine("Type 'collect ' to collect a random number of arrows");
-            var userInput = Console.ReadLine();
+            var userInput = AnsiConsole.Prompt(
+                  new SelectionPrompt<string>()
+                      .Title("\nWhat do u want to do? ")
+                      .AddChoices("heal", "collect"));
             switch (userInput)               
             {
                 case "heal":                   
@@ -37,7 +38,7 @@ namespace FirstSteps.RPG.Adventures
                         collectedArrows.Add(new Arrow());
                     }
                     elf.CollectArrows(collectedArrows);
-                    Console.WriteLine($" You gain:  { arrowsNumber} arrows!");
+                    Console.WriteLine($"You gain: { arrowsNumber} arrows!");
                     break;
                 default:
                     Console.WriteLine("Wrong type!");

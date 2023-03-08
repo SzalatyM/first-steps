@@ -1,4 +1,6 @@
-﻿namespace FirstSteps.RPG.Items
+﻿using FirstSteps.RPG.Tools;
+
+namespace FirstSteps.RPG.Items
 {
     public class Item
     {
@@ -14,7 +16,7 @@
         }
         public override string ToString()
         {
-            return "Item: " + Name + " price: " + Price + " weight " + Weight;      
+            return " Item: " + Name + " price: " + Price + " weight " + Weight;
         }
     }
 }

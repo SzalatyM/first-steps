@@ -21,7 +21,7 @@ namespace FirstSteps.RPG.Adventures
         {           
             string userInput = AnsiConsole.Prompt(
                   new SelectionPrompt<string>()
-                      .Title("\nWhich item u want to buy?: ")
+                      .Title("\nWhich item u want to buy? ")
                       .AddChoices("MagicAxe", "MagicBow", "MagicSkull", "MagicSword"));
 
             var item = _inventory.FirstOrDefault(item => item.Name == userInput);

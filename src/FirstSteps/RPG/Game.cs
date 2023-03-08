@@ -11,11 +11,11 @@ namespace FirstSteps.RPG
 {
     public static class Game
     {
-        private static Mine mine = new Mine();
-        private static Forest forest = new Forest();
-        private static Dungeons dungeons = new Dungeons();
-        private static Village village = new Village();
-        private static Inventory inventory = new Inventory();
+        private static Mine _mine = new Mine();
+        private static Forest _forest = new Forest();
+        private static Dungeons _dungeons = new Dungeons();
+        private static Village _village = new Village();
+        private static Inventory _inventory = new Inventory();
         private static Hero _hero;
         public static void CreateHero()
         {
@@ -45,23 +45,20 @@ namespace FirstSteps.RPG
                     Treasure();
                     break;
                 case "inventory":
-                    inventory.ShowItems(_hero);
+                    _inventory.ShowItems(_hero);
                     break;
                 case "forest":
-                    forest.Enter(_hero);
+                    _forest.Enter(_hero);
                     break;
                 case "dungeons":
-                    dungeons.Enter(_hero);
+                    _dungeons.Enter(_hero);
                     break;
                 case "mine":
-                    mine.Enter(_hero);
+                    _mine.Enter(_hero);
                     break;
                 case "village":
-                    village.Enter(_hero);
+                    _village.Enter(_hero);
                     break;
-                //case "x":
-                //    Console.WriteLine(command);
-
                 default:
                     Display.WarningText($"Command {command} not recognized");
                     break;
