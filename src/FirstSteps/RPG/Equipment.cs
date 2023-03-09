@@ -1,8 +1,6 @@
 ﻿using FirstSteps.RPG.Items;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using FirstSteps.RPG.Heroes;
 
 namespace FirstSteps.RPG
 {
@@ -68,4 +66,3 @@ namespace FirstSteps.RPG
         }
     }
 }
-

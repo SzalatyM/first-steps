@@ -25,11 +25,11 @@ namespace FirstSteps.RPG.Adventures
                   new SelectionPrompt<string>()
                       .Title("\nWhat do u want to do? ")
                       .AddChoices("heal", "collect"));
-            switch (userInput)               
+            switch (userInput)
             {
-                case "heal":                   
+                case "heal":
                     elf.Heal();
-               break;
+                    break;
                 case "collect":
                     int arrowsNumber = new Random().Next(1, 10);
                     List<Arrow> collectedArrows = new List<Arrow>();
@@ -38,7 +38,7 @@ namespace FirstSteps.RPG.Adventures
                         collectedArrows.Add(new Arrow());
                     }
                     elf.CollectArrows(collectedArrows);
-                    Console.WriteLine($"You gain: { arrowsNumber} arrows!");
+                    Console.WriteLine($"You gain: {arrowsNumber} arrows!");
                     break;
                 default:
                     Console.WriteLine("Wrong type!");

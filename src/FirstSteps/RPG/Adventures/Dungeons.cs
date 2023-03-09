@@ -9,7 +9,7 @@ namespace FirstSteps.RPG.Adventures
         private int _manaPoints = 1;
 
         public void Enter(Hero hero)
-        {           
+        {
             if (hero is Undead)
             {
                 Display.DefaultText("You enter to the Dungeon!");
@@ -20,10 +20,10 @@ namespace FirstSteps.RPG.Adventures
                 return;
             }
             Undead undead = (Undead)hero;
-            Console.WriteLine($"You gain: { _manaPoints} mana points");
+            Console.WriteLine($"You gain: {_manaPoints} mana points");
             undead.ManaIncreases(_manaPoints);
-            _manaPoints = _manaPoints * 2;
+            _manaPoints *= 2;
             Console.WriteLine("____________________________________");
-        }       
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace FirstSteps.RPG.Adventures
             new MagicSword()
         };
         public void ShowItems(Hero _hero)
-        {           
+        {
             string userInput = AnsiConsole.Prompt(
                   new SelectionPrompt<string>()
                       .Title("\nWhich item u want to buy? ")
@@ -32,7 +32,7 @@ namespace FirstSteps.RPG.Adventures
             }
             else if (_hero.TrySpendCoins(item))
             {
-                 Display.ItemText($"You bought a {userInput} ");
+                Display.ItemText($"You bought a {userInput} ");
                 _hero.AddItemToBackpack(item);
                 _inventory.Remove(item);
             }

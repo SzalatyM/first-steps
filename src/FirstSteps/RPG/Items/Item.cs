@@ -1,6 +1,4 @@
-﻿using FirstSteps.RPG.Tools;
-
-namespace FirstSteps.RPG.Items
+﻿namespace FirstSteps.RPG.Items
 {
     public class Item
     {
@@ -20,4 +18,3 @@ namespace FirstSteps.RPG.Items
         }
     }
 }
-

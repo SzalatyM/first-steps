@@ -1,5 +1,4 @@
 ﻿using FirstSteps.RPG.Items;
-using System;
 
 namespace FirstSteps.RPG.Heroes
 {

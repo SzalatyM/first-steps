@@ -3,9 +3,9 @@
 namespace FirstSteps.RPG.Heroes
 {
     public class HeroesCreator
-    {       
+    {
         public static Hero Create(string name, Races race)
-        {        
+        {
             if (race == Races.Human)
             {
                 return new Human(name);
@@ -28,5 +28,5 @@ namespace FirstSteps.RPG.Heroes
                 return null;
             }
         }
-    }  
+    }
 }

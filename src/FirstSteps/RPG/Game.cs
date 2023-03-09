@@ -1,8 +1,5 @@
 using System;
 using FirstSteps.RPG.Heroes;
-using System.Collections.Generic;
-using FirstSteps.RPG.Items;
-using System.Linq;
 using FirstSteps.RPG.Adventures;
 using Spectre.Console;
 using FirstSteps.RPG.Tools;
@@ -69,7 +66,7 @@ namespace FirstSteps.RPG
             _hero.DisplayStats();
         }
 
-        private static void DisplayAllRaces()
+        public static void DisplayAllRaces()
         {
             var races = Enum.GetNames(typeof(Races));
             for (int i = 0; i < races.Length; i++)
@@ -87,9 +84,7 @@ namespace FirstSteps.RPG
         }
         public static void DisplayGreetings()
         {
-            IGreeting greeting = _hero as IGreeting;
-            Console.WriteLine(greeting != null ? greeting.Greed() : "\nBest choice. You play the strongest class in the game\n ");
+            Console.WriteLine(_hero is IGreeting greeting ? greeting.Greed() : "\nBest choice. You play the strongest class in the game\n ");
         }
     }
-
 }

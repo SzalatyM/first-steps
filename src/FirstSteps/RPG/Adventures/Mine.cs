@@ -1,7 +1,7 @@
 ﻿using FirstSteps.RPG.Heroes;
 using FirstSteps.RPG.Tools;
-using Spectre.Console;
 using System;
+
 namespace FirstSteps.RPG.Adventures
 {
     public class Mine
@@ -17,12 +17,12 @@ namespace FirstSteps.RPG.Adventures
             Display.DefaultText("You entered to the Mine! ");
 
             _enter += 1;
-            int coins = 0;           
-            if(_enter == 13)
+            int coins = 0;
+            if (_enter == 13)
             {
                 return;
             }
-            else if(_enter % 2 == 0)
+            else if (_enter % 2 == 0)
             {
                 coins += 3;
             }
@@ -30,13 +30,12 @@ namespace FirstSteps.RPG.Adventures
             {
                 coins += 1;
             }
-            if(_enter % 5 == 0)
+            if (_enter % 5 == 0)
             {
                 coins += 2;
             }
             hero.AddCoins(coins);
-            Console.WriteLine($"You gain: { coins} coins");
+            Console.WriteLine($"You gain: {coins} coins");
         }
     }
 }
-
