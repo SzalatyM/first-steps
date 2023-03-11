@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using FirstSteps.RPG.Items;
 using Spectre.Console;
 
@@ -58,23 +57,22 @@ namespace FirstSteps.RPG.Heroes
 
         public bool TrySpendCoins(Item item)
         {
-            if (_coinsBag >= item.Price)
+            if (CanHandleSpecialItem(item))
             {
-                _coinsBag = _coinsBag - item.Price;
-
-                if (CanHandleSpecialItem(item))
+                if (_coinsBag >= item.Price)
                 {
-                    return true;
+                    _coinsBag = _coinsBag - item.Price;
                 }
                 else
                 {
-                    throw new HandlingItemException();                  
+                    return false;
                 }
+                return true;
             }
             else
             {
-                return false;
-            }
+                throw new HandlingItemException();
+            }                     
         }
         public void AddCoins(int coins)
         {
@@ -82,4 +80,3 @@ namespace FirstSteps.RPG.Heroes
         }
     }
 }
-

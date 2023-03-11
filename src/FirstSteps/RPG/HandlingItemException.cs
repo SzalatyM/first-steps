@@ -1,7 +1,4 @@
-﻿using Spectre.Console;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace FirstSteps.RPG
 {
@@ -12,15 +9,15 @@ namespace FirstSteps.RPG
         {
             
         }
-       public void MetodaWyjatku()
+       public void TrySpendCoins()
         {
             throw new HandlingItemException();
         }
-        public void MetodaCatch()
+        public void ShowItems()
         {
             try
             {
-                MetodaWyjatku();
+                TrySpendCoins();
             }
             catch(HandlingItemException ex)
             {
