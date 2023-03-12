@@ -17,7 +17,7 @@ namespace FirstSteps.RPG.Adventures
             new MagicSkull(),
             new MagicSword()
         };
-        public void ShowItems(Hero _hero)
+        public void DisplayAllItems(Hero _hero)
         {
             string userInput = AnsiConsole.Prompt(
                   new SelectionPrompt<string>()

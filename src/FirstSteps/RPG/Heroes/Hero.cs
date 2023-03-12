@@ -16,8 +16,6 @@ namespace FirstSteps.RPG.Heroes
         protected int _damage;
         private int _coinsBag;
         public int Coins { get { return _coinsBag; } set { Coins = value; } }
-        private Item _item;
-        public Item Item { get { return _item; } set { Item = value; } }
 
         public Hero(string name, Races race)
         {

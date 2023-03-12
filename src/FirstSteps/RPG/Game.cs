@@ -42,7 +42,7 @@ namespace FirstSteps.RPG
                     Treasure();
                     break;
                 case "inventory":
-                    _inventory.ShowItems(_hero);
+                    _inventory.DisplayAllItems(_hero);
                     break;
                 case "forest":
                     _forest.Enter(_hero);
@@ -77,8 +77,7 @@ namespace FirstSteps.RPG
 
         private static void Treasure()
         {
-            Random random = new Random();
-            int drawCoins = random.Next(1, 25);
+            var drawCoins = new Random().Next(1, 25);
             _hero.AddCoins(drawCoins);
             Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
         }
