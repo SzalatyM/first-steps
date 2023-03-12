@@ -2,16 +2,16 @@
 
 namespace FirstSteps.RPG
 {
-    public class HandlingItemException : Exception
+    public class HeroCantHoldItemException : Exception
     {
         const string text = "You can't hold this item";
-        public HandlingItemException() : base(text)
+        public HeroCantHoldItemException() : base(text)
         {
             
         }
        public void TrySpendCoins()
         {
-            throw new HandlingItemException();
+            throw new HeroCantHoldItemException();
         }
         public void ShowItems()
         {
@@ -19,7 +19,7 @@ namespace FirstSteps.RPG
             {
                 TrySpendCoins();
             }
-            catch(HandlingItemException ex)
+            catch(HeroCantHoldItemException ex)
             {
                 Console.WriteLine(ex.Message);
             }

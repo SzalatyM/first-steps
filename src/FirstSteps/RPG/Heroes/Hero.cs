@@ -57,23 +57,17 @@ namespace FirstSteps.RPG.Heroes
 
         public bool TrySpendCoins(Item item)
         {
-            if (CanHandleSpecialItem(item))
+            if (!CanHandleSpecialItem(item))
             {
-                if (_coinsBag >= item.Price)
-                {
-                    _coinsBag = _coinsBag - item.Price;
-                }
-                else
-                {
-                    return false;
-                }
+                throw new HeroCantHoldItemException();
+            }
+            if (_coinsBag >= item.Price)
+            {
+                _coinsBag = _coinsBag - item.Price;
                 return true;
             }
-            else
-            {
-                throw new HandlingItemException();
-            }                     
-        }
+            return false;
+        }    
         public void AddCoins(int coins)
         {
             _coinsBag = _coinsBag + coins;

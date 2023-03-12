@@ -43,7 +43,7 @@ namespace FirstSteps.RPG.Adventures
                     Console.WriteLine($"You dont have a coins to buy a {userInput} ");
                 }
             }
-            catch (HandlingItemException ex) 
+            catch (HeroCantHoldItemException ex) 
             {
                 Console.WriteLine(ex.Message);
             }
