@@ -1,5 +1,7 @@
 ﻿using FirstSteps.RPG.Heroes;
 using FirstSteps.RPG.Items;
+using FirstSteps.RPG.Tools;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,26 +17,24 @@ namespace FirstSteps.RPG.Adventures
             new MagicSkull(),
             new MagicSword()
         };
-        public void ShowItems(Hero _hero)
+        public void DisplayAllItems(Hero _hero)
         {
-            foreach (var inventory in _inventory)
-            {
-                Console.WriteLine();
-                Console.WriteLine($"Name: {inventory.Name}\nPrice: {inventory.Price} coins");
-                Console.WriteLine();
-            }
-            Console.WriteLine("Which item u want to buy?\nEnter a name to select");
-            string userInput = Console.ReadLine();
+            string userInput = AnsiConsole.Prompt(
+                  new SelectionPrompt<string>()
+                      .Title("\nWhich item u want to buy? ")
+                      .AddChoices("MagicAxe", "MagicBow", "MagicSkull", "MagicSword"));
+
             var item = _inventory.FirstOrDefault(item => item.Name == userInput);
+
             if (item == null)
             {
                 Console.WriteLine("There is no such item to buy!");
             }
             else if (_hero.TrySpendCoins(item))
             {
+                Display.ItemText($"You bought a {userInput} ");
                 _hero.AddItemToBackpack(item);
                 _inventory.Remove(item);
-                Console.WriteLine($"You bought a {userInput} ");
             }
             else
             {

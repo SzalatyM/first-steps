@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using FirstSteps.RPG.Items;
 using Spectre.Console;
 
@@ -7,7 +6,6 @@ namespace FirstSteps.RPG.Heroes
 {
     public abstract class Hero
     {
-        public Equipment equipment { get { return _equipment; } }
         private Equipment _equipment;
         private string _name;
         private Races _race;
@@ -18,7 +16,6 @@ namespace FirstSteps.RPG.Heroes
         protected int _damage;
         private int _coinsBag;
         public int Coins { get { return _coinsBag; } set { Coins = value; } }
-
 
         public Hero(string name, Races race)
         {
@@ -52,7 +49,7 @@ namespace FirstSteps.RPG.Heroes
             }
             else
             {
-                equipment.TryAddItemToBackpack(item);
+                _equipment.TryAddItemToBackpack(item);
                 return true;
             }
         }
@@ -61,7 +58,7 @@ namespace FirstSteps.RPG.Heroes
         {
             if (_coinsBag >= item.Price)
             {
-                _coinsBag = _coinsBag - item.Price;
+                _coinsBag -= item.Price;
                 return true;
             }
             else
@@ -71,8 +68,7 @@ namespace FirstSteps.RPG.Heroes
         }
         public void AddCoins(int coins)
         {
-            _coinsBag = _coinsBag + coins;
+            _coinsBag += coins;
         }
     }
 }
-

@@ -29,11 +29,11 @@ namespace FirstSteps.RPG.Heroes
         public void Heal()
         {
             _health += _health + 10;
-            Console.WriteLine("U gain 10hp!"); 
+            Console.WriteLine("U gain 10hp!");
         }
 
         public void CollectArrows(List<Arrow> arrows)
-        {            
+        {
             _arrowsBag.AddRange(arrows);
         }
     }

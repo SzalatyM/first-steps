@@ -4,7 +4,7 @@
     {
         public MagicSkull() : base("MagicSkull", 20, 16)
         {
-          
-        }       
+
+        }
     }
 }
