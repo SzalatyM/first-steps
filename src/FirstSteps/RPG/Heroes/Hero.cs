@@ -44,7 +44,6 @@ namespace FirstSteps.RPG.Heroes
         {
             if (!CanHandleSpecialItem(item))
             {
-                Console.WriteLine("You can't hold this item!");
                 return false;
             }
             else
@@ -56,16 +55,17 @@ namespace FirstSteps.RPG.Heroes
 
         public bool TrySpendCoins(Item item)
         {
+            if (!CanHandleSpecialItem(item))
+            {
+                throw new HeroCantHoldItemException();
+            }
             if (_coinsBag >= item.Price)
             {
                 _coinsBag -= item.Price;
                 return true;
             }
-            else
-            {
-                return false;
-            }
-        }
+            return false;
+        }    
         public void AddCoins(int coins)
         {
             _coinsBag += coins;

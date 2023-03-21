@@ -16,30 +16,40 @@ namespace FirstSteps.RPG.Adventures
             new MagicBow(),
             new MagicSkull(),
             new MagicSword()
-        };
+        };       
         public void DisplayAllItems(Hero _hero)
         {
-            string userInput = AnsiConsole.Prompt(
-                  new SelectionPrompt<string>()
-                      .Title("\nWhich item u want to buy? ")
-                      .AddChoices("MagicAxe", "MagicBow", "MagicSkull", "MagicSword"));
-
-            var item = _inventory.FirstOrDefault(item => item.Name == userInput);
-
-            if (item == null)
+            try
             {
-                Console.WriteLine("There is no such item to buy!");
+                foreach (var inventory in _inventory)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"Name: {inventory.Name}\nPrice: {inventory.Price} coins");
+                    Console.WriteLine();
+                }
+                Console.WriteLine("Which item u want to buy?\nEnter a name to select");
+                string userInput = Console.ReadLine();
+                var item = _inventory.FirstOrDefault(item => item.Name == userInput);
+                if (item == null)
+                {
+                    Console.WriteLine("There is no such item to buy!");
+                }
+                else if (_hero.TrySpendCoins(item))
+                {
+                    _hero.AddItemToBackpack(item);
+                    _inventory.Remove(item);
+                    Console.WriteLine($"You bought a {userInput} ");
+                }
+                else
+                {
+                    Console.WriteLine($"You dont have a coins to buy a {userInput} ");
+                }
             }
-            else if (_hero.TrySpendCoins(item))
+            catch (HeroCantHoldItemException ex) 
             {
-                Display.ItemText($"You bought a {userInput} ");
-                _hero.AddItemToBackpack(item);
-                _inventory.Remove(item);
+                Console.WriteLine(ex.Message);
             }
-            else
-            {
-                Console.WriteLine($"You dont have a coins to buy a {userInput} ");
-            }
+            
         }
     }
 }
