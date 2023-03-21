@@ -1,5 +1,4 @@
 ﻿using FirstSteps.RPG.Items;
-
 namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
@@ -19,4 +18,3 @@ namespace FirstSteps.RPG.Heroes
         }
     }
 }
-

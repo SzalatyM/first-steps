@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 namespace FirstSteps.RPG.Items
 {
     class OldChest
     {
-        public static List<Item> itemsForHuman = new List<Item>()
+        private static List<Item> _itemsForHuman = new List<Item>()
         {
             new Pitchfork(),
             new Knife()
@@ -14,14 +13,14 @@ namespace FirstSteps.RPG.Items
 
         public static Item Open()
         {
-            var random = new Random().Next(0,5);
-            if (random >= itemsForHuman.Count())
+            var random = new Random().Next(0, 5);
+            if (random >= _itemsForHuman.Count())
             {
                 return null;
             }
             else
             {
-                return itemsForHuman[random];
+                return _itemsForHuman[random];
             }
         }
     }

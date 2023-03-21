@@ -1,8 +1,5 @@
 using System;
 using FirstSteps.RPG.Heroes;
-using System.Collections.Generic;
-using FirstSteps.RPG.Items;
-using System.Linq;
 using FirstSteps.RPG.Adventures;
 using Spectre.Console;
 using FirstSteps.RPG.Tools;
@@ -11,11 +8,11 @@ namespace FirstSteps.RPG
 {
     public static class Game
     {
-        private static Mine mine = new Mine();
-        private static Forest forest = new Forest();
-        private static Dungeons dungeons = new Dungeons();
-        private static Village village = new Village();
-        private static Inventory inventory = new Inventory();
+        private static Mine _mine = new Mine();
+        private static Forest _forest = new Forest();
+        private static Dungeons _dungeons = new Dungeons();
+        private static Village _village = new Village();
+        private static Inventory _inventory = new Inventory();
         private static Hero _hero;
         public static void CreateHero()
         {
@@ -45,23 +42,20 @@ namespace FirstSteps.RPG
                     Treasure();
                     break;
                 case "inventory":
-                    inventory.ShowItems(_hero);
+                    _inventory.DisplayAllItems(_hero);
                     break;
                 case "forest":
-                    forest.Enter(_hero);
+                    _forest.Enter(_hero);
                     break;
                 case "dungeons":
-                    dungeons.Enter(_hero);
+                    _dungeons.Enter(_hero);
                     break;
                 case "mine":
-                    mine.Enter(_hero);
+                    _mine.Enter(_hero);
                     break;
                 case "village":
-                    village.Enter(_hero);
+                    _village.Enter(_hero);
                     break;
-                //case "x":
-                //    Console.WriteLine(command);
-
                 default:
                     Display.WarningText($"Command {command} not recognized");
                     break;
@@ -72,7 +66,7 @@ namespace FirstSteps.RPG
             _hero.DisplayStats();
         }
 
-        private static void DisplayAllRaces()
+        public static void DisplayAllRaces()
         {
             var races = Enum.GetNames(typeof(Races));
             for (int i = 0; i < races.Length; i++)
@@ -83,16 +77,13 @@ namespace FirstSteps.RPG
 
         private static void Treasure()
         {
-            Random random = new Random();
-            int drawCoins = random.Next(1, 25);
+            var drawCoins = new Random().Next(1, 25);
             _hero.AddCoins(drawCoins);
             Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
         }
         public static void DisplayGreetings()
         {
-            IGreeting greeting = _hero as IGreeting;
-            Console.WriteLine(greeting != null ? greeting.Greed() : "\nBest choice. You play the strongest class in the game\n ");
+            Console.WriteLine(_hero is IGreeting greeting ? greeting.Greed() : "\nBest choice. You play the strongest class in the game\n ");
         }
     }
-
 }

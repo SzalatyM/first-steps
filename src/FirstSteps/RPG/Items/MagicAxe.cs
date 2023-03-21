@@ -2,9 +2,9 @@
 {
     public class MagicAxe : Item
     {
-        public MagicAxe() :base("MagicAxe", 15, 17) 
+        public MagicAxe() : base("MagicAxe", 15, 17)
         {
-            
+
         }
     }
 }

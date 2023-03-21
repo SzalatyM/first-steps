@@ -22,9 +22,9 @@ namespace FirstSteps.RPG.Heroes
 
         public void ManaIncreases(int mana)
         {
-            ManaPoints = ManaPoints + mana;
+            ManaPoints += mana;
         }
-        
+
         public string Greed()
         {
             return "\nYou are playing as a Undeed\n";

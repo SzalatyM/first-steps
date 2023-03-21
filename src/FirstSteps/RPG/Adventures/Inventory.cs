@@ -1,5 +1,7 @@
 ﻿using FirstSteps.RPG.Heroes;
 using FirstSteps.RPG.Items;
+using FirstSteps.RPG.Tools;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,7 @@ namespace FirstSteps.RPG.Adventures
             new MagicSkull(),
             new MagicSword()
         };       
-        public void ShowItems(Hero _hero)
+        public void DisplayAllItems(Hero _hero)
         {
             try
             {

@@ -15,5 +15,9 @@ namespace FirstSteps.RPG.Tools
         {
             AnsiConsole.MarkupLine($"[red]{errorText}[/]");
         }       
+        public static void ItemText(string itemText)
+        {
+            AnsiConsole.MarkupLine($"[blue]{itemText}[/]");
+        }
     }
 }
