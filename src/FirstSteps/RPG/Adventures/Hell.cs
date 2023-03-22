@@ -1,5 +1,7 @@
 ﻿using FirstSteps.RPG.Heroes;
+using FirstSteps.RPG.Items;
 using FirstSteps.RPG.Tools;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,31 +9,41 @@ using System.Threading.Channels;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Hell 
+    public  class Hell
     {
-          
-        public void FightWithboss(Hero hero)
+        private  Hero _hero;
+
+        public void FightWithboss()
         {
-            Boss boss = new Boss("Diablo", 30, 5, 7);
+            Boss boss = new Boss("Diablo", 40, 5, 7);
             Display.DefaultText($"You entered to the Hell!\nIf u wanna fight with {boss.Name} press 'f' otherwise go back to previous menu ");
             Display.ErrorText("Boss stats:");
             Display.ItemText($"\n Health = {boss.Health}\n Damage = {boss.Damage}\n Strenght = {boss.Strength}");
-            var userInput = Console.ReadLine();
 
-            if(userInput == "f")
+
+            Console.WriteLine("Press 'z' to hit or run away press 'y'");
+            while (true)
             {
-                Console.WriteLine("Let's Fight!");
-                var result = boss.Health - hero.Damage;
-                Console.WriteLine(result);
-                Console.WriteLine(boss.Health);
+                var userInput = Console.ReadLine();
+                if (userInput == "z")
+                {
+                    Console.WriteLine("u hit the boss ");
+                    
+     
+                   
+                }
+                else if (userInput == "y")
+                {
+                    Console.WriteLine("u run ");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("xDDD");
+                }
             }
-            else
-            {
-                Console.WriteLine("Wrong type");
-                
-            }
- 
         }
     }
-    
 }
+            
+        
