@@ -58,7 +58,7 @@ namespace FirstSteps.RPG
                     _village.Enter(_hero);
                     break;
                 case "Hell":
-                    _hell.FightWithboss();
+                    _hell.FightWithboss(_hero);
                     break;
                 default:
                     Display.WarningText($"Command {command} not recognized");

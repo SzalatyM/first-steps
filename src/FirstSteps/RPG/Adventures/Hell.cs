@@ -11,9 +11,8 @@ namespace FirstSteps.RPG.Adventures
 {
     public  class Hell
     {
-        private  Hero _hero;
-
-        public void FightWithboss()
+        HeroesDamage heroes = new HeroesDamage();
+        public void FightWithboss(Hero hero)
         {
             Boss boss = new Boss("Diablo", 40, 5, 7);
             Display.DefaultText($"You entered to the Hell!\nIf u wanna fight with {boss.Name} press 'f' otherwise go back to previous menu ");
@@ -28,7 +27,7 @@ namespace FirstSteps.RPG.Adventures
                 if (userInput == "z")
                 {
                     Console.WriteLine("u hit the boss ");
-                    
+                    heroes.Damage(hero, boss);
      
                    
                 }
