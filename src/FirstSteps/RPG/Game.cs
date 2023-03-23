@@ -57,7 +57,7 @@ namespace FirstSteps.RPG
                 case "village":
                     _village.Enter(_hero);
                     break;
-                case "Hell":
+                case "hell":
                     _hell.FightWithboss(_hero);
                     break;
                 default:

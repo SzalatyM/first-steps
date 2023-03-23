@@ -22,5 +22,9 @@ namespace FirstSteps.RPG.Heroes
         {
             return "\nYou are playing as a Dwarf\n";
         }
+        public override int DealDamage()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

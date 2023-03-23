@@ -36,5 +36,10 @@ namespace FirstSteps.RPG.Heroes
         {
             _arrowsBag.AddRange(arrows);
         }
+
+        public override int DealDamage()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

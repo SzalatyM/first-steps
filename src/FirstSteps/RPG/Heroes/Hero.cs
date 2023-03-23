@@ -4,9 +4,10 @@ using Spectre.Console;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public abstract class Hero
+    public abstract class Hero : IHeroesDamage
     {
         private Equipment _equipment;
+        public Equipment equipment { get { return _equipment; } }
         private string _name;
         private Races _race;
         protected int _strength;
@@ -75,5 +76,7 @@ namespace FirstSteps.RPG.Heroes
         {
             _coinsBag += coins;
         }
+
+        public abstract int DealDamage();
     }
 }

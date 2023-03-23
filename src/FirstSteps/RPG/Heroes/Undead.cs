@@ -29,5 +29,10 @@ namespace FirstSteps.RPG.Heroes
         {
             return "\nYou are playing as a Undeed\n";
         }
+
+        public override int DealDamage()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
