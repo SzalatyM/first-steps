@@ -1,6 +1,8 @@
 ﻿using FirstSteps.RPG.Items;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace FirstSteps.RPG.Heroes
 {
     public class Elf : Hero, IGreeting
@@ -39,7 +41,14 @@ namespace FirstSteps.RPG.Heroes
 
         public override int DealDamage()
         {
-            throw new NotImplementedException();
+            Item item = equipment.backpack.FirstOrDefault(
+                 item => item.Name == "MagicBow");
+
+            if (item == null)
+            {
+                return _damage + _agility;
+            }
+            return _agility * 4;
         }
     }
 }

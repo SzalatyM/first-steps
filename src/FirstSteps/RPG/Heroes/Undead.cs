@@ -1,4 +1,5 @@
 ﻿using FirstSteps.RPG.Items;
+using System.Linq;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -32,7 +33,14 @@ namespace FirstSteps.RPG.Heroes
 
         public override int DealDamage()
         {
-            throw new System.NotImplementedException();
+            Item item = equipment.backpack.FirstOrDefault(
+                             item => item.Name == "MagicSkull");
+
+            if (item == null)
+            {
+                return _damage + _intelligence;
+            }
+            return _damage + _intelligence * 2;
         }
     }
 }
