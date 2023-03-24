@@ -1,12 +1,8 @@
 ﻿using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG.Items;
 using FirstSteps.RPG.Tools;
-using Spectre.Console;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
+using System.ComponentModel.Design;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace FirstSteps.RPG.Adventures
 {
@@ -16,34 +12,59 @@ namespace FirstSteps.RPG.Adventures
         {
             Boss boss = new Boss("Diablo")
             {
-                Health = 40,
-                Damage = 7,
-                Strength = 5,
-
+                Health = 55,
+                Damage = 6,
+                Strength = 4,
             };
             Display.DefaultText($"You entered to the Hell!\nIf u wanna fight with {boss._name} press 'f' otherwise go back to previous menu ");
             Display.ErrorText("Boss stats:");
             Display.ItemText($"\n Health = {boss.Health}\n Damage = {boss.Damage}\n Strenght = {boss.Strength}");
 
+            Display.WarningText("Press 'hit' to try to  hit a boss or run away press 'run'");
 
-            Console.WriteLine("Press 'z' to hit or run away press 'y'");
-            while (boss.Health >= 0)
+            try
             {
-                var userInput = Console.ReadLine();
-                if (userInput == "z")
+
+                while (boss.Health >= 0)
                 {
-                    Console.WriteLine("u hit the boss ");
-                    boss.Health -= hero.DealDamage();
-                    Console.WriteLine(boss.Health);
+                    var userInput = Console.ReadLine();
+                    switch (userInput)
+                    {
+                        case "hit":
+                            var number = new Random().Next(1, 4);
+                            Console.WriteLine($"You rolled {number}");
+                            if (number >= 1)
+                            {
+                                boss.Health -= hero.DealDamage();
+                                Display.ErrorText($"You deal  {hero.DealDamage()} to boss!");
+                                Display.DefaultText($"Actually health boss: {boss.Health}");
+                            }
+                            else
+                            {
+                                hero.Health -= boss.DealDamage();
+                                Display.ErrorText($"Boss deal {boss.Damage} to Hero!");
+                                Display.DefaultText($"you have actually {hero.Health}");
+                            }
+                            break;
+                        case "run":
+                            Display.ErrorText("You ran away");
+                            return;
+                    }
+                    if (hero.Health <= 0)
+                    {
+                        Display.ErrorText("You died! Game over");
+                        break;
+                    }
                 }
-                if (userInput == "y")
-                {
-                    Console.WriteLine("You ran away");
-                }
+
+                Display.ItemText("Boss died! You receive a 100 coins");
+                hero.AddCoins(100);
             }
-            Console.WriteLine("Boss died! You receive a 100 coins");
-            hero.AddCoins(100);      
+            catch (Exception ex)
+            {
+                Console.WriteLine("Wrong type");
+            }
         }
+
     }
 }
-

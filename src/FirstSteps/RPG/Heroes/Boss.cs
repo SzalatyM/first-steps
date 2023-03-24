@@ -1,10 +1,11 @@
-﻿using System;
+﻿using FirstSteps.RPG.Items;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public class Boss
+    public class Boss : IHeroesDamage
     {
         public readonly string _name;
         public int Health;
@@ -14,6 +15,11 @@ namespace FirstSteps.RPG.Heroes
         public Boss(string name)
         {
             _name = name;         
+        }
+
+        public int DealDamage()
+        {
+            return Damage + Strength;
         }
     }
 }

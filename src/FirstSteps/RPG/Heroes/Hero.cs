@@ -11,15 +11,11 @@ namespace FirstSteps.RPG.Heroes
         private string _name;
         private Races _race;
         protected int _strength;
-        public int Strength { get { return _strength; } }
         protected int _intelligence;
-        public int Intelligence { get { return _intelligence; } }
         protected int _agility;
-        public int Agility { get { return _agility; } }
-        protected int _health;
-        public int Health { get { return _health; } }
+        protected int _health { get; set; }
+        public int Health { get { return _health; }  set { Health = value; } }
         protected int _damage;
-        public int Damage { get { return _damage; } }
         private int _coinsBag;
         public int Coins { get { return _coinsBag; } set { Coins = value; } }
 
