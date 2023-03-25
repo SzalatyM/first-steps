@@ -4,17 +4,16 @@ using Spectre.Console;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public abstract class Hero : IHeroesDamage
+    public abstract class Hero : IAttacker
     {
-        private Equipment _equipment;
-        public Equipment equipment { get { return _equipment; } }
+        protected Equipment _equipment;
         private string _name;
         private Races _race;
         protected int _strength;
         protected int _intelligence;
         protected int _agility;
         protected int _health { get; set; }
-        public int Health { get { return _health; }  set { Health = value; } }
+        public int Health { get { return _health; } set { _health = value; } }
         protected int _damage;
         private int _coinsBag;
         public int Coins { get { return _coinsBag; } set { Coins = value; } }
@@ -67,12 +66,17 @@ namespace FirstSteps.RPG.Heroes
                 return true;
             }
             return false;
-        }    
+        }
         public void AddCoins(int coins)
         {
             _coinsBag += coins;
         }
 
         public abstract int DealDamage();
+
+        public int TakeDamage(int damage)
+        {
+           return _health -= damage;            
+        }
     }
 }

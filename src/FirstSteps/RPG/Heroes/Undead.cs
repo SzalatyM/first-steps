@@ -33,14 +33,8 @@ namespace FirstSteps.RPG.Heroes
 
         public override int DealDamage()
         {
-            Item item = equipment.backpack.FirstOrDefault(
-                             item => item.Name == "MagicSkull");
-
-            if (item == null)
-            {
-                return _damage + _intelligence;
-            }
-            return _damage + _intelligence * 2;
+            bool item = _equipment.Backpack.Any(x => x is MagicSkull);
+            return item == false ? _damage + _intelligence : _damage + _intelligence * 2;
         }
     }
 }

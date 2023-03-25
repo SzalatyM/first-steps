@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FirstSteps
 {
-    public interface IHeroesDamage
+    public interface IAttacker
     {
         int DealDamage();
     }

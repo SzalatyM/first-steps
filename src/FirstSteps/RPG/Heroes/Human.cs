@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using FirstSteps.RPG.Adventures;
+﻿using System.Linq;
 using FirstSteps.RPG.Items;
 namespace FirstSteps.RPG.Heroes
 {
@@ -17,14 +15,8 @@ namespace FirstSteps.RPG.Heroes
 
         public override int DealDamage()
         {
-            Item item = equipment.backpack.FirstOrDefault(
-                 item => item.Name == "MagicSword" || item.Name == "Pitchfork" || item.Name == "Knife");
-
-            if (item == null)
-            {
-                return _damage + _strength;
-            }
-            return (_damage + _strength) * 2;
+            bool item = _equipment.Backpack.Any(x => x is MagicSword || x is Pitchfork || x is Knife);
+            return item == false ? _damage + _strength : (_damage + _strength) * 2;
         }
 
         protected override bool CanHandleSpecialItem(Item item)

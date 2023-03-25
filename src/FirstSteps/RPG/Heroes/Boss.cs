@@ -1,7 +1,7 @@
 ﻿
 namespace FirstSteps.RPG.Heroes
 {
-    public class Boss : IHeroesDamage
+    public class Boss : IAttacker
     {
         public readonly string _name;
         public int Health;

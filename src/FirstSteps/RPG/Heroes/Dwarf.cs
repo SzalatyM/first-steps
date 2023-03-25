@@ -25,14 +25,9 @@ namespace FirstSteps.RPG.Heroes
         }
         public override int DealDamage()
         {
-            Item item = equipment.backpack.FirstOrDefault(
-                 item => item.Name == "MagicAxe");
+            bool item = _equipment.Backpack.Any(x => x is MagicAxe);
 
-            if (item == null)
-            {
-                return _damage + _agility;
-            }
-            return _damage + _agility + _strength;
+            return item == false ? _damage + _agility : _damage + _agility + _strength;
         }
     }
 }

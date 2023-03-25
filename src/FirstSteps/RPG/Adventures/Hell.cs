@@ -27,9 +27,9 @@ namespace FirstSteps.RPG.Adventures
                 switch (userInput)
                 {
                     case "Hit the boss!":
-                        var number = new Random().Next(1, 6);
+                        var number = new Random().Next(1, 5);
                         Console.WriteLine($"You rolled {number}");
-                        if (number >= 2)
+                        if (number > 2)
                         {
                             boss.Health -= hero.DealDamage();
                             Display.ErrorText($"You deal {hero.DealDamage()} damage to boss!");
@@ -37,9 +37,14 @@ namespace FirstSteps.RPG.Adventures
                         }
                         else
                         {
-                            //  hero.Health -= boss.DealDamage(); HERE Is problem ;)
-                            Display.ErrorText($"Boss deal {boss.Damage} damage to Hero!");
-                            Display.DefaultText($"You currently have { hero.Health} hp");
+                            hero.TakeDamage(boss.DealDamage());
+                            Display.ErrorText($"Boss deal {boss.DealDamage()} damage to Hero!");
+                            Display.DefaultText($"You currently have {hero.Health} hp");
+                            // if i delete public Health i still can't use actuall hero hp. 
+                            // takeDamage is dealing dmg to hero so i can't check actuall hp.
+                            // or I misunderstood it xD
+
+
                         }
                         break;
                     case "Run":
@@ -53,7 +58,7 @@ namespace FirstSteps.RPG.Adventures
                 if (hero.Health <= 0)
                 {
                     Display.ErrorText("You died! Game over");
-                    break;
+                    return;
                 }
             }
             Display.ItemText("Boss died! You receive a 100 coins");
