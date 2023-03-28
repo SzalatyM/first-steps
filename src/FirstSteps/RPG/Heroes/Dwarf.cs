@@ -25,9 +25,9 @@ namespace FirstSteps.RPG.Heroes
         }
         public override int DealDamage()
         {
-            bool item = _equipment.Backpack.Any(x => x is MagicAxe);
+            bool containsAnItem = _equipment.Backpack.Any(x => x is MagicAxe);
 
-            return item == false ? _damage + _agility : _damage + _agility + _strength;
+            return containsAnItem == false ? _damage + _agility : _damage + _agility + _strength;
         }
     }
 }

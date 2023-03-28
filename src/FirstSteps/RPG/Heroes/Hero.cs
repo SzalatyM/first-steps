@@ -13,7 +13,7 @@ namespace FirstSteps.RPG.Heroes
         protected int _intelligence;
         protected int _agility;
         protected int _health { get; set; }
-        public int Health { get { return _health; } set { _health = value; } }
+        public int Health { get { return _health; }}
         protected int _damage;
         private int _coinsBag;
         public int Coins { get { return _coinsBag; } set { Coins = value; } }
@@ -37,7 +37,7 @@ namespace FirstSteps.RPG.Heroes
             .AddItem("Agility", _agility, Color.Yellow)
             .AddItem("Health", _health, Color.Red)
             .AddItem("Damage", _damage, Color.Green));
-            Console.WriteLine($"Equipment:\ntotal price: {_equipment.DisplayTotalPrice()}\ntotal items: {_equipment.DisplayTotalItems()}\ntotal weight; {_equipment.DisplayTotalWeight()} ");
+            Console.WriteLine($"Equipment: \nTotal coins: {Coins} \nTotal price: {_equipment.DisplayTotalPrice()}\nTotal items:{_equipment.DisplayTotalItems()}\nTotal weight: {_equipment.DisplayTotalWeight()} ");
         }
         protected abstract bool CanHandleSpecialItem(Item item);
 

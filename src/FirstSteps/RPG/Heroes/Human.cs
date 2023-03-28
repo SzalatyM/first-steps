@@ -15,10 +15,25 @@ namespace FirstSteps.RPG.Heroes
 
         public override int DealDamage()
         {
-            bool item = _equipment.Backpack.Any(x => x is MagicSword || x is Pitchfork || x is Knife);
-            return item == false ? _damage + _strength : (_damage + _strength) * 2;
-        }
+            bool containsAnItem = true;
 
+            if (containsAnItem == _equipment.Backpack.Any(x => x is MagicSword))
+            {
+                return (_damage + _strength) * 2; 
+            }
+            else if(containsAnItem == _equipment.Backpack.Any(x => x is Pitchfork))
+            {
+                return _damage + _damage;
+            }
+            else if(containsAnItem == _equipment.Backpack.Any(x => x is Knife))
+            {
+                return _damage + _strength;
+            }
+            else
+            {
+                return _damage + _intelligence;
+            }
+        }
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicSword || item is Pitchfork || item is Knife;
