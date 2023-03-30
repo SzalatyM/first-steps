@@ -10,11 +10,6 @@ namespace FirstSteps.RPG.Heroes
         public int Strength { get; set; }
         public int Damage { get; set; }
 
-        public Boss()
-        {
-            
-        }
-
         public static Boss CreateDiablo(string name, int health, int strength, int damage )
         {      
             return new Boss { Name = name, Health = health, Strength = strength, Damage = damage };
@@ -23,6 +18,11 @@ namespace FirstSteps.RPG.Heroes
         public int DealDamage()
         {
             return Damage + Strength;
+        }
+        public int TakeDamage(int damage)
+        {
+
+            return Health -= damage;
         }
     }
 }

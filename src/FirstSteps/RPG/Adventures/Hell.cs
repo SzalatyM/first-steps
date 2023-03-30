@@ -13,6 +13,7 @@ namespace FirstSteps.RPG.Adventures
 
             Display.DefaultText($"You entered to the Hell!");
 
+
             do
             {
                 string userInput = AnsiConsole.Prompt(
@@ -25,17 +26,19 @@ namespace FirstSteps.RPG.Adventures
                     case "Hit the boss!":
                         var number = new Random().Next(1, 5);
                         Console.WriteLine($"You rolled {number}");
-                        if (number >=1)
+                        if (number >= 2)
                         {
-                            boss.Health -= hero.DealDamage();
-                            Display.ErrorText($"You deal {hero.DealDamage()} damage to boss!");
-                            Display.DefaultText($"Actually health boss: {boss.Health}");
+                            boss.TakeDamage(hero.DealDamage());
+                            Display.ClassicText($"[blue]You deal {hero.DealDamage()} damage to boss![/]");
+                            Display.ClassicText($"[purple]Actually health boss: {boss.Health}[/]");
+                            Console.WriteLine(string.Empty);
                         }
                         else
                         {
                             hero.TakeDamage(boss.DealDamage());
                             Display.ErrorText($"Boss deal {boss.DealDamage()} damage to Hero!");
                             Display.DefaultText($"You currently have {hero.Health} hp");
+                            Console.WriteLine(string.Empty);
                         }
                         break;
                     case "Run":
@@ -59,15 +62,3 @@ namespace FirstSteps.RPG.Adventures
         }
     }
 }
-
-//if (hero.Health <= 0)
-//{
-//    Display.ErrorText("You died! Game over");
-//    break;
-//}
-//            }
-//            if (boss.Health <= 0)
-//{
-//    Display.ItemText("Boss died! You receive a 100 coins");
-//    hero.AddCoins(100);
-//    return;
