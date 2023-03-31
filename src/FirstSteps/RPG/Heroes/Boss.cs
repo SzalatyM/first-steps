@@ -5,14 +5,19 @@ namespace FirstSteps.RPG.Heroes
 {
     public  class Boss : IAttacker
     {
-        public string Name { get; set; }
-        public int Health { get; set; }
-        public int Strength { get; set; }
-        public int Damage { get; set; }
+        public string Name;
+        public int Health;
+        public int Strength;
+        public int Damage;
 
-        public static Boss CreateDiablo(string name, int health, int strength, int damage )
+        private Boss()
+        {
+            
+        }
+
+        public static Boss CreateDiablo()
         {      
-            return new Boss { Name = name, Health = health, Strength = strength, Damage = damage };
+            return new Boss {Name = "Diablo", Health = 50, Strength = 5, Damage = 6};
         }
        
         public int DealDamage()

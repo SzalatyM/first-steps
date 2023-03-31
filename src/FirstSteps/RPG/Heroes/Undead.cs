@@ -33,8 +33,9 @@ namespace FirstSteps.RPG.Heroes
 
         public override int DealDamage()
         {
-            bool containsAnItem = _equipment.Backpack.Any(x => x is MagicSkull);
-            return containsAnItem == false ? _damage + _intelligence : _damage + _intelligence * 2;
+            bool magicSkullIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicSkull);
+
+            return magicSkullIsInTheBackpack ? _damage + _intelligence : _damage + _intelligence * 2;
         }
     }
 }

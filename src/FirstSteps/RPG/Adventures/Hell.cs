@@ -9,7 +9,7 @@ namespace FirstSteps.RPG.Adventures
     {
         public void FightWithBoss(Hero hero)
         {
-            var boss = Boss.CreateDiablo("Diablo", 50, 5, 6);
+            var diablo = Boss.CreateDiablo();
 
             Display.DefaultText($"You entered to the Hell!");
 
@@ -28,15 +28,15 @@ namespace FirstSteps.RPG.Adventures
                         Console.WriteLine($"You rolled {number}");
                         if (number >= 2)
                         {
-                            boss.TakeDamage(hero.DealDamage());
+                            diablo.TakeDamage(hero.DealDamage());
                             Display.ClassicText($"[blue]You deal {hero.DealDamage()} damage to boss![/]");
-                            Display.ClassicText($"[purple]Actually health boss: {boss.Health}[/]");
+                            Display.ClassicText($"[purple]Actually health boss: {diablo.Health}[/]");
                             Console.WriteLine(string.Empty);
                         }
                         else
                         {
-                            hero.TakeDamage(boss.DealDamage());
-                            Display.ErrorText($"Boss deal {boss.DealDamage()} damage to Hero!");
+                            hero.TakeDamage(diablo.DealDamage());
+                            Display.ErrorText($"Boss deal {diablo.DealDamage()} damage to Hero!");
                             Display.DefaultText($"You currently have {hero.Health} hp");
                             Console.WriteLine(string.Empty);
                         }
@@ -46,10 +46,10 @@ namespace FirstSteps.RPG.Adventures
                         return;
                     case "Boss stats":
                         Display.ErrorText("Boss stats:");
-                        Display.ItemText($"\n Health = {boss.Health}\n Damage = {boss.Damage}\n Strenght = {boss.Strength}");
+                        Display.ItemText($"\n Health = {diablo.Health}\n Damage = {diablo.Damage}\n Strenght = {diablo  .Strength}");
                         break;
                 }
-                if (boss.Health <= 0)
+                if (diablo.Health <= 0)
                 {
                     Display.ItemText("Boss died! You receive a 100 coins");
                     hero.AddCoins(100);
