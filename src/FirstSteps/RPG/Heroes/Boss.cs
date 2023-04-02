@@ -3,7 +3,7 @@ using System.Dynamic;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public  class Boss : IAttacker
+    public class Boss : IAttacker
     {
         public string Name;
         public int Health;
@@ -12,14 +12,14 @@ namespace FirstSteps.RPG.Heroes
 
         private Boss()
         {
-            
+
         }
 
         public static Boss CreateDiablo()
-        {      
-            return new Boss {Name = "Diablo", Health = 50, Strength = 5, Damage = 6};
+        {
+            return new Boss { Name = "Diablo", Health = 50, Strength = 5, Damage = 6 };
         }
-       
+
         public int DealDamage()
         {
             return Damage + Strength;

@@ -27,7 +27,7 @@ namespace FirstSteps.RPG.Heroes
         {
             bool magicAxeIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicAxe);
 
-            return magicAxeIsInTheBackpack ? _damage + _agility : _damage + _agility + _strength;
+            return magicAxeIsInTheBackpack ? _damage + _agility + _strength : _damage + _agility;
         }
     }
 }

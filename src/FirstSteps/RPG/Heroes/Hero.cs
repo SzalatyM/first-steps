@@ -12,7 +12,7 @@ namespace FirstSteps.RPG.Heroes
         protected int _strength;
         protected int _intelligence;
         protected int _agility;
-        protected int _health { get; set; }
+        protected int _health;
         public int Health { get { return _health; }}
         protected int _damage;
         private int _coinsBag;

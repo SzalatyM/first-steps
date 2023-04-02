@@ -13,7 +13,6 @@ namespace FirstSteps.RPG.Adventures
 
             Display.DefaultText($"You entered to the Hell!");
 
-
             do
             {
                 string userInput = AnsiConsole.Prompt(
@@ -46,7 +45,7 @@ namespace FirstSteps.RPG.Adventures
                         return;
                     case "Boss stats":
                         Display.ErrorText("Boss stats:");
-                        Display.ItemText($"\n Health = {diablo.Health}\n Damage = {diablo.Damage}\n Strenght = {diablo  .Strength}");
+                        Display.ItemText($"\n Health = {diablo.Health}\n Damage = {diablo.Damage}\n Strenght = {diablo.Strength}");
                         break;
                 }
                 if (diablo.Health <= 0)

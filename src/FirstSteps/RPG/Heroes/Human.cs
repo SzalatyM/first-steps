@@ -16,7 +16,6 @@ namespace FirstSteps.RPG.Heroes
         public override int DealDamage()
         {
 
-
             if (_equipment.Backpack.Any(x => x is MagicSword))
             {
                 return (_damage + _strength) * 2; 
