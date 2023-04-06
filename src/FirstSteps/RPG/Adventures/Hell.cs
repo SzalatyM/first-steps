@@ -10,6 +10,8 @@ namespace FirstSteps.RPG.Adventures
         public void FightWithBoss(Hero hero)
         {
             var diablo = Boss.CreateDiablo();
+            var heroDamage = hero.DealDamage();
+            var diabloDamage = diablo.DealDamage();
 
             Display.DefaultText($"You entered to the Hell!");
 
@@ -27,15 +29,15 @@ namespace FirstSteps.RPG.Adventures
                         Console.WriteLine($"You rolled {number}");
                         if (number >= 2)
                         {
-                            diablo.TakeDamage(hero.DealDamage());
-                            Display.ClassicText($"[blue]You deal {hero.DealDamage()} damage to boss![/]");
+                            diablo.TakeDamage(heroDamage);
+                            Display.ClassicText($"[blue]You deal {heroDamage} damage to boss![/]");
                             Display.ClassicText($"[purple]Actually health boss: {diablo.Health}[/]");
                             Console.WriteLine(string.Empty);
                         }
                         else
                         {
-                            hero.TakeDamage(diablo.DealDamage());
-                            Display.ErrorText($"Boss deal {diablo.DealDamage()} damage to Hero!");
+                            hero.TakeDamage(diabloDamage);
+                            Display.ErrorText($"Boss deal {diabloDamage} damage to Hero!");
                             Display.DefaultText($"You currently have {hero.Health} hp");
                             Console.WriteLine(string.Empty);
                         }
@@ -55,7 +57,7 @@ namespace FirstSteps.RPG.Adventures
                     return;
                 }
             }
-            while (hero.Health >= 0);
+            while (hero.Health > 0);
             Display.ErrorText("You died! Game over");
             Environment.Exit(1);
         }
