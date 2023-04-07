@@ -17,10 +17,5 @@ namespace FirstSteps.RPG.Heroes
         {
             return item is MagicAxe;
         }
-
-        public string Greed()
-        {
-            return "\nYou are playing as a Dwarf\n";
-        }
     }
 }

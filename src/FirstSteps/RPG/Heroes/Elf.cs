@@ -21,11 +21,6 @@ namespace FirstSteps.RPG.Heroes
             return item is MagicBow;
         }
 
-        public string Greed()
-        {
-            return "\nYou are playing as a Elf\n";
-        }
-
         public void Heal()
         {
             _health += _health + 10;

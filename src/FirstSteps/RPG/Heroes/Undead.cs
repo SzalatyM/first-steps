@@ -24,10 +24,5 @@ namespace FirstSteps.RPG.Heroes
         {
             ManaPoints += mana;
         }
-
-        public string Greed()
-        {
-            return "\nYou are playing as a Undeed\n";
-        }
     }
 }

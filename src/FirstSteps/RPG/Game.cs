@@ -13,6 +13,7 @@ namespace FirstSteps.RPG
         private static Dungeons _dungeons = new Dungeons();
         private static Village _village = new Village();
         private static Inventory _inventory = new Inventory();
+        private static TreasureAdventure _treasureAdventure = new TreasureAdventure();
         private static Hero _hero;
         public static void CreateHero()
         {
@@ -38,7 +39,7 @@ namespace FirstSteps.RPG
                     DisplayHeroStats();
                     break;
                 case "treasure":
-                    Treasure();
+                    _treasureAdventure.Treasure(_hero);
                     break;
                 case "inventory":
                     _inventory.DisplayAllItems(_hero);
@@ -74,11 +75,11 @@ namespace FirstSteps.RPG
             }
         }
 
-        private static void Treasure()
-        {
-            var drawCoins = new Random().Next(1, 25);
-            _hero.AddCoins(drawCoins);
-            Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
-        }
+        //private static void Treasure()
+        //{
+        //    var drawCoins = new Random().Next(1, 25);
+        //    _hero.AddCoins(drawCoins);
+        //    Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
+        //}
     }
 }
