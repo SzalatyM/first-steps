@@ -8,5 +8,6 @@ namespace FirstSteps
     public interface IAdventure
     {
         public void Enter(Hero hero);
+        // u mean public void Enter(Hero hero, string command) ? 
     }
 }
