@@ -13,7 +13,7 @@ namespace FirstSteps.RPG
         private static Dungeons _dungeons = new Dungeons();
         private static Village _village = new Village();
         private static Inventory _inventory = new Inventory();
-        private static TreasureAdventure _treasureAdventure = new TreasureAdventure();
+        private static TreasureChest _treasureChest = new TreasureChest();
         private static Hero _hero;
         public static void CreateHero()
         {
@@ -39,7 +39,7 @@ namespace FirstSteps.RPG
                     DisplayHeroStats();
                     break;
                 case "treasure":
-                    _treasureAdventure.Treasure(_hero);
+                    _treasureChest.Treasure(_hero);
                     break;
                 case "inventory":
                     _inventory.DisplayAllItems(_hero);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class TreasureAdventure
+    public class TreasureChest
     {
         public void Treasure(Hero _hero)
         {
