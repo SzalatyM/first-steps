@@ -29,7 +29,6 @@ namespace FirstSteps.RPG
 
             _hero = HeroesCreator.Create(name, race);
 
-            DisplayGreetings();
         }
         public static void HandleCommand(string command)
         {
@@ -80,10 +79,6 @@ namespace FirstSteps.RPG
             var drawCoins = new Random().Next(1, 25);
             _hero.AddCoins(drawCoins);
             Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
-        }
-        public static void DisplayGreetings()
-        {
-            Console.WriteLine(_hero is IGreeting greeting ? greeting.Greed() : "\nBest choice. You play the strongest class in the game\n ");
         }
     }
 }

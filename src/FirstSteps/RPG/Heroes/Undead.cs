@@ -2,7 +2,7 @@
 
 namespace FirstSteps.RPG.Heroes
 {
-    public class Undead : Hero, IGreeting
+    public class Undead : Hero
     {
         public int ManaPoints { get; private set; }
 

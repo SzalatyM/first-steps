@@ -2,7 +2,7 @@
 
 namespace FirstSteps.RPG.Heroes
 {
-    public class Dwarf : Hero, IGreeting
+    public class Dwarf : Hero
     {
         public Dwarf(string name) : base(name, Races.Dwarf)
         {

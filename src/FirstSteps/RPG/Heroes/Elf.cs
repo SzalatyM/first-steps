@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 namespace FirstSteps.RPG.Heroes
 {
-    public class Elf : Hero, IGreeting
+    public class Elf : Hero
     {
         private List<Arrow> _arrowsBag = new List<Arrow>();
 
