@@ -7,12 +7,10 @@ namespace FirstSteps.RPG.Heroes
     {
         public string Name { get { return _name; } }
         private string _name;
-        public int Health { get { return _health; } }
-        private int _health;
-        public int Strength { get { return _strength; } }
-        private int _strength;
-        public int Damage { get { return _damage; } }
-        private int _damage;
+        public int Health { get; set; }
+        public int Strength { get; set; }
+
+        public int Damage { get; set; }
 
 
         private Boss()
@@ -22,7 +20,7 @@ namespace FirstSteps.RPG.Heroes
 
         public static Boss CreateDiablo()
         {
-            return new Boss { _name = "Diablo", _health = 50, _strength = 5, _damage = 6 };
+            return new Boss { _name = "Diablo", Health = 50, Strength = 5, Damage = 6 };
         }
 
         public int DealDamage()
@@ -32,7 +30,7 @@ namespace FirstSteps.RPG.Heroes
         public int TakeDamage(int damage)
         {
 
-            return _health -= damage;
+            return Health -= damage;
         }
     }
 }
