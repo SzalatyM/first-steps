@@ -5,12 +5,10 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Boss : IAttacker
     {
-        public string Name { get { return _name; } }
         private string _name;
-        public int Health { get; set; }
-        public int Strength { get; set; }
-
-        public int Damage { get; set; }
+        public int Health { get; private set; }
+        public int Strength { get; private set; }
+        public int Damage { get; private set; }
 
 
         private Boss()
