@@ -5,7 +5,7 @@ using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Village : IAdventure
+    public class Village
     {
         public void Enter(Hero hero)
         {

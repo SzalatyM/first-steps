@@ -4,7 +4,7 @@ using System;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Mine : IAdventure
+    public class Mine
     {
         private int _enter = 0;
         public void Enter(Hero hero)

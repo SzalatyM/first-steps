@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public class Dwarf : Hero
+    public class Dwarf : Hero, IGreeting
     {
         public Dwarf(string name) : base(name, Races.Dwarf)
         {
