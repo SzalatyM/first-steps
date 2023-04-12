@@ -1,6 +1,8 @@
 ﻿using FirstSteps.RPG.Items;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace FirstSteps.RPG.Heroes
 {
     public class Elf : Hero, IGreeting
@@ -35,6 +37,13 @@ namespace FirstSteps.RPG.Heroes
         public void CollectArrows(List<Arrow> arrows)
         {
             _arrowsBag.AddRange(arrows);
+        }
+
+        public override int DealDamage()
+        {
+            bool magicBowIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicBow);
+
+            return magicBowIsInTheBackpack ? _agility * 4 : _damage + _agility;
         }
     }
 }

@@ -48,8 +48,7 @@ namespace FirstSteps.RPG.Adventures
             catch (HeroCantHoldItemException ex) 
             {
                 Console.WriteLine(ex.Message);
-            }
-            
+            }           
         }
     }
 }

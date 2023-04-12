@@ -19,5 +19,10 @@ namespace FirstSteps.RPG.Tools
         {
             AnsiConsole.MarkupLine($"[blue]{itemText}[/]");
         }
+        public static void ClassicText(string classicText)
+        {
+            AnsiConsole.MarkupLine(classicText);
+        }
+       
     }
 }

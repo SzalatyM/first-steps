@@ -1,4 +1,5 @@
 ﻿using FirstSteps.RPG.Items;
+using System.Linq;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -28,6 +29,13 @@ namespace FirstSteps.RPG.Heroes
         public string Greed()
         {
             return "\nYou are playing as a Undeed\n";
+        }
+
+        public override int DealDamage()
+        {
+            bool magicSkullIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicSkull);
+
+            return magicSkullIsInTheBackpack ? _damage + _intelligence * 2 : _damage + _intelligence;
         }
     }
 }

@@ -4,15 +4,16 @@ using Spectre.Console;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public abstract class Hero
+    public abstract class Hero : IAttacker
     {
-        private Equipment _equipment;
+        protected Equipment _equipment;
         private string _name;
         private Races _race;
         protected int _strength;
         protected int _intelligence;
         protected int _agility;
         protected int _health;
+        public int Health { get { return _health; }}
         protected int _damage;
         private int _coinsBag;
         public int Coins { get { return _coinsBag; } set { Coins = value; } }
@@ -36,7 +37,7 @@ namespace FirstSteps.RPG.Heroes
             .AddItem("Agility", _agility, Color.Yellow)
             .AddItem("Health", _health, Color.Red)
             .AddItem("Damage", _damage, Color.Green));
-            Console.WriteLine($"Equipment:\ntotal price: {_equipment.DisplayTotalPrice()}\ntotal items: {_equipment.DisplayTotalItems()}\ntotal weight; {_equipment.DisplayTotalWeight()} ");
+            Console.WriteLine($"Equipment: \nTotal coins: {Coins} \nTotal price: {_equipment.DisplayTotalPrice()}\nTotal items:{_equipment.DisplayTotalItems()}\nTotal weight: {_equipment.DisplayTotalWeight()} ");
         }
         protected abstract bool CanHandleSpecialItem(Item item);
 
@@ -65,10 +66,17 @@ namespace FirstSteps.RPG.Heroes
                 return true;
             }
             return false;
-        }    
+        }
         public void AddCoins(int coins)
         {
             _coinsBag += coins;
+        }
+
+        public abstract int DealDamage();
+
+        public int TakeDamage(int damage)
+        {
+           return _health -= damage;            
         }
     }
 }

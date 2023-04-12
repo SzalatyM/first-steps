@@ -13,6 +13,7 @@ namespace FirstSteps.RPG
         private static Dungeons _dungeons = new Dungeons();
         private static Village _village = new Village();
         private static Inventory _inventory = new Inventory();
+        private static Hell _hell = new Hell();
         private static Hero _hero;
         public static void CreateHero()
         {
@@ -55,6 +56,9 @@ namespace FirstSteps.RPG
                     break;
                 case "village":
                     _village.Enter(_hero);
+                    break;
+                case "hell":
+                    _hell.FightWithBoss(_hero);
                     break;
                 default:
                     Display.WarningText($"Command {command} not recognized");

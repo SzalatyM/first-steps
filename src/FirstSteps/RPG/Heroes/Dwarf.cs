@@ -1,4 +1,5 @@
 ﻿using FirstSteps.RPG.Items;
+using System.Linq;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -21,6 +22,12 @@ namespace FirstSteps.RPG.Heroes
         public string Greed()
         {
             return "\nYou are playing as a Dwarf\n";
+        }
+        public override int DealDamage()
+        {
+            bool magicAxeIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicAxe);
+
+            return magicAxeIsInTheBackpack ? _damage + _agility + _strength : _damage + _agility;
         }
     }
 }

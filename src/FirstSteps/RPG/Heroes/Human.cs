@@ -1,4 +1,5 @@
-﻿using FirstSteps.RPG.Items;
+﻿using System.Linq;
+using FirstSteps.RPG.Items;
 namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
@@ -12,6 +13,26 @@ namespace FirstSteps.RPG.Heroes
             _damage = 6;
         }
 
+        public override int DealDamage()
+        {
+
+            if (_equipment.Backpack.Any(x => x is MagicSword))
+            {
+                return (_damage + _strength) * 2; 
+            }
+            else if(_equipment.Backpack.Any(x => x is Pitchfork))
+            {
+                return _damage + _damage;
+            }
+            else if(_equipment.Backpack.Any(x => x is Knife))
+            {
+                return _damage + _strength;
+            }
+            else
+            {
+                return _damage + _intelligence;
+            }
+        }
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicSword || item is Pitchfork || item is Knife;
