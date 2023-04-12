@@ -13,7 +13,6 @@ namespace FirstSteps.RPG
         private static Dungeons _dungeons = new Dungeons();
         private static Village _village = new Village();
         private static Inventory _inventory = new Inventory();
-        private static Hell _hell = new Hell();
         private static Hero _hero;
         public static void CreateHero()
         {
@@ -30,7 +29,6 @@ namespace FirstSteps.RPG
 
             _hero = HeroesCreator.Create(name, race);
 
-            DisplayGreetings();
         }
         public static void HandleCommand(string command)
         {
@@ -40,7 +38,7 @@ namespace FirstSteps.RPG
                     DisplayHeroStats();
                     break;
                 case "treasure":
-                    Treasure();
+                    _treasureChest.Treasure(_hero);
                     break;
                 case "inventory":
                     _inventory.DisplayAllItems(_hero);
@@ -79,15 +77,11 @@ namespace FirstSteps.RPG
             }
         }
 
-        private static void Treasure()
-        {
-            var drawCoins = new Random().Next(1, 25);
-            _hero.AddCoins(drawCoins);
-            Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
-        }
-        public static void DisplayGreetings()
-        {
-            Console.WriteLine(_hero is IGreeting greeting ? greeting.Greed() : "\nBest choice. You play the strongest class in the game\n ");
-        }
+        //private static void Treasure()
+        //{
+        //    var drawCoins = new Random().Next(1, 25);
+        //    _hero.AddCoins(drawCoins);
+        //    Console.WriteLine($"You opened the treasure chest! You get {drawCoins} coins");
+        //}
     }
 }

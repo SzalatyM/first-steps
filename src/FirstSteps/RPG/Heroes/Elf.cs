@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public class Elf : Hero, IGreeting
+    public class Elf : Hero
     {
         private List<Arrow> _arrowsBag = new List<Arrow>();
 
@@ -21,11 +21,6 @@ namespace FirstSteps.RPG.Heroes
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicBow;
-        }
-
-        public string Greed()
-        {
-            return "\nYou are playing as a Elf\n";
         }
 
         public void Heal()
