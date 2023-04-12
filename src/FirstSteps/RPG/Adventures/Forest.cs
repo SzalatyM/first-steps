@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Forest : IAdventure
+    public class Forest
     {
         public void Enter(Hero hero)
         {

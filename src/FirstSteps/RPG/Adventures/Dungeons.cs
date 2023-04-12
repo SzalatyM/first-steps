@@ -4,7 +4,7 @@ using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Dungeons : IAdventure
+    public class Dungeons
     {
         private int _manaPoints = 1;
 
