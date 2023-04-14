@@ -4,9 +4,12 @@ using System;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Mine
+    public class Mine : IAdventure
     {
         private int _enter = 0;
+
+        public string Command => "Mine";
+
         public void Enter(Hero hero)
         {
             if (hero is Dwarf == false)

@@ -5,8 +5,9 @@ using System.Text;
 
 namespace FirstSteps
 {
-    public interface IAdventure
+    interface IAdventure
     {
+        string Command { get; }
         public void Enter(Hero hero);
     }
 }

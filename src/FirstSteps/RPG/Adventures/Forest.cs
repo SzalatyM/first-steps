@@ -7,8 +7,10 @@ using System.Collections.Generic;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Forest
+    public class Forest : IAdventure
     {
+        public string Command => "Forest";
+
         public void Enter(Hero hero)
         {
             if (hero is Elf)
