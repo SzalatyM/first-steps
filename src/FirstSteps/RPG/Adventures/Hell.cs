@@ -11,11 +11,6 @@ namespace FirstSteps.RPG.Adventures
 
         public void Enter(Hero hero)
         {
-            
-        }
-
-        public void FightWithBoss(Hero hero)
-        {
             var diablo = Boss.CreateDiablo();
             var heroDamage = hero.DealDamage();
             var diabloDamage = diablo.DealDamage();

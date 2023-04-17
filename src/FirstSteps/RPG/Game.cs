@@ -40,7 +40,7 @@ namespace FirstSteps.RPG
                     DisplayHeroStats();
                     break;
                 case "treasure adventure":
-                    _treasureChest.Treasure(_hero);
+                    _treasureChest.Enter(_hero);
                     break;
                 case "inventory":
                     _inventory.DisplayAllItems(_hero);
@@ -58,7 +58,7 @@ namespace FirstSteps.RPG
                     _village.Enter(_hero);
                     break;
                 case "hell":
-                    _hell.FightWithBoss(_hero);
+                    _hell.Enter(_hero);
                     break;
                 default:
                     Display.WarningText($"Command {command} not recognized");
