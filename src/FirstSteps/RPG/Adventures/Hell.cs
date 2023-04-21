@@ -5,9 +5,11 @@ using System;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Hell
+    public class Hell : IAdventure
     {
-        public void FightWithBoss(Hero hero)
+        public string Command => "Hell";
+
+        public void Enter(Hero hero)
         {
             var diablo = Boss.CreateDiablo();
             var heroDamage = hero.DealDamage();

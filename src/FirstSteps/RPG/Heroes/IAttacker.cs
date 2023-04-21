@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FirstSteps
+namespace FirstSteps.RPG.Heroes
 {
     public interface IAttacker
     {

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public class Dwarf : Hero, IGreeting
+    public class Dwarf : Hero
     {
         public Dwarf(string name) : base(name, Races.Dwarf)
         {
@@ -19,10 +19,6 @@ namespace FirstSteps.RPG.Heroes
             return item is MagicAxe;
         }
 
-        public string Greed()
-        {
-            return "\nYou are playing as a Dwarf\n";
-        }
         public override int DealDamage()
         {
             bool magicAxeIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicAxe);

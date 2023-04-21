@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FirstSteps.RPG
+namespace FirstSteps.RPG.Items
 {
     public class HeroCantHoldItemException : Exception
     {

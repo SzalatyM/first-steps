@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace FirstSteps.RPG.Heroes
 {
-    public class Undead : Hero, IGreeting
+    public class Undead : Hero
     {
         public int ManaPoints { get; private set; }
 
@@ -24,11 +24,6 @@ namespace FirstSteps.RPG.Heroes
         public void ManaIncreases(int mana)
         {
             ManaPoints += mana;
-        }
-
-        public string Greed()
-        {
-            return "\nYou are playing as a Undeed\n";
         }
 
         public override int DealDamage()
