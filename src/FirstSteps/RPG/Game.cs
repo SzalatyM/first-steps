@@ -16,6 +16,7 @@ namespace FirstSteps.RPG
         private static TreasureChest _treasureChest = new TreasureChest();
         private static Hell _hell = new Hell();
         private static Hero _hero;
+        private static AdventuresRegistry _adventuresRegistry;
         public static void CreateHero()
         {
             Console.WriteLine("Create your hero");
@@ -34,37 +35,38 @@ namespace FirstSteps.RPG
         }
         public static void HandleCommand(string command)
         {
-            switch (command)
-            {
-                case "stats":
-                    DisplayHeroStats();
-                    break;
-                case "treasure adventure":
-                    _treasureChest.Enter(_hero);
-                    break;
-                case "inventory":
-                    _inventory.DisplayAllItems(_hero);
-                    break;
-                case "forest":
-                    _forest.Enter(_hero);
-                    break;
-                case "dungeons":
-                    _dungeons.Enter(_hero);
-                    break;
-                case "mine":
-                    _mine.Enter(_hero);
-                    break;
-                case "village":
-                    _village.Enter(_hero);
-                    break;
-                case "hell":
-                    _hell.Enter(_hero);
-                    break;
-                default:
-                    Display.WarningText($"Command {command} not recognized");
-                    break;
-            }
+            AdventuresRegistry.GetCommands();
+            //switch (command)
+            //{
+            //    case "stats":
+            //        DisplayHeroStats();
+            //        break;
+            //    case "treasure adventure":
+            //        _treasureChest.Enter(_hero);
+            //        break;
+            //    case "inventory":
+            //        _inventory.DisplayAllItems(_hero);
+            //        break;
+            //    case "forest":
+            //        _forest.Enter(_hero);
+            //        break;
+            //    case "dungeons":
+            //        _dungeons.Enter(_hero);
+            //        break;
+            //    case "mine":
+            //        _mine.Enter(_hero);
+            //        break;
+            //    case "village":
+            //        _village.Enter(_hero);
+            //        break;
+            //    case "hell":
+            //        _hell.Enter(_hero);
+            //        break;
+            //    default:
+            //        Display.WarningText($"Command {command} not recognized");
+            //        break;
         }
+    
         public static void DisplayHeroStats()
         {
             _hero.DisplayStats();
@@ -77,6 +79,30 @@ namespace FirstSteps.RPG
             {
                 Console.WriteLine($"{i + 1}. {races[i]}");
             }
+        }
+        public static void GameMenu()
+        {
+            AnsiConsole.MarkupLine($"{Emoji.Known.BowAndArrow} [darkgreen]Welcome to the RPG game [/] {Emoji.Known.CrossedSwords}");
+
+            Game.CreateHero();
+
+            AnsiConsole.MarkupLine($"{Emoji.Known.Dagger} [red]Let's play the game[/] {Emoji.Known.Dagger}");
+
+            Console.WriteLine("\nType 'end' if you want to quit.");
+            Console.WriteLine("\nIf You want go back to the previous menu press button\n");
+            Console.WriteLine("________________________________");
+            string userInput;
+            do
+            {
+                //string command = AnsiConsole.Prompt(
+                //    new SelectionPrompt<string>()
+                //        .Title("\nSelect what you want to do: ")
+                //        .AddChoices("stats", "treasure adventure", "inventory", "forest", "dungeons", "mine", "village", "hell"));
+                AdventuresRegistry.GetCommands();
+                Console.WriteLine();
+                userInput = Console.ReadLine();
+            }
+            while (userInput != "end");
         }
     }
 }
