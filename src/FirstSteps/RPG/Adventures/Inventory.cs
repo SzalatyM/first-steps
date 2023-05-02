@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Inventory
+    public class Inventory : IAdventure
     {
         private static List<Item> _inventory = new List<Item>()
         {
@@ -16,8 +16,11 @@ namespace FirstSteps.RPG.Adventures
             new MagicBow(),
             new MagicSkull(),
             new MagicSword()
-        };       
-        public void DisplayAllItems(Hero _hero)
+        };
+
+        public string Command => "Inventory";
+
+        public void Enter(Hero _hero)
         {
             try
             {

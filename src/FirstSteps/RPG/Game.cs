@@ -3,20 +3,22 @@ using FirstSteps.RPG.Heroes;
 using FirstSteps.RPG.Adventures;
 using Spectre.Console;
 using FirstSteps.RPG.Tools;
+using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 
 namespace FirstSteps.RPG
 {
     public static class Game
     {
-        private static Mine _mine = new Mine();
-        private static Forest _forest = new Forest();
-        private static Dungeons _dungeons = new Dungeons();
-        private static Village _village = new Village();
-        private static Inventory _inventory = new Inventory();
-        private static TreasureChest _treasureChest = new TreasureChest();
-        private static Hell _hell = new Hell();
+        //private static Mine _mine = new Mine();
+        //private static Forest _forest = new Forest();
+        //private static Dungeons _dungeons = new Dungeons();
+        //private static Village _village = new Village();
+        //private static Inventory _inventory = new Inventory();
+        //private static TreasureChest _treasureChest = new TreasureChest();
+        //private static Hell _hell = new Hell();
         private static Hero _hero;
-        private static AdventuresRegistry _adventuresRegistry;
+        private static AdventuresRegistry _adventuresRegistry = new AdventuresRegistry();
         public static void CreateHero()
         {
             Console.WriteLine("Create your hero");
@@ -33,40 +35,11 @@ namespace FirstSteps.RPG
             _hero = HeroesCreator.Create(name, race);
 
         }
-        public static void HandleCommand(string command)
+        public static void HandleAdventures(string command)
         {
-            AdventuresRegistry.GetCommands();
-            //switch (command)
-            //{
-            //    case "stats":
-            //        DisplayHeroStats();
-            //        break;
-            //    case "treasure adventure":
-            //        _treasureChest.Enter(_hero);
-            //        break;
-            //    case "inventory":
-            //        _inventory.DisplayAllItems(_hero);
-            //        break;
-            //    case "forest":
-            //        _forest.Enter(_hero);
-            //        break;
-            //    case "dungeons":
-            //        _dungeons.Enter(_hero);
-            //        break;
-            //    case "mine":
-            //        _mine.Enter(_hero);
-            //        break;
-            //    case "village":
-            //        _village.Enter(_hero);
-            //        break;
-            //    case "hell":
-            //        _hell.Enter(_hero);
-            //        break;
-            //    default:
-            //        Display.WarningText($"Command {command} not recognized");
-            //        break;
+            var adventure = _adventuresRegistry.GetAdventure(command);
+            adventure.Enter(_hero);
         }
-    
         public static void DisplayHeroStats()
         {
             _hero.DisplayStats();
@@ -94,15 +67,42 @@ namespace FirstSteps.RPG
             string userInput;
             do
             {
-                //string command = AnsiConsole.Prompt(
-                //    new SelectionPrompt<string>()
-                //        .Title("\nSelect what you want to do: ")
-                //        .AddChoices("stats", "treasure adventure", "inventory", "forest", "dungeons", "mine", "village", "hell"));
-                AdventuresRegistry.GetCommands();
+                _adventuresRegistry.GetMenu();            
                 Console.WriteLine();
                 userInput = Console.ReadLine();
+                Game.HandleAdventures(userInput);              
             }
             while (userInput != "end");
         }
     }
 }
+//switch (command)
+//{
+//    case "stats":
+//        DisplayHeroStats();
+//        break;
+//    case "treasure adventure":
+//        _treasureChest.Enter(_hero);
+//        break;
+//    case "inventory":
+//        _inventory.DisplayAllItems(_hero);
+//        break;
+//    case "forest":
+//        _forest.Enter(_hero);
+//        break;
+//    case "dungeons":
+//        _dungeons.Enter(_hero);
+//        break;
+//    case "mine":
+//        _mine.Enter(_hero);
+//        break;
+//    case "village":
+//        _village.Enter(_hero);
+//        break;
+//    case "hell":
+//        _hell.Enter(_hero);
+//        break;
+//default:
+//    Display.WarningText($"Command {command} not recognized");
+//    break;
+//}

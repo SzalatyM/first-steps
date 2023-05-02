@@ -2,16 +2,12 @@
 using Spectre.Console;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 
 namespace FirstSteps.RPG
 {
     public class AdventuresRegistry 
     {
-        
         private static List<IAdventure> _adventures = new List<IAdventure>()
         {
           new Dungeons(),
@@ -19,22 +15,34 @@ namespace FirstSteps.RPG
           new Hell(),
           new Mine(),
           new TreasureChest(),
-          new Village()
+          new Village(),
+          new Inventory()
         };
         
-        public static string GetCommands()
+        public void GetMenu()
         {
-            
-            string command = AnsiConsole.Prompt(
-                    new SelectionPrompt<string>()
-                        .Title("\nSelect what you want to do: ")
-                        .AddChoices("stats", "treasure adventure", "inventory", "forest", "dungeons", "mine", "village", "hell")); 
-            if(_adventures.FirstOrDefault(x => x.Command))
-            return command;
+            var menu = new SelectionPrompt<string>();
+
+            menu.AddChoice("Hero")
+                .AddChild("Stats");
+
+
+            menu.AddChoiceGroup("Adventures", new string[] {"Treasure Chest", "Inventory", "Forest", "Dungeons", "Mine", "Village", "Hell" });
+            var command = AnsiConsole.Prompt(menu);
+            Console.WriteLine(command);
         }
-        public static string GetAdventure(IAdventure adventure)
+        public IAdventure GetAdventure(string command)
         {
-            return adventure.Command;
-        }      
+             return _adventures.FirstOrDefault(x => x.Command == command);
+        }             
     }
 }
+//public string GetCommands()
+//{
+//    string command = AnsiConsole.Prompt(
+//            new SelectionPrompt<string>()
+//                .Title("\nSelect what you want to do: ")
+//                .AddChoices("Treasure Chest","Forest", "Inventory", "Dungeons", "Mine", "Village", "Hell"));
+//   _adventures.Select(x => x.Command.ToList());
+
+//}
