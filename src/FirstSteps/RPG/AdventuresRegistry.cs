@@ -18,31 +18,13 @@ namespace FirstSteps.RPG
           new Village(),
           new Inventory()
         };
-        
-        public void GetMenu()
+        public List<string> GetCommands()
         {
-            var menu = new SelectionPrompt<string>();
-
-            menu.AddChoice("Hero")
-                .AddChild("Stats");
-
-
-            menu.AddChoiceGroup("Adventures", new string[] {"Treasure Chest", "Inventory", "Forest", "Dungeons", "Mine", "Village", "Hell" });
-            var command = AnsiConsole.Prompt(menu);
-            Console.WriteLine(command);
-        }
+            return _adventures.Select(x => x.Command).ToList();
+        }   
         public IAdventure GetAdventure(string command)
         {
              return _adventures.FirstOrDefault(x => x.Command == command);
         }             
     }
 }
-//public string GetCommands()
-//{
-//    string command = AnsiConsole.Prompt(
-//            new SelectionPrompt<string>()
-//                .Title("\nSelect what you want to do: ")
-//                .AddChoices("Treasure Chest","Forest", "Inventory", "Dungeons", "Mine", "Village", "Hell"));
-//   _adventures.Select(x => x.Command.ToList());
-
-//}
