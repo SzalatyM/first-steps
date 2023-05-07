@@ -1,10 +1,6 @@
 using System;
 using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG.Adventures;
 using Spectre.Console;
-using FirstSteps.RPG.Tools;
-using System.Security.Cryptography.X509Certificates;
-using System.Linq;
 
 namespace FirstSteps.RPG
 {
@@ -30,8 +26,19 @@ namespace FirstSteps.RPG
         }
         public static void HandleAdventures(string command)
         {
-            var adventure = _adventuresRegistry.GetAdventure(command);
-            adventure.Enter(_hero);
+           var adventure = _adventuresRegistry.GetAdventure(command);
+            if(adventure != null)
+            {
+                adventure.Enter(_hero);
+            }
+            else if(command == "Stats")
+            {
+                Game.DisplayHeroStats();
+            }
+            else
+            {
+                Game.GetMenu();
+            }         
         }
         public static void DisplayHeroStats()
         {
@@ -55,7 +62,8 @@ namespace FirstSteps.RPG
 
             menu.AddChoiceGroup("Adventures", _adventuresRegistry.GetCommands());
             var command = AnsiConsole.Prompt(menu);
-            Console.WriteLine(command);
+            HandleAdventures(command);         
+          
         }
         public static void GameMenu()
         {
@@ -71,12 +79,11 @@ namespace FirstSteps.RPG
             string userInput;
             do
             {
-                _adventuresRegistry.GetCommands();
                 Game.GetMenu();
-                Console.WriteLine();
                 userInput = Console.ReadLine();
                 Game.HandleAdventures(userInput);
-
+                _adventuresRegistry.GetCommands();                
+                Console.WriteLine();   
             }
             while (userInput != "end");
         }
