@@ -1,5 +1,6 @@
 using System;
 using FirstSteps.RPG.Heroes;
+using FirstSteps.RPG.Tools;
 using Spectre.Console;
 
 namespace FirstSteps.RPG
@@ -8,7 +9,7 @@ namespace FirstSteps.RPG
     {
         private static Hero _hero;
         private static AdventuresRegistry _adventuresRegistry = new AdventuresRegistry();
-        public static void CreateHero()
+        private static void CreateHero()
         {
             Console.WriteLine("Create your hero");
 
@@ -24,7 +25,7 @@ namespace FirstSteps.RPG
             _hero = HeroesCreator.Create(name, race);
 
         }
-        public static void HandleAdventures(string command)
+        private static void HandleCommand(string command)
         {
            var adventure = _adventuresRegistry.GetAdventure(command);
             if(adventure != null)
@@ -33,19 +34,19 @@ namespace FirstSteps.RPG
             }
             else if(command == "Stats")
             {
-                Game.DisplayHeroStats();
+                DisplayHeroStats();
             }
             else
             {
-                Game.GetMenu();
-            }         
+                Display.WarningText($"Command {command} not recognized");
+            }          
         }
         public static void DisplayHeroStats()
         {
             _hero.DisplayStats();
         }
 
-        public static void DisplayAllRaces()
+        private static void DisplayAllRaces()
         {
             var races = Enum.GetNames(typeof(Races));
             for (int i = 0; i < races.Length; i++)
@@ -53,7 +54,7 @@ namespace FirstSteps.RPG
                 Console.WriteLine($"{i + 1}. {races[i]}");
             }
         }
-        public static void GetMenu()
+        private static void MenuSelect()
         {
             var menu = new SelectionPrompt<string>();
 
@@ -62,7 +63,7 @@ namespace FirstSteps.RPG
 
             menu.AddChoiceGroup("Adventures", _adventuresRegistry.GetCommands());
             var command = AnsiConsole.Prompt(menu);
-            HandleAdventures(command);         
+            HandleCommand(command);         
           
         }
         public static void GameMenu()
@@ -79,9 +80,8 @@ namespace FirstSteps.RPG
             string userInput;
             do
             {
-                Game.GetMenu();
+                MenuSelect();
                 userInput = Console.ReadLine();
-                Game.HandleAdventures(userInput);
                 _adventuresRegistry.GetCommands();                
                 Console.WriteLine();   
             }
