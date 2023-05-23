@@ -27,19 +27,13 @@ namespace FirstSteps.RPG
         }
         private static void HandleCommand(string command)
         {
-           var adventure = _adventuresRegistry.GetAdventure(command);
-            if(adventure != null)
-            {
-                adventure.Enter(_hero);
-            }
-            else if(command == "Stats")
+            var adventure = _adventuresRegistry.GetAdventure(command);
+            adventure?.Enter(_hero);
+
+            if (command == "Stats")
             {
                 DisplayHeroStats();
             }
-            else
-            {
-                Display.WarningText($"Command {command} not recognized");
-            }          
         }
         public static void DisplayHeroStats()
         {
@@ -54,7 +48,7 @@ namespace FirstSteps.RPG
                 Console.WriteLine($"{i + 1}. {races[i]}");
             }
         }
-        private static void MenuSelect()
+        private static string MenuSelect()
         {
             var menu = new SelectionPrompt<string>();
 
@@ -62,9 +56,11 @@ namespace FirstSteps.RPG
                 .AddChild("Stats");
 
             menu.AddChoiceGroup("Adventures", _adventuresRegistry.GetCommands());
-            var command = AnsiConsole.Prompt(menu);
-            HandleCommand(command);         
-          
+            menu.AddChoice("Settings")
+                .AddChild("end");
+            return AnsiConsole.Prompt(menu);
+
+
         }
         public static void GameMenu()
         {
@@ -80,10 +76,10 @@ namespace FirstSteps.RPG
             string userInput;
             do
             {
-                MenuSelect();
-                userInput = Console.ReadLine();
-                _adventuresRegistry.GetCommands();                
-                Console.WriteLine();   
+                userInput = MenuSelect();
+                HandleCommand(userInput);
+                _adventuresRegistry.GetCommands();
+                Console.WriteLine();
             }
             while (userInput != "end");
         }
