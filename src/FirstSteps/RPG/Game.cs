@@ -77,8 +77,7 @@ namespace FirstSteps.RPG
             do
             {
                 userInput = MenuSelect();
-                HandleCommand(userInput);
-                _adventuresRegistry.GetCommands();
+                HandleCommand(userInput);               
                 Console.WriteLine();
             }
             while (userInput != "end");
