@@ -16,11 +16,11 @@ namespace FirstSteps.RPG
             string serialize = JsonSerializer.Serialize(hero);
             File.WriteAllText(FilePath, serialize);
         }
-        public static void LoadHero()
+        public static string LoadHero()
         {
             string deSerialize = File.ReadAllText(FilePath);
             HeroModel heroModel = JsonSerializer.Deserialize<HeroModel>(deSerialize);
-            Console.WriteLine(heroModel);
+            return heroModel.ToString();
         }
     }
 }
