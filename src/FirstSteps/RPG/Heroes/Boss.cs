@@ -10,7 +10,6 @@ namespace FirstSteps.RPG.Heroes
         public int Strength { get; private set; }
         public int Damage { get; private set; }
 
-
         private Boss()
         {
 

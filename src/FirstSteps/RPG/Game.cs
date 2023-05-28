@@ -1,22 +1,15 @@
 using System;
 using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG.Adventures;
-using Spectre.Console;
 using FirstSteps.RPG.Tools;
+using Spectre.Console;
 
 namespace FirstSteps.RPG
 {
     public static class Game
     {
-        private static Mine _mine = new Mine();
-        private static Forest _forest = new Forest();
-        private static Dungeons _dungeons = new Dungeons();
-        private static Village _village = new Village();
-        private static Inventory _inventory = new Inventory();
-        private static TreasureChest _treasureChest = new TreasureChest();
-        private static Hell _hell = new Hell();
         private static Hero _hero;
-        public static void CreateHero()
+        private static AdventuresRegistry _adventuresRegistry = new AdventuresRegistry();
+        private static void CreateHero()
         {
             Console.WriteLine("Create your hero");
 
@@ -32,51 +25,65 @@ namespace FirstSteps.RPG
             _hero = HeroesCreator.Create(name, race);
 
         }
-        public static void HandleCommand(string command)
+        private static void HandleCommand(string command)
         {
-            switch (command)
+            var adventure = _adventuresRegistry.GetAdventure(command);
+
+            if (adventure != null)
             {
-                case "stats":
-                    DisplayHeroStats();
-                    break;
-                case "treasure adventure":
-                    _treasureChest.Enter(_hero);
-                    break;
-                case "inventory":
-                    _inventory.DisplayAllItems(_hero);
-                    break;
-                case "forest":
-                    _forest.Enter(_hero);
-                    break;
-                case "dungeons":
-                    _dungeons.Enter(_hero);
-                    break;
-                case "mine":
-                    _mine.Enter(_hero);
-                    break;
-                case "village":
-                    _village.Enter(_hero);
-                    break;
-                case "hell":
-                    _hell.Enter(_hero);
-                    break;
-                default:
-                    Display.WarningText($"Command {command} not recognized");
-                    break;
+                adventure.Enter(_hero);
+            }
+            else if (command == "Stats")
+            {
+                DisplayHeroStats();
             }
         }
-        public static void DisplayHeroStats()
+        private static void DisplayHeroStats()
         {
             _hero.DisplayStats();
         }
 
-        public static void DisplayAllRaces()
+        private static void DisplayAllRaces()
         {
             var races = Enum.GetNames(typeof(Races));
             for (int i = 0; i < races.Length; i++)
             {
                 Console.WriteLine($"{i + 1}. {races[i]}");
             }
+        }
+        private static string MenuSelect()
+        {
+            var menu = new SelectionPrompt<string>();
+
+            menu.AddChoice("Hero")
+                .AddChild("Stats");
+
+            menu.AddChoiceGroup("Adventures", _adventuresRegistry.GetCommands());
+            menu.AddChoice("Settings")
+                .AddChild("end");
+            return AnsiConsole.Prompt(menu);
+
+
+        }
+        public static void GameMenu()
+        {
+            AnsiConsole.MarkupLine($"{Emoji.Known.BowAndArrow} [darkgreen]Welcome to the RPG game [/] {Emoji.Known.CrossedSwords}");
+
+            Game.CreateHero();
+
+            AnsiConsole.MarkupLine($"{Emoji.Known.Dagger} [red]Let's play the game[/] {Emoji.Known.Dagger}");
+
+            Console.WriteLine("\nType 'end' if you want to quit.");
+            Console.WriteLine("\nIf You want go back to the previous menu press button\n");
+            Console.WriteLine("________________________________");
+            string userInput;
+            do
+            {
+                userInput = MenuSelect();
+                HandleCommand(userInput);
+                Console.WriteLine();
+            }
+            while (userInput != "end");
         }
     }
 }

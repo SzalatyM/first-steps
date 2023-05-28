@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace FirstSteps.RPG.Adventures
 {
-    public class Inventory
+    public class Inventory : IAdventure
     {
         private static List<Item> _inventory = new List<Item>()
         {
@@ -16,8 +16,11 @@ namespace FirstSteps.RPG.Adventures
             new MagicBow(),
             new MagicSkull(),
             new MagicSword()
-        };       
-        public void DisplayAllItems(Hero _hero)
+        };
+
+        public string Command => "Inventory";
+
+        public void Enter(Hero hero)
         {
             try
             {
@@ -34,9 +37,9 @@ namespace FirstSteps.RPG.Adventures
                 {
                     Console.WriteLine("There is no such item to buy!");
                 }
-                else if (_hero.TrySpendCoins(item))
+                else if (hero.TrySpendCoins(item))
                 {
-                    _hero.AddItemToBackpack(item);
+                    hero.AddItemToBackpack(item);
                     _inventory.Remove(item);
                     Console.WriteLine($"You bought a {userInput} ");
                 }
