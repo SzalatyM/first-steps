@@ -28,14 +28,17 @@ namespace FirstSteps.RPG
         private static void HandleCommand(string command)
         {
             var adventure = _adventuresRegistry.GetAdventure(command);
-            adventure?.Enter(_hero);
 
-            if (command == "Stats")
+            if (adventure != null)
+            {
+                adventure.Enter(_hero);
+            }
+            else if (command == "Stats")
             {
                 DisplayHeroStats();
             }
         }
-        public static void DisplayHeroStats()
+        private static void DisplayHeroStats()
         {
             _hero.DisplayStats();
         }
@@ -77,7 +80,7 @@ namespace FirstSteps.RPG
             do
             {
                 userInput = MenuSelect();
-                HandleCommand(userInput);               
+                HandleCommand(userInput);
                 Console.WriteLine();
             }
             while (userInput != "end");
