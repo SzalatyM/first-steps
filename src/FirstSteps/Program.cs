@@ -7,11 +7,9 @@ namespace FirstSteps
 {
     class Program
     {
-        private static Hero Hero;
         static void Main(string[] args)
         {
-            HeroesRepository.SafeHero(Hero);
-            Game.GameMenu();
+            Game.GameMenu();          
         }
     }
 }

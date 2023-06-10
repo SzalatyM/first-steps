@@ -7,13 +7,13 @@ namespace FirstSteps.RPG
 {
     public class HeroModel
     {       
-        public string _name { get; set; }
-        public Races _race { get; set; }
-        public int _strength { get; set; }
-        public int _intelligence { get; set; }
-        public int _agility { get; set; }
-        public int _health { get; set; }
-        public int _damage { get; set; }
-        public int _coinsBag { get; set; }
+        public string Name { get; set; }
+        public Races Race { get; set; }
+        public int Strength { get; set; }
+        public int Intelligence { get; set; }
+        public int Agility { get; set; }
+        public int Health { get; set; }
+        public int Damage { get; set; }
+        public int CoinsBag { get; set; }
     }
 }
