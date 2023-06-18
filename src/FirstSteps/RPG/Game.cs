@@ -63,7 +63,6 @@ namespace FirstSteps.RPG
                 .AddChild("end");
             return AnsiConsole.Prompt(menu);
 
-
         }
         public static void GameMenu()
         {

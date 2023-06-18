@@ -1,12 +1,8 @@
 ﻿using FirstSteps.RPG.Heroes;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace FirstSteps.RPG
 {
     public class HeroModel
-    {       
+    {
         public string Name { get; set; }
         public Races Race { get; set; }
         public int Strength { get; set; }

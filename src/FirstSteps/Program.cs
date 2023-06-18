@@ -1,7 +1,4 @@
-﻿using System;
-using FirstSteps.RPG;
-using FirstSteps.RPG.Heroes;
-using Spectre.Console;
+﻿using FirstSteps.RPG;
 
 namespace FirstSteps
 {
@@ -9,7 +6,7 @@ namespace FirstSteps
     {
         static void Main(string[] args)
         {
-            Game.GameMenu();          
+            Game.GameMenu();
         }
     }
 }
