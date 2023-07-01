@@ -1,7 +1,6 @@
 ﻿using System;
 using FirstSteps.RPG.Items;
 using Spectre.Console;
-using AutoMapper;
 
 namespace FirstSteps.RPG.Heroes
 {
