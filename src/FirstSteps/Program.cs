@@ -1,6 +1,4 @@
-﻿using System;
-using FirstSteps.RPG;
-using Spectre.Console;
+﻿using FirstSteps.RPG;
 
 namespace FirstSteps
 {

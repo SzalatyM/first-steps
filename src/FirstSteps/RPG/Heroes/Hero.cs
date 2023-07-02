@@ -13,7 +13,7 @@ namespace FirstSteps.RPG.Heroes
         protected int _intelligence;
         protected int _agility;
         protected int _health;
-        public int Health { get { return _health; }}
+        public int Health { get { return _health; } }
         protected int _damage;
         private int _coinsBag;
         public int Coins { get { return _coinsBag; } set { _coinsBag = value; } }
@@ -76,7 +76,22 @@ namespace FirstSteps.RPG.Heroes
 
         public int TakeDamage(int damage)
         {
-           return _health -= damage;            
+            return _health -= damage;
+        }
+        public HeroModel ToHeroModel()
+        {
+            HeroModel heroModel = new HeroModel
+            {
+                Name = _name,
+                Race = _race,
+                Health = _health,
+                Strength = _strength,
+                Intelligence = _intelligence,
+                Agility = _agility,               
+                CoinsBag = _coinsBag,
+                Damage = _damage               
+            };
+            return heroModel;        
         }
     }
 }

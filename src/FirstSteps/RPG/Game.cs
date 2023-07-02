@@ -63,7 +63,6 @@ namespace FirstSteps.RPG
                 .AddChild("end");
             return AnsiConsole.Prompt(menu);
 
-
         }
         public static void GameMenu()
         {
@@ -77,6 +76,7 @@ namespace FirstSteps.RPG
             Console.WriteLine("\nIf You want go back to the previous menu press button\n");
             Console.WriteLine("________________________________");
             string userInput;
+            HeroesRepository.SaveHero(_hero);
             do
             {
                 userInput = MenuSelect();
