@@ -67,6 +67,13 @@ namespace FirstSteps.RPG
         public static void GameMenu()
         {
             AnsiConsole.MarkupLine($"{Emoji.Known.BowAndArrow} [darkgreen]Welcome to the RPG game [/] {Emoji.Known.CrossedSwords}");
+            var confirmation = new ConfirmationPrompt("Do you want to load the hero from file?");
+            var answer = AnsiConsole.Prompt(confirmation);
+            if(answer)
+            {
+                AnsiConsole.WriteLine("y");
+                HeroesRepository.LoadHero();
+            }
 
             Game.CreateHero();
 
