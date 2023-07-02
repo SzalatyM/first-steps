@@ -1,9 +1,12 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
+using System.Xml.Linq;
 using FirstSteps.RPG.Items;
 namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
     {
+        private HeroModel _heroModel;
         public Human(string name) : base(name, Races.Human)
         {
             _strength = 3;
@@ -11,6 +14,17 @@ namespace FirstSteps.RPG.Heroes
             _agility = 5;
             _health = 20;
             _damage = 6;
+        }
+        public Human(string name, Races race, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Human)
+        {
+            _heroModel.Name = name;
+            _heroModel.Race = race;
+            _heroModel.Strength = strength;
+            _heroModel.Health = health;
+            _heroModel.Damage = damage;
+            _heroModel.Intelligence = intelligence;
+            _heroModel.Agility = agility;
+            _heroModel.CoinsBag = coinsBag;
         }
 
         public override int DealDamage()
