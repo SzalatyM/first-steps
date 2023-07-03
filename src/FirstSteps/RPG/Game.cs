@@ -1,6 +1,5 @@
 using System;
 using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG.Tools;
 using Spectre.Console;
 
 namespace FirstSteps.RPG
@@ -84,13 +83,13 @@ namespace FirstSteps.RPG
             Console.WriteLine("\nType 'end' if you want to quit.");
             Console.WriteLine("\nIf You want go back to the previous menu press button\n");
             Console.WriteLine("________________________________");
-            string userInput;
             HeroesRepository.SaveHero(_hero);
+            string userInput;           
             do
             {
                 userInput = MenuSelect();
                 HandleCommand(userInput);
-                Console.WriteLine();
+                Console.WriteLine();               
             }
             while (userInput != "end");
         }

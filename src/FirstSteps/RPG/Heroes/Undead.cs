@@ -20,15 +20,17 @@ namespace FirstSteps.RPG.Heroes
         }
         public Undead(string name, Races race, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Undead)
         {
-            _heroModel = new HeroModel();
-            _heroModel.Name = name;
-            _heroModel.Race = race;
-            _heroModel.Strength = strength; 
-            _heroModel.Intelligence = intelligence;
-            _heroModel.Agility = agility;
-            _heroModel.Health = health;
-            _heroModel.Damage = damage;
-            _heroModel.CoinsBag = coinsBag;            
+            _heroModel = new HeroModel
+            {
+                Name = name,
+                Race = race,
+                Strength = strength,
+                Intelligence = intelligence,
+                Agility = agility,
+                Health = health,
+                Damage = damage,
+                CoinsBag = coinsBag
+            };
         }
         protected override bool CanHandleSpecialItem(Item item)
         {

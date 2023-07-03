@@ -16,15 +16,17 @@ namespace FirstSteps.RPG.Heroes
         }
         public Dwarf(string name, Races race, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Dwarf)
         {
-            _heroModel = new HeroModel();
-            _heroModel.Name = name;
-            _heroModel.Race = race;
-            _heroModel.Strength = strength;
-            _heroModel.Health = health;
-            _heroModel.Damage = damage;
-            _heroModel.Intelligence = intelligence;
-            _heroModel.Agility = agility;
-            _heroModel.CoinsBag = coinsBag;                
+            _heroModel = new HeroModel
+            {
+                Name = name,
+                Race = race,
+                Strength = strength,
+                Health = health,
+                Damage = damage,
+                Intelligence = intelligence,
+                Agility = agility,
+                CoinsBag = coinsBag
+            };
         }
 
         protected override bool CanHandleSpecialItem(Item item)
