@@ -17,6 +17,7 @@ namespace FirstSteps.RPG.Heroes
         }
         public Human(string name, Races race, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Human)
         {
+            _heroModel = new HeroModel();
             _heroModel.Name = name;
             _heroModel.Race = race;
             _heroModel.Strength = strength;

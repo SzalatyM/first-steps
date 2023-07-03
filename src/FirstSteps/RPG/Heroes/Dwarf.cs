@@ -16,6 +16,7 @@ namespace FirstSteps.RPG.Heroes
         }
         public Dwarf(string name, Races race, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Dwarf)
         {
+            _heroModel = new HeroModel();
             _heroModel.Name = name;
             _heroModel.Race = race;
             _heroModel.Strength = strength;

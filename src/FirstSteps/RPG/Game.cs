@@ -70,7 +70,8 @@ namespace FirstSteps.RPG
             var confirmation = new ConfirmationPrompt("Do you want to load the hero from file?");
             var answer = AnsiConsole.Prompt(confirmation);
             if(answer)
-            {                
+            {
+                
                 HeroesRepository.LoadHero();
             }
             else
