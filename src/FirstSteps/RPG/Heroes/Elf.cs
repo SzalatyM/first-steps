@@ -8,7 +8,7 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Elf : Hero
     {
-        private HeroModel _heroModel;
+        private int _coinsBag;
         private List<Arrow> _arrowsBag = new List<Arrow>();
 
         public Elf(string name) : base(name, Races.Elf)
@@ -18,20 +18,16 @@ namespace FirstSteps.RPG.Heroes
             _agility = 5;
             _health = 21;
             _damage = 9;
+            _coinsBag = 0;
         }
-        public Elf(string name, Races race, int strength, int intelligence, int agility, int health, int damage, int coinsBag) :base(name,Races.Elf)
+        public Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) :base(name,Races.Elf)
         {
-            _heroModel = new HeroModel
-            {
-                Name = name,
-                Race = race,
-                Strength = strength,
-                Intelligence = intelligence,
-                Agility = agility,
-                Health = health,
-                Damage = damage,
-                CoinsBag = coinsBag
-            };
+            _strength = strength;
+            _intelligence = intelligence;
+            _agility = agility;
+            _health = health;
+            _damage = damage;
+            _coinsBag = coinsBag;
         }
         
         protected override bool CanHandleSpecialItem(Item item)

@@ -7,7 +7,7 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Undead : Hero
     {
-       private HeroModel _heroModel;
+        private int _coinsBag;
         public int ManaPoints { get; private set; }
 
         public Undead(string name) : base(name, Races.Undead)
@@ -17,20 +17,16 @@ namespace FirstSteps.RPG.Heroes
             _agility = 4;
             _health = 22;
             _damage = 8;
+            _coinsBag = 0;
         }
-        public Undead(string name, Races race, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Undead)
+        public Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Undead)
         {
-            _heroModel = new HeroModel
-            {
-                Name = name,
-                Race = race,
-                Strength = strength,
-                Intelligence = intelligence,
-                Agility = agility,
-                Health = health,
-                Damage = damage,
-                CoinsBag = coinsBag
-            };
+            _strength = strength;
+            _intelligence = intelligence;
+            _agility = agility;
+            _health = health;
+            _damage = damage;
+            _coinsBag = coinsBag;
         }
         protected override bool CanHandleSpecialItem(Item item)
         {

@@ -1,12 +1,11 @@
-﻿using System.Diagnostics;
-using System.Linq;
-using System.Xml.Linq;
+﻿using System.Linq;
 using FirstSteps.RPG.Items;
 namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
     {
-        private HeroModel _heroModel;
+
+        private int _coinsBag;
         public Human(string name) : base(name, Races.Human)
         {
             _strength = 3;
@@ -14,20 +13,17 @@ namespace FirstSteps.RPG.Heroes
             _agility = 5;
             _health = 20;
             _damage = 6;
+            _coinsBag = 0;
         }
-        public Human(string name, Races race, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Human)
+        public Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Human)
         {
-            _heroModel = new HeroModel
-            {
-                Name = name,
-                Race = race,
-                Strength = strength,
-                Health = health,
-                Damage = damage,
-                Intelligence = intelligence,
-                Agility = agility,
-                CoinsBag = coinsBag
-            };
+
+            _strength = strength;
+            _intelligence = intelligence;
+            _agility = agility;
+            _health = health;
+            _damage = damage;
+            _coinsBag = coinsBag;
         }
 
         public override int DealDamage()
@@ -35,13 +31,13 @@ namespace FirstSteps.RPG.Heroes
 
             if (_equipment.Backpack.Any(x => x is MagicSword))
             {
-                return (_damage + _strength) * 2; 
+                return (_damage + _strength) * 2;
             }
-            else if(_equipment.Backpack.Any(x => x is Pitchfork))
+            else if (_equipment.Backpack.Any(x => x is Pitchfork))
             {
                 return _damage + _damage;
             }
-            else if(_equipment.Backpack.Any(x => x is Knife))
+            else if (_equipment.Backpack.Any(x => x is Knife))
             {
                 return _damage + _strength;
             }

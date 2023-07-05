@@ -30,28 +30,29 @@ namespace FirstSteps.RPG.Heroes
                 return null;
             }
         }
-        public static Hero Create(Races race)
+        public static Hero Create()
         {
 
-            HeroModel heroModel = HeroesRepository.LoadHero();
-            
+            HeroModel heroModel = HeroesRepository.LoadFromFile();
+            Races race = heroModel.Race;
+
             if (race == Races.Human)
             {
                 
-                return new Human(heroModel.Name, race, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                return new Human(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
             }
             else if (race == Races.Dwarf)
             {
                 
-                return new Dwarf(heroModel.Name, race, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                return new Dwarf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
             }
             else if (race == Races.Elf)
             {
-                return new Elf(heroModel.Name, race, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                return new Elf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
             }
             else
             {
-                return new Undead(heroModel.Name, race, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                return new Undead(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
             }
         }
     }
