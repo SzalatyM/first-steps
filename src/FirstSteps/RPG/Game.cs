@@ -70,9 +70,7 @@ namespace FirstSteps.RPG
             var answer = AnsiConsole.Prompt(confirmation);
             if(answer)
             {
-                HeroModel heroModel = HeroesRepository.LoadFromFile();
-                Hero hero = hero.ToHeroModel();
-                _hero = HeroesRepository.LoadFromFile();
+                _hero = HeroesCreator.LoadFromFile();
             }
             else
             {

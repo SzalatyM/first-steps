@@ -30,29 +30,28 @@ namespace FirstSteps.RPG.Heroes
                 return null;
             }
         }
-        public static Hero Create()
+        public static Hero LoadFromFile()
         {
 
-            HeroModel heroModel = HeroesRepository.LoadFromFile();
+            HeroModel heroModel = HeroesRepository.LoadHero();
+            Hero hero;
             Races race = heroModel.Race;
 
             if (race == Races.Human)
-            {
-                
-                return new Human(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+            {                
+                return hero = new Human(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
             }
             else if (race == Races.Dwarf)
             {
-                
-                return new Dwarf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                return hero = new Dwarf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
             }
             else if (race == Races.Elf)
             {
-                return new Elf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                return hero = new Elf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
             }
             else
             {
-                return new Undead(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                return hero = new Undead(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
             }
         }
     }

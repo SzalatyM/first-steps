@@ -13,7 +13,7 @@ namespace FirstSteps.RPG
             string serialize = JsonSerializer.Serialize(hero.ToHeroModel());
             File.WriteAllText(FilePath, serialize);
         }
-        public static HeroModel LoadFromFile()
+        public static HeroModel LoadHero()
         {
             string heroJsonString = File.ReadAllText(FilePath);
             HeroModel heroModel = JsonSerializer.Deserialize<HeroModel>(heroJsonString);

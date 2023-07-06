@@ -4,8 +4,7 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
     {
-
-        private int _coinsBag;
+        public int CoinsBag { get; set; }
         public Human(string name) : base(name, Races.Human)
         {
             _strength = 3;
@@ -13,7 +12,8 @@ namespace FirstSteps.RPG.Heroes
             _agility = 5;
             _health = 20;
             _damage = 6;
-            _coinsBag = 0;
+            CoinsBag = 0;
+          
         }
         public Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Human)
         {
@@ -23,7 +23,9 @@ namespace FirstSteps.RPG.Heroes
             _agility = agility;
             _health = health;
             _damage = damage;
-            _coinsBag = coinsBag;
+            CoinsBag = coinsBag;
+
+            
         }
 
         public override int DealDamage()

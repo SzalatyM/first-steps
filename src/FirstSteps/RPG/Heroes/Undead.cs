@@ -1,13 +1,11 @@
 ﻿using FirstSteps.RPG.Items;
-using System.Diagnostics;
 using System.Linq;
-using System.Xml.Linq;
 
 namespace FirstSteps.RPG.Heroes
 {
     public class Undead : Hero
     {
-        private int _coinsBag;
+        public int CoinsBag { get; set; }
         public int ManaPoints { get; private set; }
 
         public Undead(string name) : base(name, Races.Undead)
@@ -17,7 +15,7 @@ namespace FirstSteps.RPG.Heroes
             _agility = 4;
             _health = 22;
             _damage = 8;
-            _coinsBag = 0;
+            CoinsBag = 0;
         }
         public Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Undead)
         {
@@ -26,7 +24,7 @@ namespace FirstSteps.RPG.Heroes
             _agility = agility;
             _health = health;
             _damage = damage;
-            _coinsBag = coinsBag;
+            CoinsBag = coinsBag;
         }
         protected override bool CanHandleSpecialItem(Item item)
         {
