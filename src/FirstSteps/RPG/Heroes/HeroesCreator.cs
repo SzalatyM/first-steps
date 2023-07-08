@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -34,25 +33,20 @@ namespace FirstSteps.RPG.Heroes
         {
 
             HeroModel heroModel = HeroesRepository.LoadHero();
-            Hero hero;
             Races race = heroModel.Race;
-
-            if (race == Races.Human)
-            {                
-                return hero = new Human(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
-            }
-            else if (race == Races.Dwarf)
+            switch (race)
             {
-                return hero = new Dwarf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
-            }
-            else if (race == Races.Elf)
-            {
-                return hero = new Elf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
-            }
-            else
-            {
-                return hero = new Undead(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
-            }
+                case Races.Human:
+                    return new Human(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                case Races.Dwarf:
+                    return new Dwarf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                case Races.Elf:
+                    return new Elf(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                case Races.Undead:
+                    return new Undead(heroModel.Name, heroModel.Damage, heroModel.Health, heroModel.Agility, heroModel.CoinsBag, heroModel.Intelligence, heroModel.Strength);
+                default:
+                    throw new NotImplementedException();
+            }            
         }
     }
 }

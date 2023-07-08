@@ -82,13 +82,13 @@ namespace FirstSteps.RPG
             Console.WriteLine("\nType 'end' if you want to quit.");
             Console.WriteLine("\nIf You want go back to the previous menu press button\n");
             Console.WriteLine("________________________________");
-            HeroesRepository.SaveHero(_hero);
-            string userInput;           
+            string userInput;
             do
             {
                 userInput = MenuSelect();
                 HandleCommand(userInput);
-                Console.WriteLine();               
+                Console.WriteLine();
+                HeroesRepository.SaveHero(_hero);
             }
             while (userInput != "end");
         }

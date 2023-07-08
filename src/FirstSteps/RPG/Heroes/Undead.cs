@@ -15,7 +15,7 @@ namespace FirstSteps.RPG.Heroes
             _agility = 4;
             _health = 22;
             _damage = 8;
-            CoinsBag = 0;
+            _coinsBag = 0;
         }
         public Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Undead)
         {
@@ -24,7 +24,7 @@ namespace FirstSteps.RPG.Heroes
             _agility = agility;
             _health = health;
             _damage = damage;
-            CoinsBag = coinsBag;
+            _coinsBag = coinsBag;
         }
         protected override bool CanHandleSpecialItem(Item item)
         {
