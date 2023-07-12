@@ -1,6 +1,5 @@
 using System;
 using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG.Tools;
 using Spectre.Console;
 
 namespace FirstSteps.RPG
@@ -67,8 +66,16 @@ namespace FirstSteps.RPG
         public static void GameMenu()
         {
             AnsiConsole.MarkupLine($"{Emoji.Known.BowAndArrow} [darkgreen]Welcome to the RPG game [/] {Emoji.Known.CrossedSwords}");
-
-            Game.CreateHero();
+            var confirmation = new ConfirmationPrompt("Do you want to load the hero from file?");
+            var answer = AnsiConsole.Prompt(confirmation);
+            if(answer)
+            {
+                _hero = HeroesCreator.LoadFromFile();
+            }
+            else
+            {
+                Game.CreateHero();
+            }
 
             AnsiConsole.MarkupLine($"{Emoji.Known.Dagger} [red]Let's play the game[/] {Emoji.Known.Dagger}");
 
@@ -76,12 +83,12 @@ namespace FirstSteps.RPG
             Console.WriteLine("\nIf You want go back to the previous menu press button\n");
             Console.WriteLine("________________________________");
             string userInput;
-            HeroesRepository.SaveHero(_hero);
             do
             {
                 userInput = MenuSelect();
                 HandleCommand(userInput);
                 Console.WriteLine();
+                HeroesRepository.SaveHero(_hero);
             }
             while (userInput != "end");
         }

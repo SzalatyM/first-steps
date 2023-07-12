@@ -5,6 +5,7 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Dwarf : Hero
     {
+        
         public Dwarf(string name) : base(name, Races.Dwarf)
         {
             _strength = 4;
@@ -12,6 +13,16 @@ namespace FirstSteps.RPG.Heroes
             _agility = 4;
             _health = 25;
             _damage = 7;
+            _coinsBag = 0;
+        }
+        public Dwarf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Dwarf)
+        {
+            _strength = strength;
+            _intelligence = intelligence;
+            _agility = agility;
+            _health = health;
+            _damage = damage;
+            _coinsBag = coinsBag;
         }
 
         protected override bool CanHandleSpecialItem(Item item)

@@ -14,8 +14,17 @@ namespace FirstSteps.RPG.Heroes
             _agility = 4;
             _health = 22;
             _damage = 8;
+            _coinsBag = 0;
         }
-
+        public Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Undead)
+        {
+            _strength = strength;
+            _intelligence = intelligence;
+            _agility = agility;
+            _health = health;
+            _damage = damage;
+            _coinsBag = coinsBag;
+        }
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicSkull;

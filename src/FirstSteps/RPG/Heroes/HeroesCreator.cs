@@ -4,6 +4,7 @@ namespace FirstSteps.RPG.Heroes
 {
     public class HeroesCreator
     {
+
         public static Hero Create(string name, Races race)
         {
             if (race == Races.Human)
@@ -26,6 +27,25 @@ namespace FirstSteps.RPG.Heroes
             {
                 Console.WriteLine("Choose a corrent hero");
                 return null;
+            }
+        }
+        public static Hero LoadFromFile()
+        {
+
+            HeroModel heroModel = HeroesRepository.LoadHero();
+            Races race = heroModel.Race;
+            switch (race)
+            {
+                case Races.Human:
+                    return new Human(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag);
+                case Races.Dwarf:
+                    return new Dwarf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag);
+                case Races.Elf:
+                    return new Elf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag);
+                case Races.Undead:
+                    return new Undead(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag);
+                default:
+                    throw new NotImplementedException();
             }
         }
     }
