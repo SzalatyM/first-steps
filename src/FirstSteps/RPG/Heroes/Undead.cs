@@ -5,7 +5,6 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Undead : Hero
     {
-        public int CoinsBag { get; set; }
         public int ManaPoints { get; private set; }
 
         public Undead(string name) : base(name, Races.Undead)
