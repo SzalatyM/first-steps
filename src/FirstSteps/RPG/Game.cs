@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using FirstSteps.RPG.Heroes;
+using FirstSteps.RPG.Items;
 using Spectre.Console;
 
 namespace FirstSteps.RPG
@@ -71,6 +73,7 @@ namespace FirstSteps.RPG
             if(answer)
             {
                 _hero = HeroesCreator.LoadFromFile();
+                //_hero = HeroesCreator.LoadItemFromFile();
             }
             else
             {

@@ -1,4 +1,6 @@
 ﻿using FirstSteps.RPG.Heroes;
+using FirstSteps.RPG.Items;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
@@ -9,10 +11,19 @@ namespace FirstSteps.RPG
         const string FilePath = @"..\..\..\RPG\File\hero.json";
 
         public static void SaveHero(Hero hero)
+    {
+        EquipmentModel equipment = hero.ToEquipmentModel();
+        HeroModel heroModel = hero.ToHeroModel();
+
+        Dictionary<string, object> heroData = new Dictionary<string, object>
         {
-            string serialize = JsonSerializer.Serialize(hero.ToHeroModel());
-            File.WriteAllText(FilePath, serialize);
-        }
+            { "Equipment", equipment },
+            { "Hero", heroModel }
+        };
+
+        string serializedData = JsonSerializer.Serialize(heroData);
+        File.WriteAllText(FilePath, serializedData);
+    }
         public static HeroModel LoadHero()
         {
             string heroJsonString = File.ReadAllText(FilePath);

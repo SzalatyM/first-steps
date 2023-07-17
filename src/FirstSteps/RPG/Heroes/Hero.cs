@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using FirstSteps.RPG.Items;
 using Spectre.Console;
 
@@ -20,7 +23,7 @@ namespace FirstSteps.RPG.Heroes
 
         public Hero(string name, Races race)
         {
-            _equipment = new Equipment();
+            _equipment = new Equipment();           
             _name = name;
             _race = race;
         }
@@ -87,11 +90,29 @@ namespace FirstSteps.RPG.Heroes
                 Health = _health,
                 Strength = _strength,
                 Intelligence = _intelligence,
-                Agility = _agility,               
+                Agility = _agility,
                 CoinsBag = _coinsBag,
-                Damage = _damage               
+                Damage = _damage
             };
-            return heroModel;        
+            return heroModel;
+        }
+        public ItemModel ToItemModel()
+        {
+            ItemModel itemModel = new ItemModel()
+            {
+                ItemList = _equipment.Backpack.ToList()
+
+            };
+            return itemModel;
+        }
+
+        public EquipmentModel ToEquipmentModel()
+        {
+            EquipmentModel equipmentModel = new EquipmentModel()
+            {
+                Equipment = _equipment
+            };
+            return equipmentModel;
         }
     }
 }

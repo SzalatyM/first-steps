@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FirstSteps.RPG.Items;
+using System;
+using System.Collections.Generic;
+using AutoMapper;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -31,7 +34,6 @@ namespace FirstSteps.RPG.Heroes
         }
         public static Hero LoadFromFile()
         {
-
             HeroModel heroModel = HeroesRepository.LoadHero();
             Races race = heroModel.Race;
             switch (race)
@@ -48,5 +50,27 @@ namespace FirstSteps.RPG.Heroes
                     throw new NotImplementedException();
             }
         }
+        public static Item MapItems(string ItemType)
+        {
+            switch (ItemType)
+            {
+                case "MagicSword":
+                    return new MagicSword();
+                case "MagicAxe":
+                    return new MagicAxe();
+                case "MagicSkull":
+                    return new MagicSkull();
+                case "MagicBow":
+                    return new MagicBow();
+                case "Knife":
+                    return new Knife();
+                case "Pitchfork":
+                    return new Pitchfork();
+
+                default:
+                    throw new ArgumentException($"Unknown item type");
+            }
+        }
+
     }
 }
