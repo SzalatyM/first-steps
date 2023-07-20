@@ -9,9 +9,13 @@ Game Rules
 2. Adventures: Each hero has access to different adventures:
 
 a) Elf can venture into the forest, where they have a chance to gain 10 health points or find an additional quiver of arrows.
+
 b) Dwarf can delve into the mines, where they have a chance to collect extra coins.
+
 c) Human can explore the village, where they have a chance to randomly obtain an additional item from a chest.
+
 d) Undead can journey to the dungeons, where they have a chance to increase their intelligence stat points.
+
 
 Boss Battle: Each hero has the opportunity to engage in an epic boss battle. Defeating the boss rewards the player with valuable coins.
 
