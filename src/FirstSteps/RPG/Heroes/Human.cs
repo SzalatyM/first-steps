@@ -11,16 +11,19 @@ namespace FirstSteps.RPG.Heroes
             _agility = 5;
             _health = 20;
             _damage = 6;
-            _coinsBag = 0;         
+            _coinsBag = 0;           
+            
         }
-        public Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Human)
+        public Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Human)
         {
             _strength = strength;
             _intelligence = intelligence;
             _agility = agility;
             _health = health;
             _damage = damage;
-            _coinsBag = coinsBag;            
+            _coinsBag = coinsBag;
+            _equipment = equipment;
+            
         }
 
         public override int DealDamage()

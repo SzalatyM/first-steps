@@ -73,7 +73,6 @@ namespace FirstSteps.RPG
             if(answer)
             {
                 _hero = HeroesCreator.LoadFromFile();
-                //_hero = HeroesCreator.LoadItemFromFile();
             }
             else
             {

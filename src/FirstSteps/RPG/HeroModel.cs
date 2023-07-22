@@ -1,4 +1,6 @@
 ﻿using FirstSteps.RPG.Heroes;
+using FirstSteps.RPG.Items;
+
 namespace FirstSteps.RPG
 {
     public class HeroModel
@@ -11,5 +13,6 @@ namespace FirstSteps.RPG
         public int Health { get; set; }
         public int Damage { get; set; }
         public int CoinsBag { get; set; }
+        public Equipment Equipment { get; set; }
     }
 }

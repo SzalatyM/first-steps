@@ -2,6 +2,10 @@
 using System;
 using System.Collections.Generic;
 using AutoMapper;
+using System.Security.Cryptography.X509Certificates;
+using System.Linq;
+using System.Xml.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -36,41 +40,47 @@ namespace FirstSteps.RPG.Heroes
         {
             HeroModel heroModel = HeroesRepository.LoadHero();
             Races race = heroModel.Race;
+            EquipmentModel equipment = new EquipmentModel();
+
             switch (race)
             {
                 case Races.Human:
-                    return new Human(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag);
+                    return new Human(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, MapEquipment(equipment));
                 case Races.Dwarf:
-                    return new Dwarf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag);
+                    return new Dwarf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, heroModel.Equipment);
                 case Races.Elf:
-                    return new Elf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag);
+                    return new Elf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, heroModel.Equipment);
                 case Races.Undead:
-                    return new Undead(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag);
+                    return new Undead(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, heroModel.Equipment);
                 default:
                     throw new NotImplementedException();
+
             }
         }
-        public static Item MapItems(string ItemType)
+        private static Equipment MapEquipment(EquipmentModel equipmentModel)
         {
-            switch (ItemType)
-            {
-                case "MagicSword":
-                    return new MagicSword();
-                case "MagicAxe":
-                    return new MagicAxe();
-                case "MagicSkull":
-                    return new MagicSkull();
-                case "MagicBow":
-                    return new MagicBow();
-                case "Knife":
-                    return new Knife();
-                case "Pitchfork":
-                    return new Pitchfork();
+            Equipment equipment = new Equipment();
 
-                default:
-                    throw new ArgumentException($"Unknown item type");
+            if (equipmentModel.Items != null)
+            {
+                foreach (var itemModel in equipmentModel.Items)
+                {
+                    foreach (var item in itemModel.ItemList)
+                    {
+                        Item mappedItem = MapItem();
+                        equipment.TryAddItemToBackpack(mappedItem);
+                        Console.WriteLine(item);
+                    }
+                }
             }
+
+            return equipment;
         }
 
+        private static Item MapItem(ItemModel itemModel)
+        {
+            List<Item> item = itemModel.ItemList;
+            return new Item(item => item is MagicAxe);
+        }
     }
 }

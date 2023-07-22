@@ -10,7 +10,7 @@
         {
             Name = name;
             Price = price;
-            Weight = weight;
+            Weight = weight;           
         }
         public override string ToString()
         {

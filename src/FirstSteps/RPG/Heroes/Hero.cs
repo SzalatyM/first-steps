@@ -9,6 +9,7 @@ namespace FirstSteps.RPG.Heroes
 {
     public abstract class Hero : IAttacker
     {
+        protected EquipmentModel _equipmentModel;
         protected Equipment _equipment;
         private string _name;
         private Races _race;
@@ -23,10 +24,11 @@ namespace FirstSteps.RPG.Heroes
 
         public Hero(string name, Races race)
         {
-            _equipment = new Equipment();           
+            _equipment = new Equipment();      
             _name = name;
             _race = race;
-        }
+            _equipmentModel = new EquipmentModel();
+        }      
         public void DisplayStats()
         {
             Console.WriteLine($"Name: {_name}");
@@ -92,27 +94,12 @@ namespace FirstSteps.RPG.Heroes
                 Intelligence = _intelligence,
                 Agility = _agility,
                 CoinsBag = _coinsBag,
-                Damage = _damage
+                Damage = _damage,
+                Equipment = _equipment
+                                   
             };
             return heroModel;
         }
-        public ItemModel ToItemModel()
-        {
-            ItemModel itemModel = new ItemModel()
-            {
-                ItemList = _equipment.Backpack.ToList()
 
-            };
-            return itemModel;
-        }
-
-        public EquipmentModel ToEquipmentModel()
-        {
-            EquipmentModel equipmentModel = new EquipmentModel()
-            {
-                Equipment = _equipment
-            };
-            return equipmentModel;
-        }
     }
 }

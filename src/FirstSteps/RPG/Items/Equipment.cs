@@ -7,8 +7,8 @@ namespace FirstSteps.RPG
     public class Equipment
     {
         private List<Item> _backPack = new List<Item>();
-
         public List<Item> Backpack { get { return _backPack; } }
+
         const int MaxBackpack = 5;
         const int MaxWeight = 40;
 

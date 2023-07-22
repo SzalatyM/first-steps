@@ -12,16 +12,8 @@ namespace FirstSteps.RPG
 
         public static void SaveHero(Hero hero)
     {
-        EquipmentModel equipment = hero.ToEquipmentModel();
-        HeroModel heroModel = hero.ToHeroModel();
-
-        Dictionary<string, object> heroData = new Dictionary<string, object>
-        {
-            { "Equipment", equipment },
-            { "Hero", heroModel }
-        };
-
-        string serializedData = JsonSerializer.Serialize(heroData);
+         
+        string serializedData = JsonSerializer.Serialize(hero.ToHeroModel());
         File.WriteAllText(FilePath, serializedData);
     }
         public static HeroModel LoadHero()
@@ -31,4 +23,4 @@ namespace FirstSteps.RPG
             return heroModel;
         }
     }
-}
+}   
