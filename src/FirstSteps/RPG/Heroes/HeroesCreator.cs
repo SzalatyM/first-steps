@@ -67,20 +67,29 @@ namespace FirstSteps.RPG.Heroes
                 {
                     foreach (var item in itemModel.ItemList)
                     {
-                        Item mappedItem = MapItem();
+                        Item mappedItem = MapItem(item.Name); 
                         equipment.TryAddItemToBackpack(mappedItem);
-                        Console.WriteLine(item);
                     }
                 }
             }
 
             return equipment;
         }
-
-        private static Item MapItem(ItemModel itemModel)
+        private static Item MapItem(string itemModel)
         {
-            List<Item> item = itemModel.ItemList;
-            return new Item(item => item is MagicAxe);
+            switch (itemModel)
+            {
+                case "MagicAxe":
+                    return new MagicAxe();
+                case "MagicBow":
+                    return new MagicBow();
+                case "MagicSword":
+                    return new MagicSword();
+                case "MagicSkull":
+                    return new MagicSkull();
+                default:
+                    throw new ArgumentException("Nieznany typ przedmiotu: " + itemModel);
+            }
         }
     }
 }
