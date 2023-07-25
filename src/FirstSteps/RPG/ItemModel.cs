@@ -7,6 +7,8 @@ namespace FirstSteps.RPG
 {
     public class ItemModel
     {
-        public List<Item> ItemList { get; set; }     
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public int Weight { get; set; }
     }
 }

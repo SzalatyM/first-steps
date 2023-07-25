@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG.Items;
 using Spectre.Console;
 
 namespace FirstSteps.RPG

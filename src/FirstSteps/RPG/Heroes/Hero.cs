@@ -95,9 +95,13 @@ namespace FirstSteps.RPG.Heroes
                 Agility = _agility,
                 CoinsBag = _coinsBag,
                 Damage = _damage,
-                Equipment = _equipment
-                                   
-            };
+                Equipment = new EquipmentModel
+                {
+                    Items = _equipment.Backpack.Select(item => new ItemModel { Name = item.Name, Price = item.Price, Weight = item.Weight }).ToList()
+
+                }
+                
+            };                                                                                
             return heroModel;
         }
 

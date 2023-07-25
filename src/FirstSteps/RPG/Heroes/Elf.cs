@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 
 namespace FirstSteps.RPG.Heroes
 {
     public class Elf : Hero
     {        
         private List<Arrow> _arrowsBag = new List<Arrow>();
-
 
         public Elf(string name) : base(name, Races.Elf)
         {
@@ -29,9 +27,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
-            _equipment = equipment;
-            
-            
+            _equipment = equipment;                   
         }
         
         protected override bool CanHandleSpecialItem(Item item)

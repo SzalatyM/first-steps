@@ -40,40 +40,21 @@ namespace FirstSteps.RPG.Heroes
         {
             HeroModel heroModel = HeroesRepository.LoadHero();
             Races race = heroModel.Race;
-            EquipmentModel equipment = new EquipmentModel();
 
             switch (race)
             {
                 case Races.Human:
-                    return new Human(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, MapEquipment(equipment));
+                    return new Human(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, MapEquipment(heroModel.Equipment.Items));
                 case Races.Dwarf:
-                    return new Dwarf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, heroModel.Equipment);
+                    return new Dwarf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, MapEquipment(heroModel.Equipment.Items));
                 case Races.Elf:
-                    return new Elf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, heroModel.Equipment);
+                    return new Elf(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, MapEquipment(heroModel.Equipment.Items));
                 case Races.Undead:
-                    return new Undead(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, heroModel.Equipment);
+                    return new Undead(heroModel.Name, heroModel.Strength, heroModel.Intelligence, heroModel.Agility, heroModel.Health, heroModel.Damage, heroModel.CoinsBag, MapEquipment(heroModel.Equipment.Items));
                 default:
                     throw new NotImplementedException();
 
             }
-        }
-        private static Equipment MapEquipment(EquipmentModel equipmentModel)
-        {
-            Equipment equipment = new Equipment();
-
-            if (equipmentModel.Items != null)
-            {
-                foreach (var itemModel in equipmentModel.Items)
-                {
-                    foreach (var item in itemModel.ItemList)
-                    {
-                        Item mappedItem = MapItem(item.Name); 
-                        equipment.TryAddItemToBackpack(mappedItem);
-                    }
-                }
-            }
-
-            return equipment;
         }
         private static Item MapItem(string itemModel)
         {
@@ -87,9 +68,27 @@ namespace FirstSteps.RPG.Heroes
                     return new MagicSword();
                 case "MagicSkull":
                     return new MagicSkull();
+                case "Arrow":
+                    return new Arrow();
+                case "Knife":
+                    return new Knife();
+                case "Pitchfork":
+                    return new Pitchfork();
                 default:
                     throw new ArgumentException("Nieznany typ przedmiotu: " + itemModel);
             }
+        }
+        private static Equipment MapEquipment(List<ItemModel> itemModels)
+        {
+            Equipment equipment = new Equipment();
+
+            foreach (ItemModel itemModel in itemModels)
+            {
+                Item item = MapItem(itemModel.Name);
+                equipment.TryAddItemToBackpack(item);
+            }
+
+            return equipment;
         }
     }
 }
