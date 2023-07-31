@@ -1,11 +1,8 @@
 ﻿using FirstSteps.RPG.Items;
+using Spectre.Console;
 using System;
 using System.Collections.Generic;
-using AutoMapper;
-using System.Security.Cryptography.X509Certificates;
 using System.Linq;
-using System.Xml.Linq;
-using System.Reflection.Metadata.Ecma335;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -87,7 +84,6 @@ namespace FirstSteps.RPG.Heroes
                 Item item = MapItem(itemModel.Name);
                 equipment.TryAddItemToBackpack(item);
             }
-
             return equipment;
         }
     }

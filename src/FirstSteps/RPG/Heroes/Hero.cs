@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using FirstSteps.RPG.Items;
 using Spectre.Console;
 
@@ -24,11 +22,11 @@ namespace FirstSteps.RPG.Heroes
 
         public Hero(string name, Races race)
         {
-            _equipment = new Equipment();      
+            _equipment = new Equipment();
             _name = name;
             _race = race;
             _equipmentModel = new EquipmentModel();
-        }      
+        }
         public void DisplayStats()
         {
             Console.WriteLine($"Name: {_name}");
@@ -97,13 +95,15 @@ namespace FirstSteps.RPG.Heroes
                 Damage = _damage,
                 Equipment = new EquipmentModel
                 {
-                    Items = _equipment.Backpack.Select(item => new ItemModel { Name = item.Name, Price = item.Price, Weight = item.Weight }).ToList()
-
+                    Items = _equipment.Backpack.Select(item => new ItemModel
+                    {
+                        Name = item.Name,
+                        Price = item.Price,
+                        Weight = item.Weight
+                    }).ToList()
                 }
-                
-            };                                                                                
+            };
             return heroModel;
         }
-
     }
 }

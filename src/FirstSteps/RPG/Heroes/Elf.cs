@@ -27,7 +27,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
-            _equipment = equipment;                   
+            _equipment = equipment;
         }
         
         protected override bool CanHandleSpecialItem(Item item)

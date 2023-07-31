@@ -1,6 +1,4 @@
 ﻿using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG.Items;
-
 namespace FirstSteps.RPG
 {
     public class HeroModel

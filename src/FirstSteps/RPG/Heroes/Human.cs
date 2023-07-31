@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using DocumentFormat.OpenXml.Office2010.ExcelAc;
+﻿using System.Linq;
 using FirstSteps.RPG.Items;
 namespace FirstSteps.RPG.Heroes
 {
@@ -13,8 +11,7 @@ namespace FirstSteps.RPG.Heroes
             _agility = 5;
             _health = 20;
             _damage = 6;
-            _coinsBag = 0;           
-            
+            _coinsBag = 0;                       
         }
         public Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Human)
         {
@@ -24,8 +21,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
-            _equipment = equipment;
-            
+            _equipment = equipment;           
         }
 
         public override int DealDamage()

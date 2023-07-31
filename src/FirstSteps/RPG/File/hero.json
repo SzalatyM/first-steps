@@ -1,1 +1,19 @@
-{"Name":"fs","Race":3,"Strength":3,"Intelligence":2,"Agility":5,"Health":52,"Damage":9,"CoinsBag":0,"Equipment":{"Items":[]}}
+{
+  "Name": "michal",
+  "Race": 3,
+  "Strength": 3,
+  "Intelligence": 2,
+  "Agility": 5,
+  "Health": 21,
+  "Damage": 9,
+  "CoinsBag": 18,
+  "Equipment": {
+    "Items": [
+      {
+        "Name": "MagicBow",
+        "Price": 22,
+        "Weight": 16
+      }
+    ]
+  }
+}

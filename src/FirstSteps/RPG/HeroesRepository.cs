@@ -10,8 +10,12 @@ namespace FirstSteps.RPG
 
         public static void SaveHero(Hero hero)
     {
-         
-        string serializedData = JsonSerializer.Serialize(hero.ToHeroModel());
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                PropertyNamingPolicy = null 
+            };
+            string serializedData = JsonSerializer.Serialize(hero.ToHeroModel(), options);
         File.WriteAllText(FilePath, serializedData);
     }
         public static HeroModel LoadHero()
