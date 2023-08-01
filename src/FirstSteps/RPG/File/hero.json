@@ -1,1 +1,19 @@
-{"Name":"tomek","Race":1,"Strength":3,"Intelligence":2,"Agility":5,"Health":20,"Damage":6,"CoinsBag":9}
+{
+  "Name": "michal",
+  "Race": 3,
+  "Strength": 3,
+  "Intelligence": 2,
+  "Agility": 5,
+  "Health": 21,
+  "Damage": 9,
+  "CoinsBag": 18,
+  "Equipment": {
+    "Items": [
+      {
+        "Name": "MagicBow",
+        "Price": 22,
+        "Weight": 16
+      }
+    ]
+  }
+}

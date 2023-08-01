@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -18,8 +17,9 @@ namespace FirstSteps.RPG.Heroes
             _health = 21;
             _damage = 9;
             _coinsBag = 0;
+            
         }
-        public Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) :base(name,Races.Elf)
+        public Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) :base(name,Races.Elf)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -27,6 +27,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
+            _equipment = equipment;
         }
         
         protected override bool CanHandleSpecialItem(Item item)

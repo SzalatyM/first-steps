@@ -15,7 +15,7 @@ namespace FirstSteps.RPG.Heroes
             _damage = 7;
             _coinsBag = 0;
         }
-        public Dwarf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag) : base(name, Races.Dwarf)
+        public Dwarf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Dwarf)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -23,6 +23,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
+            _equipment = equipment;
         }
 
         protected override bool CanHandleSpecialItem(Item item)

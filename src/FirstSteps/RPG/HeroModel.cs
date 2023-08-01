@@ -11,5 +11,6 @@ namespace FirstSteps.RPG
         public int Health { get; set; }
         public int Damage { get; set; }
         public int CoinsBag { get; set; }
+        public EquipmentModel Equipment { get; set; }
     }
 }

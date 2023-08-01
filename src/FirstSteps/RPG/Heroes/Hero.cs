@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FirstSteps.RPG.Items;
 using Spectre.Console;
 
@@ -6,6 +7,7 @@ namespace FirstSteps.RPG.Heroes
 {
     public abstract class Hero : IAttacker
     {
+        protected EquipmentModel _equipmentModel;
         protected Equipment _equipment;
         private string _name;
         private Races _race;
@@ -23,6 +25,7 @@ namespace FirstSteps.RPG.Heroes
             _equipment = new Equipment();
             _name = name;
             _race = race;
+            _equipmentModel = new EquipmentModel();
         }
         public void DisplayStats()
         {
@@ -87,11 +90,20 @@ namespace FirstSteps.RPG.Heroes
                 Health = _health,
                 Strength = _strength,
                 Intelligence = _intelligence,
-                Agility = _agility,               
+                Agility = _agility,
                 CoinsBag = _coinsBag,
-                Damage = _damage               
+                Damage = _damage,
+                Equipment = new EquipmentModel
+                {
+                    Items = _equipment.Backpack.Select(item => new ItemModel
+                    {
+                        Name = item.Name,
+                        Price = item.Price,
+                        Weight = item.Weight
+                    }).ToList()
+                }
             };
-            return heroModel;        
+            return heroModel;
         }
     }
 }

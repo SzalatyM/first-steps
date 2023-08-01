@@ -9,10 +9,15 @@ namespace FirstSteps.RPG
         const string FilePath = @"..\..\..\RPG\File\hero.json";
 
         public static void SaveHero(Hero hero)
-        {
-            string serialize = JsonSerializer.Serialize(hero.ToHeroModel());
-            File.WriteAllText(FilePath, serialize);
-        }
+    {
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                PropertyNamingPolicy = null 
+            };
+            string serializedData = JsonSerializer.Serialize(hero.ToHeroModel(), options);
+        File.WriteAllText(FilePath, serializedData);
+    }
         public static HeroModel LoadHero()
         {
             string heroJsonString = File.ReadAllText(FilePath);
@@ -20,4 +25,4 @@ namespace FirstSteps.RPG
             return heroModel;
         }
     }
-}
+}   
