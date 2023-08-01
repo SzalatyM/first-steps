@@ -1,4 +1,5 @@
 ﻿using FirstSteps.RPG.Items;
+using FirstSteps.RPG.ModelFiles;
 using System.Linq;
 
 namespace FirstSteps.RPG.Heroes
@@ -41,6 +42,23 @@ namespace FirstSteps.RPG.Heroes
             bool magicSkullIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicSkull);
 
             return magicSkullIsInTheBackpack ? _damage + _intelligence * 2 : _damage + _intelligence;
+        }
+        private static Undead NewUndead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
+        {
+            return new Undead(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+        }
+        public static Undead FromHeroModel(HeroModel heroModel)
+        {
+            string name = heroModel.Name;
+            int strength = heroModel.Strength;
+            int intelligence = heroModel.Intelligence;
+            int agility = heroModel.Agility;
+            int health = heroModel.Health;
+            int damage = heroModel.Damage;
+            int coinsBag = heroModel.CoinsBag;
+            Equipment equipment = heroModel.MapToEquipment();
+
+            return NewUndead(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
     }
 }

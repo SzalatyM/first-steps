@@ -1,5 +1,9 @@
 ﻿using System.Linq;
+using System.Xml.Linq;
+using FirstSteps.RPG.Heroes;
 using FirstSteps.RPG.Items;
+using FirstSteps.RPG.ModelFiles;
+
 namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
@@ -11,7 +15,7 @@ namespace FirstSteps.RPG.Heroes
             _agility = 5;
             _health = 20;
             _damage = 6;
-            _coinsBag = 0;                       
+            _coinsBag = 0;
         }
         public Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Human)
         {
@@ -21,7 +25,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
-            _equipment = equipment;           
+            _equipment = equipment;
         }
 
         public override int DealDamage()
@@ -47,6 +51,24 @@ namespace FirstSteps.RPG.Heroes
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicSword || item is Pitchfork || item is Knife;
+        }
+
+        private static Human NewHuman( string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
+        {
+            return new Human(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+        }
+        public static Human FromHeroModel(HeroModel heroModel)
+        {
+            string name = heroModel.Name;
+            int strength = heroModel.Strength;
+            int intelligence = heroModel.Intelligence;
+            int agility = heroModel.Agility;
+            int health = heroModel.Health;
+            int damage = heroModel.Damage;
+            int coinsBag = heroModel.CoinsBag;
+            Equipment equipment = heroModel.MapToEquipment();
+
+            return NewHuman(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
     }
 }

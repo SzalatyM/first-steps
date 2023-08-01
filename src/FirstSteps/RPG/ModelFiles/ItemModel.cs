@@ -1,4 +1,4 @@
-﻿namespace FirstSteps.RPG
+﻿namespace FirstSteps.RPG.ModelFiles
 {
     public class ItemModel
     {
