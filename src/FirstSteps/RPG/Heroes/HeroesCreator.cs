@@ -1,7 +1,5 @@
-﻿using FirstSteps.RPG.Items;
-using FirstSteps.RPG.ModelFiles;
+﻿using FirstSteps.RPG.ModelFiles;
 using System;
-using System.Collections.Generic;
 namespace FirstSteps.RPG.Heroes
 {
     public class HeroesCreator
