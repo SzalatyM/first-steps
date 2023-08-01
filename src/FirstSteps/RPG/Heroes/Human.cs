@@ -27,7 +27,24 @@ namespace FirstSteps.RPG.Heroes
             _coinsBag = coinsBag;
             _equipment = equipment;
         }
+        private static Human NewHuman(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
+        {
+            return NewHuman(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+        }
 
+        public static Human FromHeroModel(HeroModel heroModel)
+        {
+            string name = heroModel.Name;
+            int strength = heroModel.Strength;
+            int intelligence = heroModel.Intelligence;
+            int agility = heroModel.Agility;
+            int health = heroModel.Health;
+            int damage = heroModel.Damage;
+            int coinsBag = heroModel.CoinsBag;
+            Equipment equipment = heroModel.MapToEquipment();
+
+            return NewHuman(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+        }
         public override int DealDamage()
         {
 
@@ -51,24 +68,6 @@ namespace FirstSteps.RPG.Heroes
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicSword || item is Pitchfork || item is Knife;
-        }
-
-        private static Human NewHuman( string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
-        {
-            return new Human(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
-        }
-        public static Human FromHeroModel(HeroModel heroModel)
-        {
-            string name = heroModel.Name;
-            int strength = heroModel.Strength;
-            int intelligence = heroModel.Intelligence;
-            int agility = heroModel.Agility;
-            int health = heroModel.Health;
-            int damage = heroModel.Damage;
-            int coinsBag = heroModel.CoinsBag;
-            Equipment equipment = heroModel.MapToEquipment();
-
-            return NewHuman(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
     }
 }

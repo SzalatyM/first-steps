@@ -6,7 +6,7 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Dwarf : Hero
     {
-        
+
         public Dwarf(string name) : base(name, Races.Dwarf)
         {
             _strength = 4;
@@ -16,32 +16,11 @@ namespace FirstSteps.RPG.Heroes
             _damage = 7;
             _coinsBag = 0;
         }
-        public Dwarf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Dwarf)
-        {
-            _strength = strength;
-            _intelligence = intelligence;
-            _agility = agility;
-            _health = health;
-            _damage = damage;
-            _coinsBag = coinsBag;
-            _equipment = equipment;
-        }
-
-        protected override bool CanHandleSpecialItem(Item item)
-        {
-            return item is MagicAxe;
-        }
-
-        public override int DealDamage()
-        {
-            bool magicAxeIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicAxe);
-
-            return magicAxeIsInTheBackpack ? _damage + _agility + _strength : _damage + _agility;
-        }
         private static Dwarf NewDwarf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
         {
-            return new Dwarf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+            return NewDwarf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
+
         public static Dwarf FromHeroModel(HeroModel heroModel)
         {
             string name = heroModel.Name;
@@ -54,6 +33,18 @@ namespace FirstSteps.RPG.Heroes
             Equipment equipment = heroModel.MapToEquipment();
 
             return NewDwarf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+        }
+
+        protected override bool CanHandleSpecialItem(Item item)
+        {
+            return item is MagicAxe;
+        }
+
+        public override int DealDamage()
+        {
+            bool magicAxeIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicAxe);
+
+            return magicAxeIsInTheBackpack ? _damage + _agility + _strength : _damage + _agility;
         }
     }
 }

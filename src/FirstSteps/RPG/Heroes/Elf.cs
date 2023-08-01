@@ -7,7 +7,7 @@ using System.Linq;
 namespace FirstSteps.RPG.Heroes
 {
     public class Elf : Hero
-    {        
+    {
         private List<Arrow> _arrowsBag = new List<Arrow>();
 
         public Elf(string name) : base(name, Races.Elf)
@@ -18,19 +18,27 @@ namespace FirstSteps.RPG.Heroes
             _health = 21;
             _damage = 9;
             _coinsBag = 0;
-            
+
         }
-        public Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) :base(name,Races.Elf)
+        private static Elf NewElf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
         {
-            _strength = strength;
-            _intelligence = intelligence;
-            _agility = agility;
-            _health = health;
-            _damage = damage;
-            _coinsBag = coinsBag;
-            _equipment = equipment;
+            return NewElf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
-        
+
+        public static Elf FromHeroModel(HeroModel heroModel)
+        {
+            string name = heroModel.Name;
+            int strength = heroModel.Strength;
+            int intelligence = heroModel.Intelligence;
+            int agility = heroModel.Agility;
+            int health = heroModel.Health;
+            int damage = heroModel.Damage;
+            int coinsBag = heroModel.CoinsBag;
+            Equipment equipment = heroModel.MapToEquipment();
+
+            return NewElf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+        }
+
         protected override bool CanHandleSpecialItem(Item item)
         {
             return item is MagicBow;
@@ -52,23 +60,6 @@ namespace FirstSteps.RPG.Heroes
             bool magicBowIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicBow);
 
             return magicBowIsInTheBackpack ? _agility * 4 : _damage + _agility;
-        }
-        private static Elf NewElf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
-        {
-            return new Elf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
-        }
-        public static Elf FromHeroModel(HeroModel heroModel)
-        {
-            string name = heroModel.Name;
-            int strength = heroModel.Strength;
-            int intelligence = heroModel.Intelligence;
-            int agility = heroModel.Agility;
-            int health = heroModel.Health;
-            int damage = heroModel.Damage;
-            int coinsBag = heroModel.CoinsBag;
-            Equipment equipment = heroModel.MapToEquipment();
-
-            return NewElf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
     }
 }
