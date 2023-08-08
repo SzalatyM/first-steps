@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using FirstSteps.RPG.Items;
+using FirstSteps.RPG.HeroesModels;
 using Spectre.Console;
 
 namespace FirstSteps.RPG.Heroes

@@ -1,5 +1,5 @@
 ﻿using FirstSteps.RPG.Heroes;
-namespace FirstSteps.RPG
+namespace FirstSteps.RPG.HeroesModels
 {
     public class HeroModel
     {

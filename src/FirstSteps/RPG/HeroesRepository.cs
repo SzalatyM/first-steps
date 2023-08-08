@@ -1,4 +1,5 @@
 ﻿using FirstSteps.RPG.Heroes;
+using FirstSteps.RPG.HeroesModels;
 using System.IO;
 using System.Text.Json;
 

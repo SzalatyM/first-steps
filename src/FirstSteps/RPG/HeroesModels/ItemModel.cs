@@ -1,4 +1,4 @@
-﻿namespace FirstSteps.RPG
+﻿namespace FirstSteps.RPG.HeroesModels
 {
     public class ItemModel
     {

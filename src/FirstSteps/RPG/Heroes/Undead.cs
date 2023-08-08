@@ -1,4 +1,5 @@
 ﻿using FirstSteps.RPG.Items;
+using FirstSteps.RPG.HeroesModels;
 using System.Linq;
 
 namespace FirstSteps.RPG.Heroes
@@ -7,16 +8,11 @@ namespace FirstSteps.RPG.Heroes
     {
         public int ManaPoints { get; private set; }
 
-        public Undead(string name) : base(name, Races.Undead)
+        public Undead(string name) : this(name, 3, 3, 4, 22, 8, 0, new Equipment())
         {
-            _strength = 3;
-            _intelligence = 3;
-            _agility = 4;
-            _health = 22;
-            _damage = 8;
-            _coinsBag = 0;
+
         }
-        public Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment ) : base(name, Races.Undead)
+        private Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Dwarf)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -25,6 +21,19 @@ namespace FirstSteps.RPG.Heroes
             _damage = damage;
             _coinsBag = coinsBag;
             _equipment = equipment;
+        }
+        public static Undead FromHeroModel(HeroModel heroModel)
+        {
+            string name = heroModel.Name;
+            int strength = heroModel.Strength;
+            int intelligence = heroModel.Intelligence;
+            int agility = heroModel.Agility;
+            int health = heroModel.Health;
+            int damage = heroModel.Damage;
+            int coinsBag = heroModel.CoinsBag;
+            Equipment equipment = heroModel.MapToEquipment();
+
+            return new Undead(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
         protected override bool CanHandleSpecialItem(Item item)
         {
