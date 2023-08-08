@@ -8,20 +8,20 @@ namespace FirstSteps.RPG.Heroes
     {
         public int ManaPoints { get; private set; }
 
-        public Undead(string name) : base(name, Races.Undead)
+        public Undead(string name) : this(name, 3, 3, 4, 22, 8, 0, new Equipment())
         {
-            _strength = 3;
-            _intelligence = 3;
-            _agility = 4;
-            _health = 22;
-            _damage = 8;
-            _coinsBag = 0;
-        }
-        private static Undead NewUndead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
-        {
-            return NewUndead(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
-        }
 
+        }
+        private Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Dwarf)
+        {
+            _strength = strength;
+            _intelligence = intelligence;
+            _agility = agility;
+            _health = health;
+            _damage = damage;
+            _coinsBag = coinsBag;
+            _equipment = equipment;
+        }
         public static Undead FromHeroModel(HeroModel heroModel)
         {
             string name = heroModel.Name;
@@ -33,7 +33,7 @@ namespace FirstSteps.RPG.Heroes
             int coinsBag = heroModel.CoinsBag;
             Equipment equipment = heroModel.MapToEquipment();
 
-            return NewUndead(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+            return new Undead(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
         protected override bool CanHandleSpecialItem(Item item)
         {

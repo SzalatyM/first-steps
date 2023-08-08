@@ -1,6 +1,4 @@
 ﻿using System.Linq;
-using System.Xml.Linq;
-using FirstSteps.RPG.Heroes;
 using FirstSteps.RPG.Items;
 using FirstSteps.RPG.ModelFiles;
 
@@ -8,16 +6,11 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
     {
-        public Human(string name) : base(name, Races.Human)
+        public Human(string name) : this(name, 3, 2, 5, 20, 6, 0, new Equipment())
         {
-            _strength = 3;
-            _intelligence = 2;
-            _agility = 5;
-            _health = 20;
-            _damage = 6;
-            _coinsBag = 0;
+
         }
-        public Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Human)
+        private Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Dwarf)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -26,10 +19,6 @@ namespace FirstSteps.RPG.Heroes
             _damage = damage;
             _coinsBag = coinsBag;
             _equipment = equipment;
-        }
-        private static Human NewHuman(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
-        {
-            return NewHuman(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
 
         public static Human FromHeroModel(HeroModel heroModel)
@@ -43,7 +32,7 @@ namespace FirstSteps.RPG.Heroes
             int coinsBag = heroModel.CoinsBag;
             Equipment equipment = heroModel.MapToEquipment();
 
-            return NewHuman(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+            return new Human(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
         public override int DealDamage()
         {

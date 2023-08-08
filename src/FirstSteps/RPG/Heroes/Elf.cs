@@ -10,19 +10,19 @@ namespace FirstSteps.RPG.Heroes
     {
         private List<Arrow> _arrowsBag = new List<Arrow>();
 
-        public Elf(string name) : base(name, Races.Elf)
+        public Elf(string name) : this(name, 3, 2, 5, 21, 9, 0, new Equipment())
         {
-            _strength = 3;
-            _intelligence = 2;
-            _agility = 5;
-            _health = 21;
-            _damage = 9;
-            _coinsBag = 0;
 
         }
-        private static Elf NewElf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
+        private Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Dwarf)
         {
-            return NewElf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+            _strength = strength;
+            _intelligence = intelligence;
+            _agility = agility;
+            _health = health;
+            _damage = damage;
+            _coinsBag = coinsBag;
+            _equipment = equipment;
         }
 
         public static Elf FromHeroModel(HeroModel heroModel)
@@ -36,7 +36,7 @@ namespace FirstSteps.RPG.Heroes
             int coinsBag = heroModel.CoinsBag;
             Equipment equipment = heroModel.MapToEquipment();
 
-            return NewElf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+            return new Elf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
         }
 
         protected override bool CanHandleSpecialItem(Item item)

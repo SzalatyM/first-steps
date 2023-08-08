@@ -7,19 +7,20 @@ namespace FirstSteps.RPG.Heroes
     public class Dwarf : Hero
     {
 
-        public Dwarf(string name) : base(name, Races.Dwarf)
+        public Dwarf(string name) : this(name, 4, 2, 4, 25, 7, 0, new Equipment())
         {
-            _strength = 4;
-            _intelligence = 2;
-            _agility = 4;
-            _health = 25;
-            _damage = 7;
-            _coinsBag = 0;
+
         }
-        private static Dwarf NewDwarf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment)
+        private Dwarf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base (name, Races.Dwarf)
         {
-            return NewDwarf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
-        }
+             _strength = strength;
+            _intelligence = intelligence;
+            _agility = agility;
+            _health = health;
+            _damage = damage;
+            _coinsBag = coinsBag;
+            _equipment = equipment;
+        }     
 
         public static Dwarf FromHeroModel(HeroModel heroModel)
         {
@@ -32,7 +33,8 @@ namespace FirstSteps.RPG.Heroes
             int coinsBag = heroModel.CoinsBag;
             Equipment equipment = heroModel.MapToEquipment();
 
-            return NewDwarf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+            return new Dwarf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+
         }
 
         protected override bool CanHandleSpecialItem(Item item)

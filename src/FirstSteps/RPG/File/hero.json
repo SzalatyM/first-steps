@@ -1,18 +1,18 @@
 {
-  "Name": "Michal",
-  "Race": 4,
-  "Strength": 3,
-  "Intelligence": 3,
+  "Name": "tomek",
+  "Race": 2,
+  "Strength": 4,
+  "Intelligence": 2,
   "Agility": 4,
-  "Health": 22,
-  "Damage": 8,
-  "CoinsBag": 16,
+  "Health": 25,
+  "Damage": 7,
+  "CoinsBag": 0,
   "Equipment": {
     "Items": [
       {
-        "Name": "MagicSkull",
-        "Price": 20,
-        "Weight": 16
+        "Name": "Knife",
+        "Price": 2,
+        "Weight": 3
       }
     ]
   }
