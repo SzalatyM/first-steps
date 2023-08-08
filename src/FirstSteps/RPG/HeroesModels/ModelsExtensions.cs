@@ -1,7 +1,7 @@
 ﻿using FirstSteps.RPG.Items;
 using System;
 
-namespace FirstSteps.RPG.ModelFiles
+namespace FirstSteps.RPG.HeroesModels
 {
     public static class ModelsExtensions
     {

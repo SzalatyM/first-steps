@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using FirstSteps.RPG.Items;
-using FirstSteps.RPG.ModelFiles;
+using FirstSteps.RPG.HeroesModels;
 
 namespace FirstSteps.RPG.Heroes
 {

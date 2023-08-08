@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FirstSteps.RPG.ModelFiles
+namespace FirstSteps.RPG.HeroesModels
 {
     public class EquipmentModel
     {

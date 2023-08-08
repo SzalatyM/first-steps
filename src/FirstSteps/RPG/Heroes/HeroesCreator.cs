@@ -1,4 +1,4 @@
-﻿using FirstSteps.RPG.ModelFiles;
+﻿using FirstSteps.RPG.HeroesModels;
 using System;
 namespace FirstSteps.RPG.Heroes
 {
