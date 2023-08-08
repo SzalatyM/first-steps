@@ -1,5 +1,5 @@
 {
-  "Name": "tomek",
+  "Name": "ho",
   "Race": 2,
   "Strength": 4,
   "Intelligence": 2,
@@ -8,12 +8,6 @@
   "Damage": 7,
   "CoinsBag": 0,
   "Equipment": {
-    "Items": [
-      {
-        "Name": "Knife",
-        "Price": 2,
-        "Weight": 3
-      }
-    ]
+    "Items": []
   }
 }
