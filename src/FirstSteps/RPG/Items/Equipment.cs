@@ -11,7 +11,7 @@ namespace FirstSteps.RPG
 
         const int MaxBackpack = 5;
         const int MaxWeight = 40;
-
+    
         public bool TryAddItemToBackpack(Item item)
         {
             if (_backPack.Count <= MaxBackpack && CountWeight() <= MaxWeight && item.Weight + CountWeight() <= MaxWeight)

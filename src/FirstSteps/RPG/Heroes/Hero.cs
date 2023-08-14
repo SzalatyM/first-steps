@@ -3,6 +3,7 @@ using System.Linq;
 using FirstSteps.RPG.Items;
 using FirstSteps.RPG.HeroesModels;
 using Spectre.Console;
+using System.Collections.Generic;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -93,16 +94,16 @@ namespace FirstSteps.RPG.Heroes
                 Intelligence = _intelligence,
                 Agility = _agility,
                 CoinsBag = _coinsBag,
-                Damage = _damage,
+                Damage = _damage,              
                 Equipment = new EquipmentModel
                 {
                     Items = _equipment.Backpack.Select(item => new ItemModel
                     {
                         Name = item.Name,
                         Price = item.Price,
-                        Weight = item.Weight
+                        Weight = item.Weight,
                     }).ToList()
-                }
+                },
             };
             return heroModel;
         }

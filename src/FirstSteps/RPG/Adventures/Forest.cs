@@ -39,7 +39,7 @@ namespace FirstSteps.RPG.Adventures
                     {
                         collectedArrows.Add(new Arrow());
                     }
-                    elf.CollectArrows(collectedArrows);
+                    elf.CollectArrows(collectedArrows);                    
                     Console.WriteLine($"You gain: {arrowsNumber} arrows!");
                     break;
                 default:

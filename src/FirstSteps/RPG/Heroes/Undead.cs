@@ -12,7 +12,7 @@ namespace FirstSteps.RPG.Heroes
         {
 
         }
-        private Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Dwarf)
+        private Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Undead)
         {
             _strength = strength;
             _intelligence = intelligence;

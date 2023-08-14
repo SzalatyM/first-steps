@@ -14,7 +14,7 @@ namespace FirstSteps.RPG.Heroes
         {
 
         }
-        private Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Dwarf)
+        private Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Elf)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -37,6 +37,7 @@ namespace FirstSteps.RPG.Heroes
             Equipment equipment = heroModel.MapToEquipment();
 
             return new Elf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+
         }
 
         protected override bool CanHandleSpecialItem(Item item)
@@ -52,6 +53,8 @@ namespace FirstSteps.RPG.Heroes
 
         public void CollectArrows(List<Arrow> arrows)
         {
+
+            _equipment.Backpack.AddRange(arrows.ToList());
             _arrowsBag.AddRange(arrows);
         }
 
