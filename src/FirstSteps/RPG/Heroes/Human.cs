@@ -10,7 +10,7 @@ namespace FirstSteps.RPG.Heroes
         {
 
         }
-        private Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Human)
+        private Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Human, 20)
         {
             _strength = strength;
             _intelligence = intelligence;

@@ -11,7 +11,7 @@ namespace FirstSteps.RPG.Heroes
         {
 
         }
-        private Dwarf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base (name, Races.Dwarf)
+        private Dwarf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base (name, Races.Dwarf,25)
         {
              _strength = strength;
             _intelligence = intelligence;

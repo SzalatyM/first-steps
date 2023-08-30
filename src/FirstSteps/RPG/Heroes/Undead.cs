@@ -1,6 +1,7 @@
 ﻿using FirstSteps.RPG.Items;
 using FirstSteps.RPG.HeroesModels;
 using System.Linq;
+using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -12,7 +13,7 @@ namespace FirstSteps.RPG.Heroes
         {
 
         }
-        private Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Undead)
+        private Undead(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Undead, 22)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -49,7 +50,17 @@ namespace FirstSteps.RPG.Heroes
         {
             bool magicSkullIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicSkull);
 
-            return magicSkullIsInTheBackpack ? _damage + _intelligence * 2 : _damage + _intelligence;
+            if(ManaPoints > 0)
+            {
+                ManaPoints--;
+                return magicSkullIsInTheBackpack ? _damage + _intelligence * 2 : _damage + _intelligence;
+                
+            }
+            else
+            {
+                Display.ErrorText("You can't deal damage! U need mana points!");
+                return 0;
+            }
         }
     }
 }

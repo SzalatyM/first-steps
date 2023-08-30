@@ -14,7 +14,7 @@ namespace FirstSteps.RPG.Heroes
         {
 
         }
-        private Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Elf)
+        private Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Elf,20)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -60,9 +60,22 @@ namespace FirstSteps.RPG.Heroes
 
         public override int DealDamage()
         {
-            bool magicBowIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicBow);
 
-            return magicBowIsInTheBackpack ? _agility * 4 : _damage + _agility;
+            bool magicBowIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicBow);
+            bool arrowsAreInTheBackpack = _equipment.Backpack.Any(y => y is Arrow);
+
+            if (magicBowIsInTheBackpack && arrowsAreInTheBackpack)
+            {
+                MagicBow magicBow = _equipment.Backpack.OfType<MagicBow>().FirstOrDefault();
+                Arrow arrows = _equipment.Backpack.OfType<Arrow>().FirstOrDefault();
+
+                if (magicBow != null && arrows != null)
+                {
+                    _equipment.Backpack.Remove(arrows);
+                    return _agility * 4;
+                }
+            }
+            return _agility; 
         }
     }
 }

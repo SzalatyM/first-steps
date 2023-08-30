@@ -1,29 +1,13 @@
 {
-  "Name": "michal",
-  "Race": 3,
-  "Strength": 3,
+  "Name": "dsf",
+  "Race": 2,
+  "Strength": 4,
   "Intelligence": 2,
-  "Agility": 5,
-  "Health": 21,
-  "Damage": 9,
-  "CoinsBag": 20,
+  "Agility": 4,
+  "Health": 25,
+  "Damage": 7,
+  "CoinsBag": 0,
   "Equipment": {
-    "Items": [
-      {
-        "Name": "Arrow",
-        "Price": 1,
-        "Weight": 1
-      },
-      {
-        "Name": "Arrow",
-        "Price": 1,
-        "Weight": 1
-      },
-      {
-        "Name": "MagicBow",
-        "Price": 22,
-        "Weight": 16
-      }
-    ]
+    "Items": []
   }
 }

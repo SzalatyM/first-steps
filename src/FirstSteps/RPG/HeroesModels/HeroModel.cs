@@ -1,6 +1,4 @@
 ﻿using FirstSteps.RPG.Heroes;
-using FirstSteps.RPG.Items;
-using System.Collections.Generic;
 
 namespace FirstSteps.RPG.HeroesModels
 {
