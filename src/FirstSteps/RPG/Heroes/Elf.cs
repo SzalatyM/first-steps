@@ -14,7 +14,7 @@ namespace FirstSteps.RPG.Heroes
         {
 
         }
-        private Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Elf,20)
+        private Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Elf)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -66,10 +66,9 @@ namespace FirstSteps.RPG.Heroes
 
             if (magicBowIsInTheBackpack && arrowsAreInTheBackpack)
             {
-                MagicBow magicBow = _equipment.Backpack.OfType<MagicBow>().FirstOrDefault();
-                Arrow arrows = _equipment.Backpack.OfType<Arrow>().FirstOrDefault();
+                var arrows = _equipment.Backpack.OfType<Arrow>().FirstOrDefault();
 
-                if (magicBow != null && arrows != null)
+                if (arrows != null)
                 {
                     _equipment.Backpack.Remove(arrows);
                     return _agility * 4;

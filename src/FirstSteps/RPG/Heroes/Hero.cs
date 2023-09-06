@@ -3,7 +3,6 @@ using System.Linq;
 using FirstSteps.RPG.Items;
 using FirstSteps.RPG.HeroesModels;
 using Spectre.Console;
-using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -13,7 +12,6 @@ namespace FirstSteps.RPG.Heroes
         protected Equipment _equipment;
         private string _name;
         private Races _race;
-        private int _restoreHealth;
         protected int _strength;
         protected int _intelligence;
         protected int _agility;
@@ -23,13 +21,12 @@ namespace FirstSteps.RPG.Heroes
         protected int _coinsBag;
         public int Coins { get { return _coinsBag; } set { _coinsBag = value; } }
 
-        public Hero(string name, Races race, int restoreHealth)
+        public Hero(string name, Races race)
         {
             _equipment = new Equipment();
             _name = name;
             _race = race;
             _equipmentModel = new EquipmentModel();
-            _restoreHealth = restoreHealth;
         }
         public void DisplayStats()
         {
@@ -108,21 +105,6 @@ namespace FirstSteps.RPG.Heroes
                 },
             };
             return heroModel;
-        }
-
-        public void HeroResurrect()
-        {
-            if (_coinsBag >= 20)
-            {
-                _health = _restoreHealth;
-                _coinsBag -= 20;
-                HeroesCreator.LoadFromFile();
-            }
-            else
-            {
-                Display.ErrorText("You don't have 20 Coins to resurrect");
-                Environment.Exit(1);
-            }
         }
     }
 }

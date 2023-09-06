@@ -7,6 +7,7 @@ namespace FirstSteps.RPG.Heroes
     public class Boss : IAttacker
     {
         public string Name { get; private set; }
+        public int MaxHealth { get ; private set; }
         public int Health { get; private set; }
         public int Strength { get; private set; }
         public int Damage { get; private set; }
@@ -18,15 +19,25 @@ namespace FirstSteps.RPG.Heroes
 
         public static Boss CreateDiablo()
         {
-            return new Boss { Name = "Diablo", Health = 40, Strength = 6, Damage = 6 };
+            var diablo = new Boss { Name = "Diablo", Health = 40, Strength = 6, Damage = 6 };
+            diablo.MaxHealth = diablo.Health;
+            return diablo;
         }
 
         public int DealDamage()
-        {           
-            return Damage;       
-            // i tryed make a logic with reduced damage here but not working. 
-        }
+        {
+            double healthPercent = (double)Health / MaxHealth;
 
+            if (healthPercent <= 0.7)
+            {
+                double reducedDamage = 0.7;
+                return (int)(Damage * reducedDamage);
+            }
+            else
+            {
+                return Damage;
+            }
+        }     
         public int TakeDamage(int damage)
         {
             return Health -= damage;          

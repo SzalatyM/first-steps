@@ -14,7 +14,6 @@ namespace FirstSteps.RPG.Adventures
             var diablo = Boss.CreateDiablo();
             var heroDamage = hero.DealDamage();
             var diabloDamage = diablo.DealDamage();
-            var ReducedDamage = diabloDamage * 07;
             Display.DefaultText($"You entered to the Hell! \n{diablo.Name} is waiting for you!");
 
             do
@@ -29,13 +28,7 @@ namespace FirstSteps.RPG.Adventures
                         var number = new Random().Next(1, 5);
                         Console.WriteLine($"You rolled {number}");
                         if (number >= 3)
-                        {                   
-                            if(diablo.Health < 0.7)
-                            {
-                                hero.TakeDamage(ReducedDamage);
-                                Display.ClassicText($"[blue]You deal {ReducedDamage} damage to boss![/]");
-                                Display.ClassicText($"[purple]Actually health boss: {diablo.Health}[/]");
-                            }                      
+                        {
                             diablo.TakeDamage(heroDamage);
                             Display.ClassicText($"[blue]You deal {heroDamage} damage to boss![/]");
                             Display.ClassicText($"[purple]Actually health boss: {diablo.Health}[/]");
@@ -43,8 +36,9 @@ namespace FirstSteps.RPG.Adventures
                         }
                         else
                         {
+                            diablo.DealDamage();
                             hero.TakeDamage(diabloDamage);
-                            Display.ErrorText($"Boss deal {diabloDamage} damage to Hero!");
+                            Display.ErrorText($"Boss deal {diablo.DealDamage()} damage to Hero!");
                             Display.DefaultText($"You currently have {hero.Health} hp");
                             Console.WriteLine(string.Empty);
                         }
@@ -67,9 +61,19 @@ namespace FirstSteps.RPG.Adventures
             while (hero.Health > 0);
             Display.ErrorText("You died! Press z if u want to resurrect. It cost 25 coins");
             string user = Console.ReadLine();
-            if(user == "z")
+            if (user == "z")
             {
-                hero.HeroResurrect();
+                if (hero.Coins >= 20)
+                {                    
+                    hero.Coins -= 20;                  
+                    HeroesCreator.LoadFromFile();
+                    
+                }
+                else
+                {
+                    Display.ErrorText("You don't have 20 Coins to resurrect");
+                    Environment.Exit(1);
+                }
             }
         }
     }
