@@ -8,7 +8,7 @@ namespace FirstSteps.RPG.Heroes
     public class Undead : Hero
     {
         public int ManaPoints { get; private set; }
-        public bool CanUseManaPoints => ManaPoints > 0;
+        private bool CanUseManaPoints => ManaPoints > 0;
 
         public Undead(string name) : this(name, 3, 3, 4, 22, 8, 0, new Equipment())
         {

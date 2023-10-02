@@ -66,11 +66,11 @@ namespace FirstSteps.RPG.Heroes
 
             if (magicBowIsInTheBackpack && arrowsAreInTheBackpack)
             {
-                var arrows = _equipment.Backpack.OfType<Arrow>().FirstOrDefault();
+                var arrow = _equipment.Backpack.OfType<Arrow>().FirstOrDefault();
 
-                if (arrows != null)
+                if (arrow != null)
                 {
-                    _equipment.Backpack.Remove(arrows);
+                    _equipment.Backpack.Remove(arrow);
                     return _agility * 4;
                 }
             }

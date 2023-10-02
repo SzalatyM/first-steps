@@ -3,6 +3,7 @@ using System.Linq;
 using FirstSteps.RPG.Items;
 using FirstSteps.RPG.HeroesModels;
 using Spectre.Console;
+using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -16,7 +17,8 @@ namespace FirstSteps.RPG.Heroes
         protected int _intelligence;
         protected int _agility;
         protected int _health;
-        public int Health { get { return _health; } set { } }
+        public int _storedHealth { get; set; }
+        public int Health { get { return _health; } set { _storedHealth = value; } }
         protected int _damage;
         protected int _coinsBag;
         public int Coins { get { return _coinsBag; } set { _coinsBag = value; } }
@@ -27,6 +29,7 @@ namespace FirstSteps.RPG.Heroes
             _name = name;
             _race = race;
             _equipmentModel = new EquipmentModel();
+            Health = _storedHealth;
         }
         public void DisplayStats()
         {
@@ -105,6 +108,25 @@ namespace FirstSteps.RPG.Heroes
                 },
             };
             return heroModel;
+
+        }
+        public bool Resurrect()
+        {
+            if (Coins >= 5)
+            {
+                int maxHealth = _storedHealth; 
+
+                Coins -= 5;
+                Health = maxHealth / 2;
+
+                Display.DefaultText($"You returned{_storedHealth} health.");
+                return true; 
+            }
+            else
+            {
+                Display.ErrorText("You dont have enought coins.");
+                return false; 
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ namespace FirstSteps.RPG.Adventures
             Display.DefaultText($"You entered to the Hell! \n{diablo.Name} is waiting for you!");
 
             do
-            {
+            {                             
                 string userInput = AnsiConsole.Prompt(
                      new SelectionPrompt<string>()
                        .Title($" \nChose what u want to do! {Emoji.Known.CrossedSwords}")
@@ -63,18 +63,8 @@ namespace FirstSteps.RPG.Adventures
             string user = Console.ReadLine();
             if (user == "z")
             {
-                if (hero.Coins >= 20)
-                {                    
-                    hero.Coins -= 20;                  
-                    HeroesCreator.LoadFromFile();
-                    
-                }
-                else
-                {
-                    Display.ErrorText("You don't have 20 Coins to resurrect");
-                    Environment.Exit(1);
+                hero.Resurrect();
                 }
             }
         }
     }
-}
