@@ -10,6 +10,7 @@ namespace FirstSteps.RPG.HeroesModels
         public int Intelligence { get; set; }
         public int Agility { get; set; }
         public int Health { get; set; }
+        public int maxHealth { get; set; }
         public int Damage { get; set; }
         public int CoinsBag { get; set; }
         public EquipmentModel Equipment { get; set; }

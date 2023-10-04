@@ -63,7 +63,11 @@ namespace FirstSteps.RPG.Adventures
             string user = Console.ReadLine();
             if (user == "z")
             {
-                hero.Resurrect();
+                if (hero.Resurrect())
+                {
+                    hero.Health = hero.MaxHealth / 2;
+                }
+                
                 }
             }
         }

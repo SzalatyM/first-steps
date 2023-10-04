@@ -17,8 +17,9 @@ namespace FirstSteps.RPG.Heroes
         protected int _intelligence;
         protected int _agility;
         protected int _health;
-        public int _storedHealth { get; set; }
-        public int Health { get { return _health; } set { _storedHealth = value; } }
+        protected int _maxHealth;
+        public int MaxHealth { get { return _maxHealth; } set { } }
+        public int Health { get { return _health; } set { } }
         protected int _damage;
         protected int _coinsBag;
         public int Coins { get { return _coinsBag; } set { _coinsBag = value; } }
@@ -29,7 +30,7 @@ namespace FirstSteps.RPG.Heroes
             _name = name;
             _race = race;
             _equipmentModel = new EquipmentModel();
-            Health = _storedHealth;
+         
         }
         public void DisplayStats()
         {
@@ -114,12 +115,11 @@ namespace FirstSteps.RPG.Heroes
         {
             if (Coins >= 5)
             {
-                int maxHealth = _storedHealth; 
-
+                int maxHp =  _maxHealth / 2;
+                _health = maxHp;
                 Coins -= 5;
-                Health = maxHealth / 2;
-
-                Display.DefaultText($"You returned{_storedHealth} health.");
+                
+                Display.DefaultText($"You returned {maxHp} health.");
                 return true; 
             }
             else

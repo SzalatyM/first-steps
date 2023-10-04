@@ -6,11 +6,11 @@ namespace FirstSteps.RPG.Heroes
 {
     public class Human : Hero
     {
-        public Human(string name) : this(name, 3, 2, 5, 20, 6, 0, new Equipment())
+        public Human(string name) : this(name, 3, 2, 5, 20,20, 6, 0, new Equipment())
         {
 
         }
-        private Human(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Human)
+        private Human(string name, int strength, int intelligence, int agility, int health,int maxHealth, int damage, int coinsBag, Equipment equipment) : base(name, Races.Human)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -18,6 +18,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
+            _maxHealth = maxHealth;
             _equipment = equipment;
         }
 
@@ -28,11 +29,12 @@ namespace FirstSteps.RPG.Heroes
             int intelligence = heroModel.Intelligence;
             int agility = heroModel.Agility;
             int health = heroModel.Health;
+            int maxHealth = heroModel.maxHealth;
             int damage = heroModel.Damage;
             int coinsBag = heroModel.CoinsBag;
             Equipment equipment = heroModel.MapToEquipment();
 
-            return new Human(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+            return new Human(name, strength, intelligence, agility, health,maxHealth, damage, coinsBag, equipment);
         }
         public override int DealDamage()
         {
