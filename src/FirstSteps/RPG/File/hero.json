@@ -1,13 +1,13 @@
 {
-  "Name": "sffs",
+  "Name": "sd",
   "Race": 1,
   "Strength": 3,
   "Intelligence": 2,
   "Agility": 5,
-  "Health": 10,
+  "Health": 20,
   "maxHealth": 0,
   "Damage": 6,
-  "CoinsBag": 21,
+  "CoinsBag": 0,
   "Equipment": {
     "Items": []
   }
