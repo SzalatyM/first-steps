@@ -1,7 +1,6 @@
 ﻿using FirstSteps.RPG.Items;
 using FirstSteps.RPG.HeroesModels;
 using System.Linq;
-using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -56,11 +55,7 @@ namespace FirstSteps.RPG.Heroes
                 ManaPoints -= 1;
                 return magicSkullIsInTheBackpack ? _damage + _intelligence * 2 : _damage + _intelligence;               
             }
-            else
-            {
-                Display.ErrorText("You can't deal damage! U need mana points!");
-                return 0;
-            }
+            return 0;   
         }   
     }
 }

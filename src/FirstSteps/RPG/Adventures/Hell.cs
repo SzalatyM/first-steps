@@ -12,8 +12,7 @@ namespace FirstSteps.RPG.Adventures
         public void Enter(Hero hero)
         {
             var diablo = Boss.CreateDiablo();
-            var heroDamage = hero.DealDamage();
-            var diabloDamage = diablo.DealDamage();
+
             Display.DefaultText($"You entered to the Hell! \n{diablo.Name} is waiting for you!");
 
             do
@@ -29,6 +28,7 @@ namespace FirstSteps.RPG.Adventures
                         Console.WriteLine($"You rolled {number}");
                         if (number >= 3)
                         {
+                            var heroDamage = hero.DealDamage();
                             diablo.TakeDamage(heroDamage);
                             Display.ClassicText($"[blue]You deal {heroDamage} damage to boss![/]");
                             Display.ClassicText($"[purple]Actually health boss: {diablo.Health}[/]");
@@ -36,6 +36,7 @@ namespace FirstSteps.RPG.Adventures
                         }
                         else
                         {
+                            var diabloDamage = diablo.DealDamage();
                             diablo.DealDamage();
                             hero.TakeDamage(diabloDamage);
                             Display.ErrorText($"Boss deal {diablo.DealDamage()} damage to Hero!");
@@ -63,12 +64,8 @@ namespace FirstSteps.RPG.Adventures
             string user = Console.ReadLine();
             if (user == "z")
             {
-                if (hero.Resurrect())
-                {
-                    hero.Health = hero.MaxHealth / 2;
-                }
-                
-                }
+                hero.Resurrect();
             }
         }
     }
+}
