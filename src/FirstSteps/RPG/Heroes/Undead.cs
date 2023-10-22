@@ -1,6 +1,8 @@
 ﻿using FirstSteps.RPG.Items;
 using FirstSteps.RPG.HeroesModels;
 using System.Linq;
+using System;
+using FirstSteps.RPG.Tools;
 
 namespace FirstSteps.RPG.Heroes
 {
@@ -21,6 +23,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
+            _maxHealth = health;
             _equipment = equipment;
         }
         public static Undead FromHeroModel(HeroModel heroModel)
@@ -50,12 +53,17 @@ namespace FirstSteps.RPG.Heroes
         {
             bool magicSkullIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicSkull);
 
-            if(CanUseManaPoints)
+            if (CanUseManaPoints)
             {
                 ManaPoints -= 1;
-                return magicSkullIsInTheBackpack ? _damage + _intelligence * 2 : _damage + _intelligence;               
+                return magicSkullIsInTheBackpack ? _damage + _intelligence * 2 : _damage + _intelligence;
             }
-            return 0;   
+            else
+            {
+                Display.ErrorText("You don't have mana to deal damage! ");
+                return 0;
+            }
+           
         }   
     }
 }

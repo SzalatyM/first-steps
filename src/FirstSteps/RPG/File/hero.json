@@ -1,13 +1,13 @@
 {
-  "Name": "sdf",
-  "Race": 4,
+  "Name": "dsf",
+  "Race": 1,
   "Strength": 3,
-  "Intelligence": 3,
-  "Agility": 4,
-  "Health": 22,
+  "Intelligence": 2,
+  "Agility": 5,
+  "Health": 10,
   "maxHealth": 0,
-  "Damage": 8,
-  "CoinsBag": 0,
+  "Damage": 6,
+  "CoinsBag": 18,
   "Equipment": {
     "Items": []
   }

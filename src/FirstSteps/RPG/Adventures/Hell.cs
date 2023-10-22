@@ -60,7 +60,7 @@ namespace FirstSteps.RPG.Adventures
                 }
             }
             while (hero.Health > 0);
-            Display.ErrorText("You died! Press z if u want to resurrect. It cost 25 coins");
+            Display.ErrorText("You died! Press z if u want to resurrect. It cost 50 coins");
             string user = Console.ReadLine();
             if (user == "z")
             {
