@@ -19,6 +19,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
+            _maxHealth = health;
             _equipment = equipment;
         }     
 

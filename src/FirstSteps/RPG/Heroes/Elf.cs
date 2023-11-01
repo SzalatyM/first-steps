@@ -14,7 +14,7 @@ namespace FirstSteps.RPG.Heroes
         {
 
         }
-        private Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Dwarf)
+        private Elf(string name, int strength, int intelligence, int agility, int health, int damage, int coinsBag, Equipment equipment) : base(name, Races.Elf)
         {
             _strength = strength;
             _intelligence = intelligence;
@@ -22,6 +22,7 @@ namespace FirstSteps.RPG.Heroes
             _health = health;
             _damage = damage;
             _coinsBag = coinsBag;
+            _maxHealth = health;
             _equipment = equipment;
         }
 
@@ -37,6 +38,7 @@ namespace FirstSteps.RPG.Heroes
             Equipment equipment = heroModel.MapToEquipment();
 
             return new Elf(name, strength, intelligence, agility, health, damage, coinsBag, equipment);
+
         }
 
         protected override bool CanHandleSpecialItem(Item item)
@@ -52,14 +54,28 @@ namespace FirstSteps.RPG.Heroes
 
         public void CollectArrows(List<Arrow> arrows)
         {
+
+            _equipment.Backpack.AddRange(arrows.ToList());
             _arrowsBag.AddRange(arrows);
         }
 
         public override int DealDamage()
         {
-            bool magicBowIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicBow);
 
-            return magicBowIsInTheBackpack ? _agility * 4 : _damage + _agility;
+            bool magicBowIsInTheBackpack = _equipment.Backpack.Any(x => x is MagicBow);
+            bool arrowsAreInTheBackpack = _equipment.Backpack.Any(y => y is Arrow);
+
+            if (magicBowIsInTheBackpack && arrowsAreInTheBackpack)
+            {
+                var arrow = _equipment.Backpack.OfType<Arrow>().FirstOrDefault();
+
+                if (arrow != null)
+                {
+                    _equipment.Backpack.Remove(arrow);
+                    return _agility * 4;
+                }
+            }
+            return _agility; 
         }
     }
 }

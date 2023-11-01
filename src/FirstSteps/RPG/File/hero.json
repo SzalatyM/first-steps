@@ -1,12 +1,13 @@
 {
-  "Name": "ho",
-  "Race": 2,
-  "Strength": 4,
+  "Name": "ds",
+  "Race": 3,
+  "Strength": 3,
   "Intelligence": 2,
-  "Agility": 4,
-  "Health": 25,
-  "Damage": 7,
-  "CoinsBag": 0,
+  "Agility": 5,
+  "Health": 10,
+  "maxHealth": 0,
+  "Damage": 9,
+  "CoinsBag": 15,
   "Equipment": {
     "Items": []
   }

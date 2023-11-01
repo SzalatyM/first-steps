@@ -12,25 +12,23 @@ namespace FirstSteps.RPG.Adventures
         public void Enter(Hero hero)
         {
             var diablo = Boss.CreateDiablo();
-            var heroDamage = hero.DealDamage();
-            var diabloDamage = diablo.DealDamage();
 
-            Display.DefaultText($"You entered to the Hell!");
+            Display.DefaultText($"You entered to the Hell! \n{diablo.Name} is waiting for you!");
 
             do
-            {
+            {                             
                 string userInput = AnsiConsole.Prompt(
                      new SelectionPrompt<string>()
                        .Title($" \nChose what u want to do! {Emoji.Known.CrossedSwords}")
                        .AddChoices("Boss stats", "Hit the boss!", "Run"));
-
                 switch (userInput)
                 {
                     case "Hit the boss!":
                         var number = new Random().Next(1, 5);
                         Console.WriteLine($"You rolled {number}");
-                        if (number >= 2)
+                        if (number >= 3)
                         {
+                            var heroDamage = hero.DealDamage();
                             diablo.TakeDamage(heroDamage);
                             Display.ClassicText($"[blue]You deal {heroDamage} damage to boss![/]");
                             Display.ClassicText($"[purple]Actually health boss: {diablo.Health}[/]");
@@ -38,6 +36,7 @@ namespace FirstSteps.RPG.Adventures
                         }
                         else
                         {
+                            var diabloDamage = diablo.DealDamage();                
                             hero.TakeDamage(diabloDamage);
                             Display.ErrorText($"Boss deal {diabloDamage} damage to Hero!");
                             Display.DefaultText($"You currently have {hero.Health} hp");
@@ -60,8 +59,12 @@ namespace FirstSteps.RPG.Adventures
                 }
             }
             while (hero.Health > 0);
-            Display.ErrorText("You died! Game over");
-            Environment.Exit(1);
+            Display.ErrorText("You died! Press z if u want to resurrect. It cost 50 coins");
+            string user = Console.ReadLine();
+            if (user == "z")
+            {
+                hero.Resurrect();
+            }
         }
     }
 }
