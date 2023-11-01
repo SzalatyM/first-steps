@@ -36,10 +36,9 @@ namespace FirstSteps.RPG.Adventures
                         }
                         else
                         {
-                            var diabloDamage = diablo.DealDamage();
-                            diablo.DealDamage();
+                            var diabloDamage = diablo.DealDamage();                
                             hero.TakeDamage(diabloDamage);
-                            Display.ErrorText($"Boss deal {diablo.DealDamage()} damage to Hero!");
+                            Display.ErrorText($"Boss deal {diabloDamage} damage to Hero!");
                             Display.DefaultText($"You currently have {hero.Health} hp");
                             Console.WriteLine(string.Empty);
                         }

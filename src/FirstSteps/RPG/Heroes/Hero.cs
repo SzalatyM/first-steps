@@ -18,11 +18,10 @@ namespace FirstSteps.RPG.Heroes
         protected int _agility;
         protected int _health;
         protected int _maxHealth;
-        public int MaxHealth { get { return _maxHealth; } set { } }
         public int Health { get { return _health; } set { } }
         protected int _damage;
         protected int _coinsBag;
-        public int Coins { get { return _coinsBag; } set { _coinsBag = value; } }
+        public int Coins { get { return _coinsBag; } private set { _coinsBag = value; } }
 
         public Hero(string name, Races race)
         {
@@ -30,7 +29,7 @@ namespace FirstSteps.RPG.Heroes
             _name = name;
             _race = race;
             _equipmentModel = new EquipmentModel();
-         
+
         }
         public void DisplayStats()
         {
@@ -113,20 +112,18 @@ namespace FirstSteps.RPG.Heroes
         }
         public bool Resurrect()
         {
-            if (Coins >= 5)
-            {
-                int maxHp =  _maxHealth / 2;
-                _health = maxHp;
-                Coins -= 5;
-                
-                Display.DefaultText($"You returned {maxHp} health.");
-                return true; 
-            }
-            else
+            if (_coinsBag < 50)
             {
                 Display.ErrorText("You dont have enought coins.");
-                return false; 
+                return false;
             }
+
+            int healthReturned = _maxHealth / 2;
+            _health = healthReturned;
+            _coinsBag -= 50;
+
+            Display.DefaultText($"You returned {healthReturned} health.");
+            return true;
         }
     }
 }
